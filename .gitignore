@@ -45,3 +45,6 @@ next-env.d.ts
 
 # stray scratchpad export left in the legacy static site
 PPM Bangunjiwa/**/*scratchpad*preview.html
+
+# firebase cli
+firebase-debug.log
