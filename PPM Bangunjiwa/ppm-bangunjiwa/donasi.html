@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Donasi — MRV Nexus MRK</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0D0F0D;
+    --panel:#161816;
+    --panel-2:#1D201D;
+    --line:#2A2E2A;
+    --ink:#F2F4F1;
+    --ink-soft:#A9AFA8;
+    --ink-mute:#767C75;
+    --green:#22B14C;
+    --green-deep:#0F6E56;
+    --green-mid:#3FA968;
+    --teal:#5DCAA5;
+    --teal-soft:#9FE1CB;
+    --radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+  }
+  .mono{font-family:'IBM Plex Mono',monospace}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  section{padding:64px 0}
+  button{font-family:inherit;cursor:pointer}
+
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(13,15,13,.9);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{display:flex;align-items:center;justify-content:space-between;padding:16px 24px}
+  .brand{display:flex;align-items:center;gap:10px}
+  .brand-mark{width:32px;height:32px;border-radius:8px;background:var(--green);display:flex;align-items:center;justify-content:center}
+  .brand-mark svg{width:18px;height:18px}
+  .brand-name{font-weight:600;font-size:15px}
+  .brand-name em{font-style:normal;color:var(--ink-soft)}
+  .navlinks{display:flex;gap:28px;font-size:14px}
+  .navlinks a{color:var(--ink-soft);transition:color .2s}
+  .navlinks a:hover,.navlinks a.active{color:var(--ink)}
+  .navlinks a.active{color:var(--green);font-weight:500}
+
+  /* hero */
+  .hero{
+    background:linear-gradient(180deg,#111411,var(--panel));
+    border-bottom:1px solid var(--line);
+  }
+  .hero-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:40px;align-items:center;padding:56px 0}
+  .eyebrow{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--green);margin-bottom:14px}
+  .hero h1{font-size:clamp(28px,3.6vw,40px);font-weight:600;line-height:1.28;margin-bottom:16px;max-width:520px}
+  .hero p{color:var(--ink-soft);font-size:15px;max-width:460px;margin-bottom:28px}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:13px 24px;border-radius:10px;font-size:14.5px;font-weight:600;border:none;
+  }
+  .btn-primary{background:var(--green);color:#06210F}
+  .btn-primary:hover{background:#2BC358}
+  .btn-outline{background:transparent;border:1px solid var(--line);color:var(--ink)}
+  .btn-outline:hover{border-color:var(--ink-mute)}
+
+  .ring-wrap{display:flex;flex-direction:column;align-items:center}
+  .ring-amount{font-size:14px;color:var(--ink-soft);margin-top:14px;text-align:center}
+  .ring-amount b{color:var(--ink);font-weight:600}
+
+  /* stats */
+  .stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .stat-card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:22px;text-align:center}
+  .stat-num{font-family:'IBM Plex Mono',monospace;font-size:28px;font-weight:600}
+  .stat-label{font-size:13px;color:var(--ink-soft);margin-top:6px}
+
+  /* tiers */
+  .section-label{font-size:13px;font-weight:500;color:var(--ink-soft);margin-bottom:16px}
+  .tier-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:16px}
+  .tier{
+    background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+    padding:22px;position:relative;cursor:pointer;transition:border-color .15s,background .15s;
+  }
+  .tier:hover{border-color:var(--ink-mute)}
+  .tier.selected{border-color:var(--green);background:var(--panel-2)}
+  .tier-badge{
+    position:absolute;top:-11px;left:18px;background:var(--green);color:#06210F;
+    font-size:11px;font-weight:600;padding:3px 12px;border-radius:999px;
+  }
+  .tier-amount{font-size:19px;font-weight:600;margin:6px 0 8px}
+  .tier-desc{font-size:13.5px;color:var(--ink-soft);margin-bottom:18px;min-height:40px}
+  .tier-pick{
+    width:100%;padding:10px;border-radius:8px;font-size:13.5px;font-weight:600;
+    background:transparent;border:1px solid var(--line);color:var(--ink);
+  }
+  .tier.selected .tier-pick{background:var(--green);border-color:var(--green);color:#06210F}
+
+  .custom-row{display:flex;gap:12px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;margin-bottom:40px}
+  .custom-row label{font-size:13.5px;color:var(--ink-soft);white-space:nowrap}
+  .custom-row .prefix{font-size:14px;color:var(--ink-mute)}
+  .custom-row input[type=text]{
+    flex:1;background:transparent;border:none;color:var(--ink);font-size:18px;font-weight:600;
+    font-family:'IBM Plex Mono',monospace;outline:none;
+  }
+
+  /* allocation */
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:22px}
+  .alloc-bar{display:flex;height:10px;border-radius:6px;overflow:hidden;margin:14px 0 12px}
+  .alloc-legend{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:12.5px;color:var(--ink-soft)}
+  .dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+
+  /* donor form */
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+  .field{display:flex;flex-direction:column;gap:6px}
+  .field label{font-size:13px;color:var(--ink-soft)}
+  .field input,.field textarea{
+    background:var(--bg);border:1px solid var(--line);border-radius:8px;
+    padding:11px 12px;color:var(--ink);font-size:14px;font-family:inherit;outline:none;
+  }
+  .field input:focus,.field textarea:focus{border-color:var(--green)}
+  .checkline{display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--ink-soft);margin:6px 0 18px}
+  .summary-row{display:flex;justify-content:space-between;font-size:14px;color:var(--ink-soft);padding:8px 0;border-bottom:1px solid var(--line)}
+  .summary-row.total{color:var(--ink);font-weight:600;font-size:16px;border-bottom:none;padding-top:14px}
+  .error-text{color:#F0999B;font-size:12.5px;display:none}
+
+  /* testimoni */
+  .testi{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:26px}
+  .testi p{font-size:15.5px;color:var(--ink);margin-bottom:14px}
+  .testi-who{font-size:13px;color:var(--ink-soft)}
+
+  footer{border-top:1px solid var(--line);padding:40px 0}
+  .footer-grid{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;font-size:13px;color:var(--ink-mute)}
+
+  @media (max-width:860px){
+    .hero-grid{grid-template-columns:1fr}
+    .stats-grid,.tier-grid{grid-template-columns:1fr}
+    .form-grid{grid-template-columns:1fr}
+    .navlinks{display:none}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="brand">
+      <div class="brand-mark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#06210F" stroke-width="2"><path d="M12 2 L20 9 L20 21 L4 21 L4 9 Z"/></svg>
+      </div>
+      <span class="brand-name">MRV Nexus <em>MRK</em></span>
+    </div>
+    <div class="navlinks">
+      <a href="index.html">PPM Bangunjiwa</a>
+      <a href="pages/dashboard.html">Dashboard</a>
+      <a href="index.html#program-riset">Program Riset</a>
+      <a href="donasi.html" class="active">Donasi</a>
+      <a href="pages/login.html">Login</a>
+    </div>
+    <a href="#donasi-form" class="btn btn-primary">Donasi sekarang</a>
+  </nav>
+</header>
+
+<section class="hero" style="padding:0">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Dukung asesmen komunitas</p>
+      <h1>Danai satu putaran asesmen di DAS Oyo & DAS Ulin</h1>
+      <p>Setiap donasi membiayai kunjungan lapangan, pengolahan data, dan pendampingan warga hingga hasil bisa dipakai mengambil keputusan.</p>
+      <a href="#donasi-form" class="btn btn-primary">Donasi sekarang</a>
+    </div>
+    <div class="ring-wrap">
+      <svg width="220" height="220" viewBox="0 0 180 180" role="img" aria-label="57 persen terkumpul dari target donasi">
+        <circle cx="90" cy="90" r="78" fill="none" stroke="#2A2E2A" stroke-width="10"/>
+        <circle cx="90" cy="90" r="60" fill="none" stroke="#2A2E2A" stroke-width="10"/>
+        <circle cx="90" cy="90" r="42" fill="none" stroke="#2A2E2A" stroke-width="10"/>
+        <circle cx="90" cy="90" r="78" fill="none" stroke="#0F6E56" stroke-width="10" stroke-linecap="round" stroke-dasharray="489.8" stroke-dashoffset="210.6" transform="rotate(-90 90 90)"/>
+        <circle cx="90" cy="90" r="60" fill="none" stroke="#3FA968" stroke-width="10" stroke-linecap="round" stroke-dasharray="376.9" stroke-dashoffset="162" transform="rotate(-90 90 90)"/>
+        <circle cx="90" cy="90" r="42" fill="none" stroke="#5DCAA5" stroke-width="10" stroke-linecap="round" stroke-dasharray="263.9" stroke-dashoffset="113.5" transform="rotate(-90 90 90)"/>
+        <text x="90" y="84" text-anchor="middle" font-size="26" font-weight="600" fill="#F2F4F1" font-family="Inter">57%</text>
+        <text x="90" y="104" text-anchor="middle" font-size="11" fill="#A9AFA8" font-family="Inter">terkumpul</text>
+      </svg>
+      <p class="ring-amount"><b>Rp 42,6 jt</b> dari target Rp 75 jt</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="stats-grid">
+      <div class="stat-card"><div class="stat-num mono">183</div><div class="stat-label">Donatur</div></div>
+      <div class="stat-card"><div class="stat-num mono">6</div><div class="stat-label">Dusun terdampak</div></div>
+      <div class="stat-card"><div class="stat-num mono">340</div><div class="stat-label">Ha terpantau</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="donasi-form" style="padding-top:0">
+  <div class="wrap">
+    <p class="section-label">Pilih tingkatan donasi</p>
+    <div class="tier-grid" id="tierGrid">
+      <div class="tier" data-amount="100000">
+        <div class="tier-amount">Rp 100rb</div>
+        <div class="tier-desc">Cetak 1 set kuesioner asesmen untuk 1 responden</div>
+        <button class="tier-pick" type="button">Pilih</button>
+      </div>
+      <div class="tier selected" data-amount="500000">
+        <span class="tier-badge">Paling dipilih</span>
+        <div class="tier-amount">Rp 500rb</div>
+        <div class="tier-desc">Danai 1 hari kunjungan enumerator ke lapangan</div>
+        <button class="tier-pick" type="button">Pilih</button>
+      </div>
+      <div class="tier" data-amount="2000000">
+        <div class="tier-amount">Rp 2 jt</div>
+        <div class="tier-desc">Danai 1 sesi FGD validasi bersama satu dusun</div>
+        <button class="tier-pick" type="button">Pilih</button>
+      </div>
+    </div>
+
+    <div class="custom-row">
+      <label for="customAmount">Atau masukkan jumlah lain</label>
+      <span class="prefix">Rp</span>
+      <input type="text" id="customAmount" placeholder="0" inputmode="numeric">
+    </div>
+
+    <div style="display:grid;grid-template-columns:1.3fr 1fr;gap:20px;align-items:start">
+      <div class="panel">
+        <p class="section-label" style="margin-bottom:16px">Data donatur</p>
+        <div class="form-grid">
+          <div class="field">
+            <label for="donorName">Nama</label>
+            <input type="text" id="donorName" placeholder="Nama lengkap">
+          </div>
+          <div class="field">
+            <label for="donorEmail">Email</label>
+            <input type="text" id="donorEmail" placeholder="nama@email.com">
+          </div>
+        </div>
+        <div class="field" style="margin-bottom:6px">
+          <label for="donorMsg">Pesan dukungan (opsional)</label>
+          <textarea id="donorMsg" rows="3" placeholder="Tulis dukungan Anda untuk komunitas DAS Oyo & DAS Ulin"></textarea>
+        </div>
+        <p class="error-text" id="formError">Lengkapi nama, email, dan jumlah donasi terlebih dahulu.</p>
+        <label class="checkline"><input type="checkbox" id="anonCheck"> Sembunyikan nama saya dari daftar donatur publik</label>
+        <button class="btn btn-primary" id="submitBtn" style="width:100%;justify-content:center">Lanjutkan donasi</button>
+      </div>
+
+      <div class="panel">
+        <p class="section-label" style="margin-bottom:12px">Ringkasan</p>
+        <div class="summary-row"><span>Tingkatan</span><span class="mono" id="sumTier">Rp 500rb</span></div>
+        <div class="summary-row"><span>Biaya admin</span><span class="mono">Rp 0</span></div>
+        <div class="summary-row total"><span>Total</span><span class="mono" id="sumTotal">Rp 500.000</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <p class="section-label">Ke mana donasi disalurkan</p>
+    <div class="panel">
+      <div class="alloc-bar">
+        <div style="width:45%;background:#0F6E56"></div>
+        <div style="width:30%;background:#3FA968"></div>
+        <div style="width:25%;background:#9FE1CB"></div>
+      </div>
+      <div class="alloc-legend">
+        <span><i class="dot" style="background:#0F6E56"></i>Lapangan & enumerator 45%</span>
+        <span><i class="dot" style="background:#3FA968"></i>Pengolahan data 30%</span>
+        <span><i class="dot" style="background:#9FE1CB"></i>Pendampingan 25%</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <p class="section-label">Dari komunitas</p>
+    <div class="testi">
+      <p>"Data yang dikumpulkan tim MRV Nexus membantu dusun kami tahu titik mana yang paling berisiko, dan langkah apa yang perlu kami ambil lebih dulu."</p>
+      <p class="testi-who">Perwakilan warga, DAS Oyo</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-grid">
+    <span>© 2026 MRV Nexus MRK — Model Hutan Sosial & DAS</span>
+    <span>SDM lapangan dibina oleh <a href="index.html" style="color:var(--teal-soft);text-decoration:underline">PPM Bangunjiwa</a></span>
+  </div>
+</footer>
+
+<script>
+  const tiers = document.querySelectorAll('.tier');
+  const customAmount = document.getElementById('customAmount');
+  const sumTier = document.getElementById('sumTier');
+  const sumTotal = document.getElementById('sumTotal');
+  const donorName = document.getElementById('donorName');
+  const donorEmail = document.getElementById('donorEmail');
+  const formError = document.getElementById('formError');
+  const submitBtn = document.getElementById('submitBtn');
+
+  let selectedAmount = 500000;
+  let selectedLabel = 'Rp 500rb';
+
+  function formatRp(n){
+    return 'Rp ' + Math.round(n).toLocaleString('id-ID');
+  }
+
+  function updateSummary(){
+    sumTier.textContent = selectedLabel;
+    sumTotal.textContent = formatRp(selectedAmount);
+  }
+
+  tiers.forEach(function(t){
+    t.addEventListener('click', function(){
+      tiers.forEach(function(x){ x.classList.remove('selected'); });
+      t.classList.add('selected');
+      selectedAmount = parseInt(t.getAttribute('data-amount'), 10);
+      selectedLabel = t.querySelector('.tier-amount').textContent;
+      customAmount.value = '';
+      updateSummary();
+    });
+  });
+
+  customAmount.addEventListener('input', function(){
+    const digits = customAmount.value.replace(/[^0-9]/g, '');
+    customAmount.value = digits;
+    if (digits) {
+      tiers.forEach(function(x){ x.classList.remove('selected'); });
+      selectedAmount = parseInt(digits, 10);
+      selectedLabel = 'Kustom';
+      updateSummary();
+    }
+  });
+
+  submitBtn.addEventListener('click', function(){
+    const nameOk = donorName.value.trim().length > 0;
+    const emailOk = /^\S+@\S+\.\S+$/.test(donorEmail.value.trim());
+    const amountOk = selectedAmount > 0;
+    if (!nameOk || !emailOk || !amountOk) {
+      formError.style.display = 'block';
+      return;
+    }
+    formError.style.display = 'none';
+    submitBtn.textContent = 'Terima kasih, ' + donorName.value.trim().split(' ')[0] + '!';
+    submitBtn.disabled = true;
+    submitBtn.style.opacity = '0.7';
+  });
+
+  updateSummary();
+</script>
+
+</body>
+</html>

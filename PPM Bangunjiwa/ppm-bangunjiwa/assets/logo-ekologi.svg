@@ -1,0 +1,15 @@
+<svg viewBox="0 0 260 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="logoTitle">
+  <title id="logoTitle">Logo Pondok Pesantren Riset Ekologi Bangunjiwa</title>
+  <g>
+    <rect x="70" y="94" width="120" height="14" rx="3" fill="#0B4A2A"/>
+    <rect x="78" y="80" width="104" height="14" rx="3" fill="#00984A"/>
+    <rect x="86" y="66" width="88" height="14" rx="3" fill="#0B4A2A"/>
+  </g>
+  <path d="M130,66 C 105,50 100,28 130,10 C 160,28 155,50 130,66 Z" fill="#00984A"/>
+  <path d="M130,64 L130,20" stroke="#F6ECD8" stroke-width="2" fill="none"/>
+  <circle cx="130" cy="10" r="6" fill="none" stroke="#B8862E" stroke-width="2.5"/>
+  <circle cx="130" cy="10" r="2" fill="#B8862E"/>
+  <line x1="100" y1="122" x2="160" y2="122" stroke="#B8862E" stroke-width="1.5"/>
+  <text x="130" y="150" text-anchor="middle" font-family="Amiri, 'Times New Roman', serif" font-weight="700" font-size="28" fill="#0B4A2A" letter-spacing="1">BANGUNJIWA</text>
+  <text x="130" y="172" text-anchor="middle" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-weight="600" font-size="10.5" letter-spacing="2.5" fill="#B8862E">PESANTREN RISET EKOLOGI</text>
+</svg>

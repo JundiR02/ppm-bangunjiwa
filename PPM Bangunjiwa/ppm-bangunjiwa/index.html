@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pondok Pesantren Riset Ekologi Bangunjiwa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green-deep:#0B4A2A;
+    --green:#00984A;
+    --green-soft:#E4F2E9;
+    --gold:#B8862E;
+    --gold-soft:#F6ECD8;
+    --cream:#FAF7EF;
+    --paper:#FFFFFF;
+    --ink:#1F2A22;
+    --ink-soft:#5C6B5F;
+    --line:#E4DFD1;
+    --radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Plus Jakarta Sans',sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    line-height:1.7;
+  }
+  h1,h2,h3,.serif{font-family:'Amiri',serif}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+  section{padding:88px 0}
+
+  /* nav */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(250,247,239,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{display:flex;align-items:center;justify-content:space-between;padding-top:14px;padding-bottom:14px}
+  .brand{display:flex;align-items:center;gap:10px}
+  .brand img{height:38px;width:auto}
+  .brand-text{font-family:'Amiri',serif;font-weight:700;font-size:18px;color:var(--green-deep);line-height:1.2}
+  .brand-text span{display:block;font-family:'Plus Jakarta Sans',sans-serif;font-weight:500;font-size:11px;letter-spacing:.06em;color:var(--ink-soft);text-transform:uppercase}
+  .navlinks{display:flex;gap:32px;font-size:14px;font-weight:500}
+  .navlinks a{color:var(--ink-soft);transition:color .2s}
+  .navlinks a:hover{color:var(--green)}
+  .btn{
+    display:inline-block;padding:11px 22px;border-radius:999px;
+    font-size:14px;font-weight:600;
+  }
+  .btn-primary{background:var(--green);color:#fff}
+  .btn-primary:hover{background:var(--green-deep)}
+  .btn-ghost{border:1.5px solid var(--green);color:var(--green-deep)}
+
+  /* motif divider */
+  .motif{width:100%;height:14px;background-repeat:repeat-x;background-size:28px 14px;opacity:.9}
+  .motif-green{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='14'%3E%3Cpath d='M14 1 L21 7 L14 13 L7 7 Z' fill='none' stroke='%2300984A' stroke-width='1.4'/%3E%3C/svg%3E")}
+
+  /* hero */
+  .hero{
+    position:relative;min-height:78vh;display:flex;align-items:flex-end;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cpath d='M0 30 Q35 10 70 30 T140 30' fill='none' stroke='%23F6ECD8' stroke-width='1' opacity='0.22'/%3E%3Cpath d='M0 70 Q35 50 70 70 T140 70' fill='none' stroke='%23F6ECD8' stroke-width='1' opacity='0.16'/%3E%3Cpath d='M0 110 Q35 90 70 110 T140 110' fill='none' stroke='%23F6ECD8' stroke-width='1' opacity='0.12'/%3E%3C/svg%3E"), linear-gradient(180deg, rgba(11,74,42,.25), rgba(11,74,42,.88)), url('assets/hero-kajian.jpg');
+    background-repeat:repeat, no-repeat, no-repeat;
+    background-size:140px 140px, cover, cover;
+    background-position:center, center, center;
+    color:#fff;
+  }
+  .hero-inner{padding:70px 0 56px}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--gold-soft);
+    background:rgba(255,255,255,.1);
+    border:1px solid rgba(255,255,255,.25);
+    padding:6px 14px;border-radius:999px;margin-bottom:20px;
+  }
+  .hero h1{font-size:clamp(32px,5vw,52px);font-weight:700;max-width:760px;line-height:1.25;margin-bottom:18px}
+  .hero p{font-size:16px;max-width:560px;color:rgba(255,255,255,.85);margin-bottom:32px}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+  .hero .btn-ghost{border-color:rgba(255,255,255,.5);color:#fff}
+  .hero .btn-ghost:hover{border-color:#fff}
+
+  /* tentang */
+  .tentang-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:56px;align-items:center}
+  .eyebrow-dark{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--green);margin-bottom:12px}
+  .tentang-grid h2{font-size:30px;color:var(--green-deep);margin-bottom:18px;line-height:1.3}
+  .tentang-grid p{color:var(--ink-soft);margin-bottom:14px;font-size:15px}
+  .tentang-img{border-radius:var(--radius);overflow:hidden;box-shadow:0 20px 44px -18px rgba(11,74,42,.35)}
+
+  /* visi misi */
+  .visimisi{background:var(--green-deep);color:#fff}
+  .visi-card{
+    text-align:center;max-width:680px;margin:0 auto 56px;
+  }
+  .visi-card .eyebrow-dark{color:var(--gold);text-align:center}
+  .visi-card h2{font-size:26px;line-height:1.5;font-weight:400}
+  .misi-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+  .misi-card{
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.14);
+    border-radius:var(--radius);
+    padding:26px 24px;
+  }
+  .misi-num{font-family:'Amiri',serif;font-size:26px;color:var(--gold);margin-bottom:10px}
+  .misi-card p{font-size:14.5px;color:rgba(255,255,255,.82)}
+
+  /* kurikulum */
+  .kurikulum-head{text-align:center;max-width:640px;margin:0 auto 44px}
+  .kurikulum-head h2{font-size:30px;color:var(--green-deep);margin-bottom:12px}
+  .kurikulum-head p{color:var(--ink-soft);font-size:15px}
+  table{width:100%;border-collapse:collapse;background:var(--paper);border-radius:var(--radius);overflow:hidden;box-shadow:0 1px 0 var(--line)}
+  thead th{
+    background:var(--green-deep);color:#fff;font-weight:600;font-size:13px;
+    text-align:center;padding:14px 10px;
+  }
+  thead th:first-child{text-align:left;padding-left:20px}
+  thead th.kitab-col{text-align:left}
+  tbody td{padding:12px 10px;text-align:center;font-size:14px;border-bottom:1px solid var(--line);color:var(--ink)}
+  tbody td:first-child{text-align:left;padding-left:20px;color:var(--green-deep);font-weight:600}
+  tbody td.kitab{text-align:left;color:var(--ink-soft)}
+  tbody tr:last-child td{border-bottom:none}
+  tbody tr:nth-child(even){background:var(--green-soft)}
+  .check{color:var(--green);font-weight:700}
+  .table-scroll{overflow-x:auto}
+  .table-note{margin-top:14px;font-size:13px;color:var(--ink-soft);text-align:center}
+
+  /* galeri */
+  .galeri-head{text-align:center;max-width:640px;margin:0 auto 40px}
+  .galeri-head h2{font-size:30px;color:var(--green-deep);margin-bottom:12px}
+  .galeri-head p{color:var(--ink-soft);font-size:15px}
+  .gallery{
+    display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:150px;gap:12px;
+  }
+  .gallery a{grid-column:span 2;grid-row:span 1;border-radius:var(--radius);overflow:hidden;position:relative}
+  .gallery a:nth-child(1){grid-column:span 3;grid-row:span 2}
+  .gallery a:nth-child(4){grid-column:span 3}
+  .gallery img{width:100%;height:100%;object-fit:cover;transition:transform .35s}
+  .gallery a:hover img{transform:scale(1.06)}
+  .gallery figcaption{
+    position:absolute;left:0;right:0;bottom:0;padding:12px 14px;
+    font-size:12.5px;color:#fff;font-weight:500;
+    background:linear-gradient(180deg, transparent, rgba(11,74,42,.85));
+  }
+
+  /* program riset */
+  .pilar-head{text-align:center;max-width:680px;margin:0 auto 44px}
+  .pilar-head h2{font-size:30px;color:var(--green-deep);margin-bottom:12px}
+  .pilar-head p{color:var(--ink-soft);font-size:15px}
+  .pilar-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .pilar-card{
+    background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+    padding:28px 24px;box-shadow:0 20px 44px -30px rgba(11,74,42,.25);
+  }
+  .pilar-num{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:38px;height:38px;border-radius:50%;
+    background:var(--green-soft);color:var(--green-deep);
+    font-family:'Amiri',serif;font-weight:700;font-size:17px;margin-bottom:16px;
+  }
+  .pilar-card h3{font-size:17px;color:var(--green-deep);margin-bottom:10px}
+  .pilar-card p{font-size:14px;color:var(--ink-soft)}
+
+  /* peminatan riset */
+  .peminatan{margin-top:36px;padding-top:32px;border-top:1px solid var(--line)}
+  .peminatan-label{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--green);text-align:center;margin-bottom:20px}
+  .peminatan-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .peminatan-card{background:var(--gold-soft);border-radius:var(--radius);padding:18px}
+  .peminatan-card .tag{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--gold);margin-bottom:8px;display:block}
+  .peminatan-card p{font-size:13.5px;color:var(--ink);margin:0}
+
+  /* ekosistem */
+  .ekosistem{background:var(--green-soft)}
+  .ekosistem-head{text-align:center;max-width:680px;margin:0 auto 44px}
+  .ekosistem-head h2{font-size:30px;color:var(--green-deep);margin-bottom:12px}
+  .ekosistem-head p{color:var(--ink-soft);font-size:15px}
+  .ekosistem-flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:16px;align-items:stretch}
+  .ekosistem-arrow{display:flex;align-items:center;justify-content:center;color:var(--green);font-size:22px}
+  .eko-card{
+    background:var(--paper);border-radius:var(--radius);padding:26px 22px;
+    box-shadow:0 20px 44px -30px rgba(11,74,42,.3);
+  }
+  .eko-card .eyebrow-dark{margin-bottom:8px}
+  .eko-card h3{font-size:16px;color:var(--green-deep);margin-bottom:10px;font-family:'Amiri',serif}
+  .eko-card p{font-size:13.5px;color:var(--ink-soft);margin-bottom:14px}
+  .eko-card a.eko-link{font-size:13px;font-weight:600;color:var(--green)}
+  .eko-card a.eko-link:hover{color:var(--green-deep)}
+
+  /* kontak / footer */
+  footer{background:#0B2E1C;color:rgba(255,255,255,.82);padding:64px 0 28px}
+  .footer-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:40px;margin-bottom:48px}
+  .footer-brand{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+  .footer-brand img{height:36px}
+  .footer-brand-text{font-family:'Amiri',serif;font-weight:700;font-size:17px;color:#fff}
+  footer p.desc{font-size:14px;color:rgba(255,255,255,.6);max-width:340px}
+  footer h4{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--gold);margin-bottom:16px}
+  footer ul{list-style:none}
+  footer li{font-size:14px;margin-bottom:10px;color:rgba(255,255,255,.75)}
+  .footer-bottom{
+    border-top:1px solid rgba(255,255,255,.12);padding-top:22px;
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+    font-size:13px;color:rgba(255,255,255,.5);
+  }
+
+  @media (max-width:860px){
+    .navlinks{display:none}
+    .tentang-grid{grid-template-columns:1fr}
+    .tentang-grid .tentang-img{order:-1}
+    .misi-grid{grid-template-columns:1fr}
+    .footer-grid{grid-template-columns:1fr}
+    .gallery{grid-template-columns:repeat(2,1fr);grid-auto-rows:140px}
+    .gallery a{grid-column:span 1 !important;grid-row:span 1 !important}
+    table{font-size:12px}
+    .pilar-grid{grid-template-columns:1fr}
+    .peminatan-grid{grid-template-columns:repeat(2,1fr)}
+    .ekosistem-flow{grid-template-columns:1fr}
+    .ekosistem-arrow{transform:rotate(90deg);padding:4px 0}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="brand">
+      <img src="assets/logo-ekologi.svg" alt="Logo Pondok Pesantren Riset Ekologi Bangunjiwa">
+      <div class="brand-text">Bangunjiwa<span>Pesantren Riset Ekologi</span></div>
+    </div>
+    <div class="navlinks">
+      <a href="#tentang">Tentang</a>
+      <a href="#visi-misi">Visi & Misi</a>
+      <a href="#program-riset">Program Riset</a>
+      <a href="#kurikulum">Kurikulum</a>
+      <a href="#ekosistem">Ekosistem</a>
+      <a href="#kontak">Kontak</a>
+    </div>
+    <div style="display:flex;gap:10px">
+      <a href="donasi.html" class="btn btn-ghost">Donasi</a>
+      <a href="#kontak" class="btn btn-primary">Hubungi Kami</a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero" id="beranda" style="padding:0">
+  <div class="wrap hero-inner">
+    <span class="eyebrow">Pondok Pesantren Riset Ekologi</span>
+    <h1>Menyeimbangkan ilmu duniawi dan ukhrowi, mencetak SDM riset ekologi untuk MRV Nexus</h1>
+    <p>Bangunjiwa mendampingi mahasantri menempuh pendidikan keislaman sambil kuliah, sekaligus membina mereka menjadi tenaga IT, pemetaan, dan pengelola SDM survei yang siap mengoperasikan ekosistem MRV Nexus di lapangan.</p>
+    <div class="hero-actions">
+      <a href="#tentang" class="btn btn-primary">Kenali Kami</a>
+      <a href="#program-riset" class="btn btn-ghost">Lihat Program Riset</a>
+    </div>
+  </div>
+</section>
+<div class="motif motif-green"></div>
+
+<section id="tentang">
+  <div class="wrap tentang-grid">
+    <div class="tentang-img">
+      <img src="assets/kajian-quran.jpg" alt="Kajian Al-Qur'an bersama santri Bangunjiwa">
+    </div>
+    <div>
+      <p class="eyebrow-dark">Tentang Kami</p>
+      <h2 class="serif">Rumah kedua bagi mahasantri, sekaligus dapur SDM riset ekologi</h2>
+      <p>Pondok Pesantren Riset Ekologi Bangunjiwa berawal sebagai Pesantren Mahasiswa yang menaungi mahasantri untuk menyeimbangkan keilmuan duniawi dan ukhrowi. Kini, Bangunjiwa berkembang menjadi pusat pendidikan yang juga mencetak sumber daya manusia untuk mengelola ekosistem riset ekologi MRV Nexus.</p>
+      <p>Di sini, mahasantri tidak hanya belajar tahsin, tahfidz, dan kitab kuning, tetapi juga dibina menguasai IT, pemetaan (GIS), dan pengelolaan SDM survei — sambil tetap menjalankan peran mereka sebagai mahasiswa aktif di kampus masing-masing.</p>
+      <p>Bangunjiwa menjadi jembatan bagi mahasantri untuk melaksanakan pengabdian masyarakat secara nyata: turun ke DAS dan kawasan hutan sosial sebagai enumerator, pengelola data, dan pemetaan bersama MRV Nexus, menerapkan semangat ta'awanu 'ala al-birri wat taqwa dalam kehidupan sehari-hari.</p>
+    </div>
+  </div>
+</section>
+
+<section class="visimisi" id="visi-misi">
+  <div class="wrap">
+    <div class="visi-card">
+      <p class="eyebrow-dark">Visi</p>
+      <h2 class="serif">Menjadi lembaga pendidikan keislaman berbasis riset ekologi dan pengabdian masyarakat, sekaligus sumber SDM bagi ekosistem MRV Nexus</h2>
+    </div>
+    <div class="misi-grid">
+      <div class="misi-card">
+        <div class="misi-num">01</div>
+        <p>Menyelenggarakan kegiatan pembelajaran yang berbasis sosial kemasyarakatan untuk menghasilkan santri yang cerdas, mandiri, serta menguasai ilmu pengetahuan dan teknologi.</p>
+      </div>
+      <div class="misi-card">
+        <div class="misi-num">02</div>
+        <p>Membina dan mengembangkan pendidikan pesantren dalam arti seluas-luasnya dengan semangat ta'awanu 'ala al-birri wat taqwa serta menerapkan konsep amar ma'ruf nahi munkar.</p>
+      </div>
+      <div class="misi-card">
+        <div class="misi-num">03</div>
+        <p>Menerapkan kurikulum pembelajaran yang disesuaikan dengan kebutuhan riset ekologi, pemetaan, dan pengabdian masyarakat berbasis data.</p>
+      </div>
+      <div class="misi-card">
+        <div class="misi-num">04</div>
+        <p>Meningkatkan kualitas pendidik maupun tenaga kependidikan agar lembaga semakin berkualitas dan profesional.</p>
+      </div>
+      <div class="misi-card">
+        <div class="misi-num">05</div>
+        <p>Membina santri dalam bidang IT dan pengelolaan data agar mampu membangun serta merawat infrastruktur digital MRV Nexus.</p>
+      </div>
+      <div class="misi-card">
+        <div class="misi-num">06</div>
+        <p>Menyiapkan tenaga pemetaan (GIS) dan enumerator lapangan yang cakap melakukan survei ekologi di DAS dan kawasan hutan sosial.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="program-riset">
+  <div class="wrap">
+    <div class="pilar-head">
+      <p class="eyebrow-dark">Program Riset Ekologi</p>
+      <h2 class="serif">Tiga pilar SDM untuk ekosistem MRV Nexus</h2>
+      <p>Selain pendidikan keislaman, mahasantri Bangunjiwa dibina lintas tiga bidang agar siap terjun langsung mengelola MRV Nexus — platform monitoring, reporting, dan verification untuk DAS dan hutan sosial.</p>
+    </div>
+    <div class="pilar-grid">
+      <div class="pilar-card">
+        <div class="pilar-num">01</div>
+        <h3>Teknologi Informasi & Data</h3>
+        <p>Mahasantri dibina mengelola infrastruktur digital, basis data, dan sistem pelaporan yang menjadi tulang punggung platform MRV Nexus, dari pengembangan web hingga pemeliharaan data lapangan.</p>
+      </div>
+      <div class="pilar-card">
+        <div class="pilar-num">02</div>
+        <h3>Pemetaan & Survei Lapangan</h3>
+        <p>Pelatihan pemetaan (GIS) dan penginderaan jauh dipadukan dengan teknik survei langsung, agar mahasantri mampu memetakan kondisi DAS dan kawasan hutan sosial secara akurat.</p>
+      </div>
+      <div class="pilar-card">
+        <div class="pilar-num">03</div>
+        <h3>Pengelolaan SDM & Enumerator</h3>
+        <p>Mahasantri dilatih mengoordinasikan tim enumerator, merancang pendataan partisipatif, dan mendampingi masyarakat selama proses asesmen lapangan berlangsung.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="kurikulum">
+  <div class="wrap">
+    <div class="kurikulum-head">
+      <p class="eyebrow-dark">Kurikulum</p>
+      <h2 class="serif">Kurikulum Pesantren Riset Ekologi Bangunjiwa</h2>
+      <p>Disusun bertahap dari semester I hingga V, memadukan penguasaan Al-Qur'an, ilmu alat, dan fikih dengan peminatan riset ekologi serta pengabdian masyarakat di akhir masa belajar.</p>
+    </div>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>Mata Pelajaran</th>
+            <th>Sem I</th>
+            <th>Sem II</th>
+            <th>Sem III</th>
+            <th>Sem IV</th>
+            <th>Sem V</th>
+            <th class="kitab-col">Kitab</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Tahsin</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td></td><td class="kitab">Al-Qur'an</td></tr>
+          <tr><td>Tahfidz</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td></td><td class="kitab">Al-Qur'an</td></tr>
+          <tr><td>Nahwu</td><td class="check">✓</td><td></td><td></td><td></td><td></td><td class="kitab">Modul</td></tr>
+          <tr><td>Shorof</td><td class="check">✓</td><td></td><td></td><td></td><td></td><td class="kitab">Modul</td></tr>
+          <tr><td>Tajwid</td><td class="check">✓</td><td></td><td></td><td></td><td></td><td class="kitab">Modul</td></tr>
+          <tr><td>Akidah</td><td></td><td class="check">✓</td><td></td><td></td><td></td><td class="kitab">Aqidatul Awwam</td></tr>
+          <tr><td>Akhlak</td><td></td><td class="check">✓</td><td></td><td></td><td></td><td class="kitab">Adabul 'Alim wal Muta'allim</td></tr>
+          <tr><td>Ushul Fiqh</td><td></td><td class="check">✓</td><td></td><td></td><td></td><td class="kitab">Matan Waroqot</td></tr>
+          <tr><td>Fikih</td><td></td><td></td><td class="check">✓</td><td></td><td></td><td class="kitab">Matnul Ghoyatu wat Taqrib</td></tr>
+          <tr><td>Hadits</td><td></td><td></td><td class="check">✓</td><td></td><td></td><td class="kitab">Arba'in Nawawi</td></tr>
+          <tr><td>Tasawwuf</td><td></td><td></td><td></td><td class="check">✓</td><td></td><td class="kitab">Bidayatul Hidayah</td></tr>
+          <tr><td>Qiroatul Kutub</td><td></td><td></td><td></td><td class="check">✓</td><td></td><td class="kitab">Modul</td></tr>
+          <tr><td>Pengabdian Masyarakat</td><td></td><td></td><td></td><td></td><td class="check">✓</td><td class="kitab">—</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="table-note">Ditetapkan oleh Direktur Pendidikan PPM Bangunjiwa, M. Hamid Lufafi, S.Pd.</p>
+
+    <div class="peminatan">
+      <p class="peminatan-label">Peminatan Riset Ekologi — Semester IV & V</p>
+      <div class="peminatan-grid">
+        <div class="peminatan-card">
+          <span class="tag">IT</span>
+          <p>Pengelolaan basis data & sistem pelaporan MRV Nexus</p>
+        </div>
+        <div class="peminatan-card">
+          <span class="tag">Pemetaan</span>
+          <p>Dasar GIS & pemetaan DAS / hutan sosial</p>
+        </div>
+        <div class="peminatan-card">
+          <span class="tag">Survei</span>
+          <p>Teknik enumerator & pendataan partisipatif</p>
+        </div>
+        <div class="peminatan-card">
+          <span class="tag">SDM</span>
+          <p>Koordinasi tim lapangan & pendampingan warga</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ekosistem" id="ekosistem">
+  <div class="wrap">
+    <div class="ekosistem-head">
+      <p class="eyebrow-dark">Ekosistem Terintegrasi</p>
+      <h2 class="serif">Satu ekosistem, tiga simpul yang saling menghidupi</h2>
+      <p>Bangunjiwa mencetak SDM, MRV Nexus mengoperasikan data lapangan, dan donasi publik mendanai keberlangsungan keduanya.</p>
+    </div>
+    <div class="ekosistem-flow">
+      <div class="eko-card">
+        <p class="eyebrow-dark">Simpul 1</p>
+        <h3>PPM Bangunjiwa — Pendidikan & SDM</h3>
+        <p>Mencetak mahasantri yang cakap IT, pemetaan, dan pengelolaan SDM survei, siap terjun ke lapangan maupun mengelola sistem digital.</p>
+        <a href="#program-riset" class="eko-link">Lihat program riset →</a>
+      </div>
+      <div class="ekosistem-arrow">→</div>
+      <div class="eko-card">
+        <p class="eyebrow-dark">Simpul 2</p>
+        <h3>MRV Nexus — Platform Data & Monitoring</h3>
+        <p>Sistem monitoring, reporting, dan verification untuk DAS Oyo, DAS Ulin, dan kawasan hutan sosial lain, dijalankan oleh alumni dan mahasantri Bangunjiwa.</p>
+        <span class="eko-link" style="color:var(--ink-soft);cursor:default">Platform MRV Nexus</span>
+      </div>
+      <div class="ekosistem-arrow">→</div>
+      <div class="eko-card">
+        <p class="eyebrow-dark">Simpul 3</p>
+        <h3>Donasi & Crowdfunding</h3>
+        <p>Pendanaan publik untuk membiayai kunjungan lapangan, pengolahan data, dan pelatihan SDM Bangunjiwa yang terjun di MRV Nexus.</p>
+        <a href="donasi.html" class="eko-link">Lihat halaman donasi →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="kegiatan" style="padding-top:0">
+  <div class="wrap">
+    <div class="galeri-head">
+      <p class="eyebrow-dark">Kegiatan & Fasilitas</p>
+      <h2 class="serif">Keseharian mahasantri Bangunjiwa</h2>
+      <p>Dari kajian malam, tahsin bersama, hingga ruang tinggal yang nyaman untuk belajar dan beristirahat.</p>
+    </div>
+    <div class="gallery">
+      <a href="assets/kajian-musholla.jpg">
+        <img src="assets/kajian-musholla.jpg" alt="Kajian bersama di musholla">
+        <figcaption>Kajian rutin bersama pengasuh</figcaption>
+      </a>
+      <a href="assets/santriwati-menulis.jpg">
+        <img src="assets/santriwati-menulis.jpg" alt="Santriwati menulis kitab">
+        <figcaption>Sesi menulis dan tahsin</figcaption>
+      </a>
+      <a href="assets/santri-menulis.jpg">
+        <img src="assets/santri-menulis.jpg" alt="Santri menulis kitab">
+        <figcaption>Belajar kitab bersama</figcaption>
+      </a>
+      <a href="assets/fasad-asrama.jpg">
+        <img src="assets/fasad-asrama.jpg" alt="Bangunan asrama Bangunjiwa">
+        <figcaption>Asrama mahasantri</figcaption>
+      </a>
+      <a href="assets/ruang-tamu.jpg">
+        <img src="assets/ruang-tamu.jpg" alt="Ruang tamu pesantren">
+        <figcaption>Ruang tamu & diskusi</figcaption>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer id="kontak">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <img src="assets/logo-ekologi.svg" alt="Logo Bangunjiwa">
+          <span class="footer-brand-text">Pondok Pesantren Riset Ekologi Bangunjiwa</span>
+        </div>
+        <p class="desc">Menjembatani mahasantri untuk menyeimbangkan ilmu duniawi dan ukhrowi, sekaligus mencetak SDM riset ekologi bagi ekosistem MRV Nexus.</p>
+      </div>
+      <div>
+        <h4>Jelajahi</h4>
+        <ul>
+          <li><a href="#tentang">Tentang Kami</a></li>
+          <li><a href="#visi-misi">Visi & Misi</a></li>
+          <li><a href="#program-riset">Program Riset</a></li>
+          <li><a href="#kurikulum">Kurikulum</a></li>
+          <li><a href="#kegiatan">Kegiatan</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Ekosistem</h4>
+        <ul>
+          <li><a href="#ekosistem">MRV Nexus</a></li>
+          <li><a href="donasi.html">Donasi & Crowdfunding</a></li>
+          <li>Alamat: (isi alamat pesantren)</li>
+          <li>Telepon / WhatsApp: (isi nomor)</li>
+          <li>Email: (isi email)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Pondok Pesantren Riset Ekologi Bangunjiwa. Seluruh hak cipta dilindungi.</span>
+      <span>Dibina oleh Direktorat Pendidikan PPM Bangunjiwa</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
