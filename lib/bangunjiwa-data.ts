@@ -167,6 +167,12 @@ export const DONASI_TIERS = [
   },
 ];
 
+export const DONASI_PEMBAYARAN = {
+  penerima: "Yayasan PPM Bangunjiwa",
+  bank: { nama: "Bank Syariah Indonesia (BSI)", noRekening: "7788443336" },
+  qris: { src: "/brand/qris-yayasan-ppm-bangunjiwa.jpg", nmid: "ID1024319078993" },
+};
+
 export const DONASI_TARGET = 75000000;
 export const DONASI_TERKUMPUL = 42600000;
 

@@ -1,27 +1,20 @@
 "use client";
 
 import * as React from "react";
-import { Check, Coins, ReceiptText, UserRound } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import Image from "next/image";
+import { Check, Coins, Download, Landmark, QrCode, ReceiptText, Wallet } from "lucide-react";
 import { Panel, PanelHeader } from "@/components/hub/panel";
-import { PrototypeNotice } from "@/components/content/sample-data";
+import { CopyButton } from "@/components/donasi/copy-button";
 import { cn } from "@/lib/utils";
 import { formatRupiah } from "@/lib/format";
-import { DONASI_TIERS } from "@/lib/bangunjiwa-data";
+import { DONASI_PEMBAYARAN, DONASI_TIERS } from "@/lib/bangunjiwa-data";
 
-const FIELD =
-  "w-full rounded-xl border border-border bg-frost px-3.5 py-2.5 text-sm text-iron-deep outline-none transition-shadow placeholder:text-iron-soft/60 focus:border-pine focus:ring-3 focus:ring-pine/20";
+const { penerima, bank, qris } = DONASI_PEMBAYARAN;
 
 export function DonationInteractive() {
   const defaultTier = DONASI_TIERS.find((t) => t.highlight) ?? DONASI_TIERS[0];
   const [selectedTierId, setSelectedTierId] = React.useState<string | null>(defaultTier.id);
   const [customAmount, setCustomAmount] = React.useState("");
-  const [name, setName] = React.useState("");
-  const [email, setEmail] = React.useState("");
-  const [message, setMessage] = React.useState("");
-  const [anonymous, setAnonymous] = React.useState(false);
-  const [showError, setShowError] = React.useState(false);
-  const [submitted, setSubmitted] = React.useState(false);
 
   const selectedTier = DONASI_TIERS.find((t) => t.id === selectedTierId);
   const amount = selectedTier ? selectedTier.amount : Number(customAmount || 0);
@@ -38,22 +31,9 @@ export function DonationInteractive() {
     if (digits) setSelectedTierId(null);
   }
 
-  function handleSubmit() {
-    const nameOk = name.trim().length > 0;
-    const emailOk = /^\S+@\S+\.\S+$/.test(email.trim());
-    const amountOk = amount > 0;
-    if (!nameOk || !emailOk || !amountOk) {
-      setShowError(true);
-      return;
-    }
-    setShowError(false);
-    setSubmitted(true);
-  }
-
   return (
     <div id="donasi-form" className="grid items-start gap-4 xl:grid-cols-12">
-      <div className="flex flex-col gap-4 xl:col-span-8">
-        <Panel>
+        <Panel className="xl:col-span-8 xl:row-start-1">
           <PanelHeader title="Pilih Nominal" icon={Coins} />
           <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-3">
             {DONASI_TIERS.map((tier) => {
@@ -105,83 +85,97 @@ export function DonationInteractive() {
           </div>
         </Panel>
 
-        <Panel>
-          <PanelHeader title="Data Donatur" icon={UserRound} />
-          <div className="mt-5 grid grid-cols-1 gap-3.5 sm:grid-cols-2">
-            <div className="flex flex-col gap-1.5">
-              <label htmlFor="donorName" className="text-xs font-medium text-iron-soft">
-                Nama
-              </label>
-              <input id="donorName" type="text" placeholder="Nama lengkap" value={name} onChange={(e) => setName(e.target.value)} className={FIELD} />
+        <Panel className="xl:sticky xl:top-6 xl:col-span-4 xl:col-start-9 xl:row-span-2 xl:row-start-1">
+          <PanelHeader title="Ringkasan" icon={ReceiptText} />
+          <div className="mt-5 flex flex-col text-[13px]">
+            <div className="flex justify-between border-b border-ash/60 py-2.5 text-iron-soft">
+              <span>Tingkatan</span>
+              <span className="tabular-nums text-iron-deep">{summaryLabel}</span>
             </div>
-            <div className="flex flex-col gap-1.5">
-              <label htmlFor="donorEmail" className="text-xs font-medium text-iron-soft">
-                Email
-              </label>
-              <input id="donorEmail" type="email" placeholder="nama@email.com" value={email} onChange={(e) => setEmail(e.target.value)} className={FIELD} />
+            <div className="flex justify-between border-b border-ash/60 py-2.5 text-iron-soft">
+              <span>Penerima</span>
+              <span className="text-right text-iron-deep">{penerima}</span>
             </div>
           </div>
-          <div className="mt-3.5 flex flex-col gap-1.5">
-            <label htmlFor="donorMsg" className="text-xs font-medium text-iron-soft">
-              Pesan dukungan (opsional)
-            </label>
-            <textarea
-              id="donorMsg"
-              rows={3}
-              placeholder="Tulis dukungan Anda untuk komunitas DAS Oyo & DAS Ulin"
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              className={FIELD}
-            />
+          <p className="mt-5 text-xs text-iron-soft">Nominal yang ditransfer</p>
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <p className="font-heading text-[2.25rem] font-light leading-tight tracking-tight text-iron-deep tabular-nums">
+              {formatRupiah(amount)}
+            </p>
+            {amount > 0 && <CopyButton value={String(amount)} label="nominal" />}
           </div>
-          <label className="mt-4 flex items-center gap-2 text-[13px] text-iron-soft">
-            <input
-              type="checkbox"
-              checked={anonymous}
-              onChange={(e) => setAnonymous(e.target.checked)}
-              className="size-4 rounded border-border accent-iron"
-            />
-            Sembunyikan nama saya dari daftar donatur publik
-          </label>
-        </Panel>
-      </div>
-
-      <Panel className="xl:sticky xl:top-6 xl:col-span-4">
-        <PanelHeader title="Ringkasan" icon={ReceiptText} />
-        <div className="mt-5 flex flex-col text-[13px]">
-          <div className="flex justify-between border-b border-ash/60 py-2.5 text-iron-soft">
-            <span>Tingkatan</span>
-            <span className="tabular-nums text-iron-deep">{summaryLabel}</span>
-          </div>
-          <div className="flex justify-between border-b border-ash/60 py-2.5 text-iron-soft">
-            <span>Biaya admin</span>
-            <span className="tabular-nums text-iron-deep">Rp 0</span>
-          </div>
-        </div>
-        <p className="mt-5 text-xs text-iron-soft">Total</p>
-        <p className="font-heading text-[2.25rem] font-light leading-tight tracking-tight text-iron-deep tabular-nums">
-          {formatRupiah(amount)}
-        </p>
-        {showError && (
-          <p role="alert" className="mt-3 text-xs text-destructive">
-            Lengkapi nama, email, dan jumlah donasi terlebih dahulu.
+          <a
+            href="#cara-berdonasi"
+            className="mt-5 flex h-11 w-full items-center justify-center rounded-xl bg-iron text-[14px] font-medium text-frost shadow-panel transition-colors hover:bg-iron-deep"
+          >
+            Lihat cara berdonasi
+          </a>
+          <p className="mt-4 text-xs leading-relaxed text-iron-soft">
+            Situs ini belum mencatat donasi secara otomatis dan belum mengirim bukti donasi digital. Simpan bukti
+            transfer Anda.
           </p>
-        )}
-        <p className="mt-4 text-xs leading-relaxed text-iron-soft">
-          Prototype: pembayaran online belum aktif. Data yang Anda isi tidak dikirim atau disimpan.
-        </p>
-        <Button className="mt-3 h-11 w-full rounded-xl text-[14px]" onClick={handleSubmit}>
-          Lanjutkan donasi
-        </Button>
-        {submitted && (
-          <div role="status" className="mt-4">
-            <PrototypeNotice title={`Terima kasih atas niat baik Anda, ${name.trim().split(" ")[0]}.`}>
-              Pembayaran online belum aktif, jadi donasi ini belum diproses dan data Anda tidak disimpan.
-              Informasi rekening dan kontak resmi akan dicantumkan di halaman ini setelah tersedia.
-            </PrototypeNotice>
+        </Panel>
+
+        <Panel id="cara-berdonasi" className="xl:col-span-8 xl:row-start-2">
+          <PanelHeader title="Cara Berdonasi" icon={Wallet} />
+          <p className="mt-1.5 text-[13px] text-iron-soft">
+            Pilih salah satu. Donasi masuk langsung ke rekening {penerima}.
+          </p>
+          <div className="mt-5 grid gap-3 md:grid-cols-2">
+            <div className="flex flex-col rounded-2xl border border-white bg-frost p-5">
+              <p className="flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.08em] text-iron-soft">
+                <Landmark className="size-3.5" /> Transfer bank
+              </p>
+              <p className="mt-4 text-[13px] text-iron-soft">{bank.nama}</p>
+              <div className="mt-1 flex flex-wrap items-center justify-between gap-3">
+                <p className="font-heading text-[1.75rem] font-light tracking-[0.04em] text-iron-deep tabular-nums">
+                  {bank.noRekening}
+                </p>
+                <CopyButton value={bank.noRekening} label="nomor rekening" />
+              </div>
+              <p className="mt-1 text-[13px] text-iron">a.n. {penerima}</p>
+              <ol className="mt-5 flex flex-col gap-2 border-t border-ash/60 pt-4 text-[12.5px] leading-relaxed text-iron-soft">
+                <li>1. Transfer sesuai nominal di ringkasan.</li>
+                <li>2. Pastikan nama penerima: {penerima}.</li>
+                <li>3. Simpan bukti transfer sebagai arsip Anda.</li>
+              </ol>
+            </div>
+
+            <div className="flex flex-col rounded-2xl border border-white bg-frost p-5">
+              <p className="flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.08em] text-iron-soft">
+                <QrCode className="size-3.5" /> QRIS
+              </p>
+              <a
+                href={qris.src}
+                target="_blank"
+                rel="noopener"
+                className="mx-auto mt-4 block w-full max-w-[220px] overflow-hidden rounded-xl border border-ash/60 bg-white"
+                aria-label="Buka QRIS ukuran penuh"
+              >
+                <Image
+                  src={qris.src}
+                  alt={`QRIS ${penerima}, NMID ${qris.nmid}`}
+                  width={726}
+                  height={1024}
+                  className="h-auto w-full"
+                />
+              </a>
+              <p className="mt-3 text-center text-[11px] text-iron-soft">NMID {qris.nmid}</p>
+              <a
+                href={qris.src}
+                download="QRIS-Yayasan-PPM-Bangunjiwa.jpg"
+                className="mt-3 inline-flex h-10 items-center justify-center gap-2 rounded-xl bg-iron px-4 text-[13px] font-medium text-frost shadow-panel transition-colors hover:bg-iron-deep"
+              >
+                <Download className="size-4" /> Unduh QRIS
+              </a>
+              <p className="mt-3 text-[12.5px] leading-relaxed text-iron-soft">
+                Scan dengan aplikasi bank atau e-wallet, lalu <span className="font-medium text-iron">ketik nominalnya sendiri</span>.
+                Berdonasi dari HP? Unduh QRIS, lalu pilih &ldquo;scan dari galeri&rdquo; di aplikasi Anda.
+              </p>
+            </div>
           </div>
-        )}
-      </Panel>
+        </Panel>
+
     </div>
   );
 }

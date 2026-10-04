@@ -70,9 +70,10 @@ export default function DonasiPage() {
         </Panel>
       </section>
 
-      <PrototypeNotice title="Halaman ini masih prototype" className="mt-4">
-        Angka target, dana terkumpul, jumlah donatur, dan alokasi di halaman ini adalah data contoh. Pembayaran
-        online belum aktif, sehingga belum ada dana yang diterima melalui halaman ini.
+      <PrototypeNotice title="Tentang angka di halaman ini" className="mt-4">
+        Donasi lewat transfer BSI atau QRIS masuk langsung ke rekening Yayasan PPM Bangunjiwa. Namun angka
+        target, dana terkumpul, jumlah donatur, dan alokasi di halaman ini masih data contoh dan belum
+        mencerminkan donasi yang benar-benar masuk.
       </PrototypeNotice>
 
       <div className="mt-4">
