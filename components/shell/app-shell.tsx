@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { SidebarContent } from "@/components/shell/sidebar-content";
+import { PROFIL_PESANTREN } from "@/lib/bangunjiwa-data";
 import { MobileTopbar } from "@/components/shell/mobile-topbar";
 
 export function AppShell({ children }: { children: React.ReactNode }) {
@@ -18,14 +19,22 @@ export function AppShell({ children }: { children: React.ReactNode }) {
             {children}
           </main>
           <footer className="mx-auto w-full max-w-[1280px] px-4 pb-6 sm:px-6 lg:px-8">
-            <div className="flex flex-col gap-1.5 border-t border-ash/70 pt-5 text-xs text-iron-soft sm:flex-row sm:justify-between">
-              <p>
-                © {new Date().getFullYear()} PPM Riset Ekologi Bangunjiwa. Menanam pohon adalah
-                shodaqah jariyah.
-              </p>
-              <Link href="/admin" className="hover:text-iron">
-                Admin
-              </Link>
+            <div className="flex flex-col gap-3 border-t border-ash/70 pt-5 text-xs text-iron-soft sm:flex-row sm:justify-between">
+              <div className="flex flex-col gap-1">
+                <p>
+                  © {new Date().getFullYear()} PPM Riset Ekologi Bangunjiwa. Menanam pohon adalah
+                  shodaqah jariyah.
+                </p>
+                <p>{PROFIL_PESANTREN.alamat}</p>
+              </div>
+              <div className="flex gap-4 sm:items-start">
+                <a href={PROFIL_PESANTREN.infoUrl} target="_blank" rel="noopener" className="hover:text-iron">
+                  Informasi pesantren
+                </a>
+                <Link href="/admin" className="hover:text-iron">
+                  Admin
+                </Link>
+              </div>
             </div>
           </footer>
         </div>

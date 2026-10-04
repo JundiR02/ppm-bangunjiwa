@@ -135,6 +135,12 @@ export const KEGIATAN_GALLERY = [
   },
 ];
 
+export const PROFIL_PESANTREN = {
+  alamat: "Wonotawang, Bangunjiwa, Kasihan, Bantul, DI Yogyakarta",
+  pengasuh: ["Dr. H. Idham Ibty, S.IP., M.Si", "Dr. Drh. Zulkhah Noor, M.Kes"],
+  infoUrl: "https://s.id/PPM-BANGUNJIWA",
+};
+
 export const DONASI_NOMINAL = [100000, 250000, 500000, 1000000];
 
 export const DONASI_PEMBAYARAN = {

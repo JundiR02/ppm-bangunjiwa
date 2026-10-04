@@ -1,6 +1,19 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { BookOpen, CalendarRange, Compass, Database, Landmark, Layers, Map as MapIcon, Target, Users } from "lucide-react";
+import {
+  BookOpen,
+  CalendarRange,
+  Compass,
+  Database,
+  ExternalLink,
+  Landmark,
+  Layers,
+  Map as MapIcon,
+  MapPin,
+  Target,
+  UserRound,
+  Users,
+} from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { PageTop } from "@/components/shell/page-top";
 import { Panel, PanelHeader, Eyebrow } from "@/components/hub/panel";
@@ -14,8 +27,20 @@ import {
   KURIKULUM_SEMESTERS,
   MISI_BANGUNJIWA,
   PEMINATAN_RISET,
+  PROFIL_PESANTREN,
   RISET_PILLARS,
 } from "@/lib/bangunjiwa-data";
+
+function initials(name: string) {
+  return name
+    .split(",")[0]
+    .split(" ")
+    .filter((w) => w && !w.endsWith("."))
+    .slice(0, 2)
+    .map((w) => w[0])
+    .join("")
+    .toUpperCase();
+}
 
 export const metadata: Metadata = {
   title: "Tentang Kami",
@@ -103,6 +128,44 @@ export default function TentangPage() {
             Ilmu duniawi dan ukhrowi, berjalan seimbang
           </p>
         </div>
+      </section>
+
+      <section className="mt-4 grid gap-4 xl:grid-cols-12">
+        <Panel className="xl:col-span-7">
+          <PanelHeader title="Pengasuh" icon={UserRound} />
+          <ul className="mt-5 grid gap-3 sm:grid-cols-2">
+            {PROFIL_PESANTREN.pengasuh.map((name) => (
+              <li key={name} className="flex items-center gap-3 rounded-2xl border border-white bg-frost p-4">
+                <span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-pine-soft font-heading text-sm font-semibold text-pine-deep">
+                  {initials(name)}
+                </span>
+                <span className="text-[14px] font-medium leading-snug text-iron-deep">{name}</span>
+              </li>
+            ))}
+          </ul>
+        </Panel>
+        <Panel className="flex flex-col xl:col-span-5">
+          <PanelHeader title="Alamat & Informasi" icon={MapPin} />
+          <p className="mt-4 text-[14px] leading-relaxed text-iron">{PROFIL_PESANTREN.alamat}</p>
+          <div className="mt-auto flex flex-wrap gap-2 pt-5">
+            <a
+              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(PROFIL_PESANTREN.alamat)}`}
+              target="_blank"
+              rel="noopener"
+              className="inline-flex h-10 items-center gap-2 rounded-xl border border-white bg-frost px-4 text-[13px] font-medium text-iron shadow-panel transition-colors hover:bg-linen"
+            >
+              <MapPin className="size-4" /> Buka di Google Maps
+            </a>
+            <a
+              href={PROFIL_PESANTREN.infoUrl}
+              target="_blank"
+              rel="noopener"
+              className="inline-flex h-10 items-center gap-2 rounded-xl bg-iron px-4 text-[13px] font-medium text-frost shadow-panel transition-colors hover:bg-iron-deep"
+            >
+              <ExternalLink className="size-4" /> Informasi pesantren
+            </a>
+          </div>
+        </Panel>
       </section>
 
       <Panel className="mt-4">
