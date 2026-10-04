@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { EqualGrid } from "@/components/programs/equal-grid";
 import { DonationInteractive } from "@/components/donasi/donation-interactive";
+import { PrototypeNotice, SampleDataBadge } from "@/components/content/sample-data";
 import {
   DONASI_STATS,
   DONASI_TARGET,
@@ -41,6 +42,11 @@ export default function DonasiPage() {
       </PageHeader>
 
       <Section className="pt-14 pb-16 lg:pt-20 lg:pb-24">
+        <PrototypeNotice title="Halaman ini masih prototype" className="mx-auto mb-12 max-w-3xl">
+          Angka target, dana terkumpul, jumlah donatur, dan alokasi di halaman ini adalah data
+          contoh. Pembayaran online belum aktif, sehingga belum ada dana yang diterima melalui
+          halaman ini.
+        </PrototypeNotice>
         <div className="mx-auto max-w-lg">
           <Progress value={percent} className="flex-col items-stretch gap-2">
             <div className="flex items-baseline justify-between">
@@ -73,7 +79,8 @@ export default function DonasiPage() {
 
       <Section>
         <SectionHeader eyebrow="Transparansi" title="Ke mana donasi disalurkan" />
-        <div className="mt-8 rounded-2xl border border-border bg-card p-6">
+        <SampleDataBadge className="mt-4" label="Alokasi contoh, belum dari laporan keuangan" />
+        <div className="mt-6 rounded-2xl border border-border bg-card p-6">
           <div className="flex h-2.5 overflow-hidden rounded-full">
             {DONASI_ALOKASI.map((slice) => (
               <div key={slice.id} className={slice.className} style={{ width: `${slice.percent}%` }} />
@@ -92,7 +99,8 @@ export default function DonasiPage() {
 
       <Section className="bg-neutral-50 pt-0 dark:bg-[#0d100e]">
         <SectionHeader eyebrow="Dari Komunitas" title="Suara warga terdampak" />
-        <div className="mt-8 rounded-2xl border border-border bg-card p-7">
+        <SampleDataBadge className="mt-4" label="Testimoni contoh" />
+        <div className="mt-6 rounded-2xl border border-border bg-card p-7">
           <p className="text-base leading-relaxed text-foreground">&ldquo;{DONASI_TESTIMONIAL.quote}&rdquo;</p>
           <p className="mt-3 text-sm text-muted-foreground">{DONASI_TESTIMONIAL.who}</p>
         </div>

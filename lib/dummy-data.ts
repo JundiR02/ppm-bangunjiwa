@@ -76,7 +76,7 @@ export const FEATURED_PROGRAMS = [
   {
     id: "dana-abadi",
     title: "Dana Abadi",
-    description: "Wakaf pohon dan transparansi penuh atas setiap rupiah yang diamanahkan.",
+    description: "Penghimpunan dana abadi untuk keberlanjutan program pesantren. Segera hadir.",
     href: "/dana-abadi",
     pillar: "dana" as const,
   },

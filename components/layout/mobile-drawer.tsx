@@ -81,9 +81,9 @@ export function MobileDrawer() {
           <Button
             className="w-full"
             nativeButton={false}
-            render={<Link href="/dana-abadi/wakaf-pohon" onClick={() => setOpen(false)} />}
+            render={<Link href="/donasi" onClick={() => setOpen(false)} />}
           >
-            Wakaf Pohon
+            Donasi
           </Button>
         </div>
       </SheetContent>

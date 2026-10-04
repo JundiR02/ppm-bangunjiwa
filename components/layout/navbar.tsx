@@ -95,9 +95,9 @@ export function Navbar() {
             className="hidden sm:inline-flex"
             variant={transparent ? "secondary" : "default"}
             nativeButton={false}
-            render={<Link href="/dana-abadi/wakaf-pohon" />}
+            render={<Link href="/donasi" />}
           >
-            Wakaf Pohon
+            Donasi
           </Button>
           <MobileDrawer />
         </div>

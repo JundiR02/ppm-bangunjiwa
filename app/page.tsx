@@ -9,6 +9,7 @@ import { Timeline } from "@/components/content/timeline";
 import { GalleryMasonry } from "@/components/content/gallery-masonry";
 import { TestimonialCarousel } from "@/components/content/testimonial-carousel";
 import { MapPreview } from "@/components/maps/map-preview";
+import { SampleDataBadge } from "@/components/content/sample-data";
 import {
   IMPACT_SUMMARY,
   THREE_PILLARS,
@@ -26,10 +27,11 @@ export default function Home() {
       <Section className="pt-14 pb-16 lg:pt-20 lg:pb-24">
         <SectionHeader
           eyebrow="Dampak Langsung"
-          title="Dasbor Dampak Hidup"
-          description="Diperbarui setiap hari — tiga wajah dampak yang berjalan bersama, tanpa satu pun diutamakan dari yang lain."
+          title="Dasbor Dampak"
+          description="Tiga wajah dampak yang berjalan bersama, tanpa satu pun diutamakan dari yang lain."
         />
-        <div className="mt-10">
+        <SampleDataBadge className="mt-4" />
+        <div className="mt-8">
           <ImpactTriad metrics={IMPACT_SUMMARY.metrics} />
         </div>
       </Section>
@@ -78,7 +80,8 @@ export default function Home() {
               title="Yang Sedang Berlangsung"
               description="Sorotan kegiatan Khidmah Diniyah dan capaian komunitas dalam beberapa bulan terakhir."
             />
-            <div className="mt-10">
+            <SampleDataBadge className="mt-4" label="Kegiatan contoh, belum dari laporan nyata" />
+            <div className="mt-8">
               <Timeline items={LATEST_ACTIVITIES} />
             </div>
           </div>
@@ -94,12 +97,16 @@ export default function Home() {
           title="Setiap Titik, Dapat Ditelusuri"
           description="Pohon, kawasan resapan air, dan plot karbon — dipetakan secara terbuka di atas OpenStreetMap."
         />
-        <div className="mt-10">
+        <SampleDataBadge className="mt-4" label="Titik contoh, belum dari data lapangan" />
+        <div className="mt-8">
           <MapPreview points={MAP_POINTS} />
         </div>
       </Section>
 
       <Section className="bg-neutral-50 dark:bg-[#0d100e]">
+        <div className="mb-8 flex justify-center">
+          <SampleDataBadge label="Testimoni contoh" />
+        </div>
         <TestimonialCarousel items={TESTIMONIALS} />
       </Section>
 

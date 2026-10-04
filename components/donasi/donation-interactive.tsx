@@ -3,6 +3,7 @@
 import * as React from "react";
 import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { PrototypeNotice } from "@/components/content/sample-data";
 import { cn } from "@/lib/utils";
 import { DONASI_TIERS } from "@/lib/bangunjiwa-data";
 
@@ -165,9 +166,21 @@ export function DonationInteractive() {
             />
             Sembunyikan nama saya dari daftar donatur publik
           </label>
-          <Button className="mt-4 w-full" onClick={handleSubmit} disabled={submitted}>
-            {submitted ? `Terima kasih, ${name.trim().split(" ")[0]}!` : "Lanjutkan donasi"}
+          <p className="mt-3 text-xs text-muted-foreground">
+            Prototype: pembayaran online belum aktif. Data yang Anda isi tidak dikirim atau disimpan.
+          </p>
+          <Button className="mt-3 w-full" onClick={handleSubmit}>
+            Lanjutkan donasi
           </Button>
+          {submitted && (
+            <div role="status" className="mt-4">
+              <PrototypeNotice title={`Terima kasih atas niat baik Anda, ${name.trim().split(" ")[0]}.`}>
+                Pembayaran online belum aktif, jadi donasi ini belum diproses dan data Anda tidak
+                disimpan. Informasi rekening dan kontak resmi PPM Riset Ekologi Bangunjiwa akan
+                dicantumkan di halaman ini setelah tersedia.
+              </PrototypeNotice>
+            </div>
+          )}
         </div>
 
         <div className="rounded-2xl border border-border bg-card p-6">
