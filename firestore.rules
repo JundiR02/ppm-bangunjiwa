@@ -1,0 +1,76 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    // Main admin. Kept in rules (not in the admins collection) so it can never be removed or locked out.
+    function isOwner() {
+      return signedIn()
+        && request.auth.token.email == "akademikomunitaspesantrenhijau@gmail.com"
+        && request.auth.token.email_verified == true;
+    }
+
+    function isAdmin() {
+      return isOwner()
+        || (signedIn() && exists(/databases/$(database)/documents/admins/$(request.auth.uid)));
+    }
+
+    function optionalAmount(v) {
+      return v == null || (v is number && v >= 0 && v <= 1000000000000);
+    }
+
+    function validProgram(slug, d) {
+      return slug.matches('^[a-z0-9]+(-[a-z0-9]+)*$') && slug.size() <= 80
+        && d.keys().hasOnly(['title', 'type', 'status', 'summary', 'description', 'location',
+                             'target', 'collected', 'donorCount', 'allocation', 'testimonials',
+                             'figuresUpdatedAt', 'updatedAt'])
+        && d.title is string && d.title.size() > 0 && d.title.size() <= 160
+        && d.type in ['donasi', 'dana-abadi', 'wakaf', 'pendidikan', 'ekologi', 'ekonomi-sirkuler']
+        && d.status in ['draft', 'berjalan', 'selesai']
+        && d.summary is string && d.summary.size() <= 400
+        && d.description is string && d.description.size() <= 10000
+        && d.location is string && d.location.size() <= 160
+        && optionalAmount(d.target)
+        && optionalAmount(d.collected)
+        && (d.donorCount == null || (d.donorCount is int && d.donorCount >= 0))
+        && d.allocation is list && d.allocation.size() <= 10
+        && d.testimonials is list && d.testimonials.size() <= 10
+        && (d.figuresUpdatedAt == null || d.figuresUpdatedAt is timestamp)
+        && d.updatedAt == request.time;
+    }
+
+    // Programs: anyone may read published ones; only admins see drafts and write.
+    match /programs/{slug} {
+      allow get: if resource == null || resource.data.status in ['berjalan', 'selesai'] || isAdmin();
+      allow list: if resource.data.status in ['berjalan', 'selesai'] || isAdmin();
+      allow create, update: if isAdmin() && validProgram(slug, request.resource.data);
+      allow delete: if isAdmin();
+    }
+
+    // Approved admins. Only an existing admin can add or remove one.
+    match /admins/{uid} {
+      allow read: if isAdmin() || (signedIn() && request.auth.uid == uid);
+      allow create: if isAdmin()
+        && request.resource.data.keys().hasOnly(['email', 'approvedBy', 'approvedAt'])
+        && request.resource.data.approvedAt == request.time;
+      allow delete: if isAdmin();
+      allow update: if false;
+    }
+
+    // Access requests. A signed-in user may file one for themselves; admins approve or reject.
+    match /adminRequests/{uid} {
+      allow create: if signedIn() && request.auth.uid == uid
+        && request.resource.data.keys().hasOnly(['email', 'name', 'requestedAt'])
+        && request.resource.data.email == request.auth.token.email
+        && request.resource.data.name is string && request.resource.data.name.size() <= 120
+        && request.resource.data.requestedAt == request.time;
+      allow read: if isAdmin() || (signedIn() && request.auth.uid == uid);
+      allow delete: if isAdmin() || (signedIn() && request.auth.uid == uid);
+      allow update: if false;
+    }
+  }
+}

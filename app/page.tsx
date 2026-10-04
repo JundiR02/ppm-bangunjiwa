@@ -1,22 +1,12 @@
-import { HandCoins, MapPinned, TreePine } from "lucide-react";
+import { Sprout, TreePine } from "lucide-react";
 import { PageTop } from "@/components/shell/page-top";
 import { Panel, PanelHeader, CircleLink, Eyebrow } from "@/components/hub/panel";
-import { Kpi } from "@/components/hub/kpi";
-import { Gauge } from "@/components/hub/gauge";
-import { BarStat } from "@/components/hub/bar-stat";
-import { SampleDataBadge } from "@/components/content/sample-data";
-import { ProgramsPanel } from "@/components/home/programs-panel";
 import { QuotePanel } from "@/components/home/quote-panel";
-import { ActivityTable } from "@/components/home/activity-table";
-import { TestimonialPanel } from "@/components/home/testimonial-panel";
-import { MapPreview } from "@/components/maps/map-preview";
-import { IMPACT_METRICS, THREE_PILLARS, TESTIMONIALS, MAP_POINTS } from "@/lib/dummy-data";
-import { DONASI_ALOKASI, DONASI_TARGET, DONASI_TERKUMPUL } from "@/lib/bangunjiwa-data";
-import { formatMetric, formatRupiahShort } from "@/lib/format";
+import { HubKpis, FeaturedProgress } from "@/components/home/hub-live";
+import { RunningPrograms } from "@/components/programs/running-programs";
+import { THREE_PILLARS } from "@/lib/dummy-data";
 
 export default function Home() {
-  const percent = Math.round((DONASI_TERKUMPUL / DONASI_TARGET) * 100);
-
   return (
     <>
       <PageTop />
@@ -34,45 +24,18 @@ export default function Home() {
             </p>
           </div>
           <div className="border-t border-dashed border-ash-deep/70 pt-6">
-            <div className="grid grid-cols-2 gap-x-6 gap-y-6 sm:grid-cols-4">
-              {IMPACT_METRICS.map((metric) => (
-                <Kpi key={metric.id} icon={metric.icon} label={metric.label}>
-                  {formatMetric(metric.value, metric.unit)}
-                  {metric.unit === "KK" && <span className="ml-1 text-xl text-iron-soft">KK</span>}
-                </Kpi>
-              ))}
-            </div>
-            <SampleDataBadge className="mt-5" />
+            <HubKpis />
           </div>
         </div>
-
-        <Panel className="flex flex-col items-center justify-between gap-4 xl:col-span-4">
-          <PanelHeader
-            title="Progres Donasi Riset"
-            icon={HandCoins}
-            className="w-full"
-            action={<CircleLink href="/donasi" label="Buka halaman donasi" />}
-          />
-          <Gauge value={percent} label="terkumpul" />
-          <div className="w-full text-center">
-            <p className="text-[13px] text-iron-soft">
-              <span className="font-semibold text-iron-deep">{formatRupiahShort(DONASI_TERKUMPUL)}</span> dari target{" "}
-              {formatRupiahShort(DONASI_TARGET)}
-            </p>
-            <SampleDataBadge className="mt-3" />
-          </div>
-        </Panel>
+        <FeaturedProgress className="flex flex-col xl:col-span-4" />
       </section>
 
-      <section className="mt-4 grid gap-4 md:grid-cols-2 xl:grid-cols-12">
-        <ProgramsPanel className="xl:col-span-4" />
-        <QuotePanel className="xl:col-span-4" />
-        <Panel className="flex flex-col md:col-span-2 xl:col-span-4">
-          <PanelHeader title="Alokasi Donasi" icon={HandCoins} />
-          <p className="mt-1.5 text-[13px] text-iron-soft">Rencana penyaluran dana asesmen komunitas.</p>
-          <BarStat items={DONASI_ALOKASI} className="mt-auto pt-5 xl:h-72" />
-          <SampleDataBadge className="mt-4 self-start" label="Alokasi contoh" />
+      <section className="mt-4 grid gap-4 xl:grid-cols-12">
+        <Panel className="xl:col-span-8">
+          <PanelHeader title="Program Berjalan" icon={Sprout} action={<CircleLink href="/program" label="Semua program" />} />
+          <RunningPrograms limit={4} className="mt-5" />
         </Panel>
+        <QuotePanel className="xl:col-span-4" />
       </section>
 
       <section className="mt-4 grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
@@ -115,25 +78,6 @@ export default function Home() {
             </p>
           </div>
         </Panel>
-      </section>
-
-      <section className="mt-4">
-        <ActivityTable />
-      </section>
-
-      <section className="mt-4 grid gap-4 xl:grid-cols-12">
-        <Panel className="xl:col-span-7">
-          <PanelHeader
-            title="Peta Dampak"
-            icon={MapPinned}
-            className="flex-wrap"
-            action={<SampleDataBadge label="Titik contoh" />}
-          />
-          <div className="mt-4">
-            <MapPreview points={MAP_POINTS} />
-          </div>
-        </Panel>
-        <TestimonialPanel items={TESTIMONIALS} className="xl:col-span-5" />
       </section>
     </>
   );

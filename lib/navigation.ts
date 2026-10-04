@@ -2,7 +2,7 @@ import type { LucideIcon } from "lucide-react";
 import {
   LayoutGrid,
   Landmark,
-  Microscope,
+  Sprout,
   HandHeart,
   PiggyBank,
   TreePine,
@@ -15,11 +15,12 @@ export type NavLink = { label: string; href: string; icon: LucideIcon };
 export const PRIMARY_NAV: NavLink[] = [
   { label: "Beranda", href: "/", icon: LayoutGrid },
   { label: "Tentang", href: "/tentang", icon: Landmark },
-  { label: "Program Riset", href: "/tentang#program-riset", icon: Microscope },
+  { label: "Program", href: "/program", icon: Sprout },
   { label: "Donasi", href: "/donasi", icon: HandHeart },
 ];
 
 export const PROFILE_LINKS = [
+  { label: "Program Riset", href: "/tentang#program-riset" },
   { label: "Visi & Misi", href: "/tentang#visi-misi" },
   { label: "Kurikulum", href: "/tentang#kurikulum" },
   { label: "Ekosistem", href: "/tentang#ekosistem" },
@@ -33,9 +34,3 @@ export const HUB_COMING_SOON: { label: string; icon: LucideIcon }[] = [
   { label: "Ekonomi Sirkuler", icon: Recycle },
   { label: "Transparansi", icon: ChartPie },
 ];
-
-export const PAGE_TITLES: Record<string, string> = {
-  "/": "Beranda",
-  "/tentang": "Tentang",
-  "/donasi": "Donasi",
-};

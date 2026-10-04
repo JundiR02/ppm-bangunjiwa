@@ -1,5 +1,3 @@
-import type { BarTone } from "@/components/hub/bar-stat";
-
 export const MISI_BANGUNJIWA = [
   "Menyelenggarakan kegiatan pembelajaran yang berbasis sosial kemasyarakatan untuk menghasilkan santri yang cerdas, mandiri, serta menguasai ilmu pengetahuan dan teknologi.",
   "Membina dan mengembangkan pendidikan pesantren dalam arti seluas-luasnya dengan semangat ta'awanu 'ala al-birri wat taqwa serta menerapkan konsep amar ma'ruf nahi munkar.",
@@ -137,53 +135,10 @@ export const KEGIATAN_GALLERY = [
   },
 ];
 
-export const DONASI_STATS = [
-  { id: "donatur", label: "Donatur", value: 183 },
-  { id: "dusun", label: "Dusun terdampak", value: 6 },
-  { id: "hektar", label: "Ha terpantau", value: 340 },
-];
-
-export const DONASI_TIERS = [
-  {
-    id: "tier-100k",
-    amount: 100000,
-    label: "Rp 100rb",
-    description: "Cetak 1 set kuesioner asesmen untuk 1 responden",
-    highlight: false,
-  },
-  {
-    id: "tier-500k",
-    amount: 500000,
-    label: "Rp 500rb",
-    description: "Danai 1 hari kunjungan enumerator ke lapangan",
-    highlight: true,
-  },
-  {
-    id: "tier-2jt",
-    amount: 2000000,
-    label: "Rp 2 jt",
-    description: "Danai 1 sesi FGD validasi bersama satu dusun",
-    highlight: false,
-  },
-];
+export const DONASI_NOMINAL = [100000, 250000, 500000, 1000000];
 
 export const DONASI_PEMBAYARAN = {
   penerima: "Yayasan PPM Bangunjiwa",
   bank: { nama: "Bank Syariah Indonesia (BSI)", noRekening: "7788443336" },
   qris: { src: "/brand/qris-yayasan-ppm-bangunjiwa.jpg", nmid: "ID1024319078993" },
-};
-
-export const DONASI_TARGET = 75000000;
-export const DONASI_TERKUMPUL = 42600000;
-
-export const DONASI_ALOKASI: { id: string; label: string; percent: number; tone: BarTone }[] = [
-  { id: "lapangan", label: "Lapangan & enumerator", percent: 45, tone: "pine" },
-  { id: "data", label: "Pengolahan data", percent: 30, tone: "iron" },
-  { id: "pendampingan", label: "Pendampingan", percent: 25, tone: "ash" },
-];
-
-export const DONASI_TESTIMONIAL = {
-  quote:
-    "Data yang dikumpulkan tim MRV Nexus membantu dusun kami tahu titik mana yang paling berisiko, dan langkah apa yang perlu kami ambil lebih dulu.",
-  who: "Perwakilan warga, DAS Oyo",
 };

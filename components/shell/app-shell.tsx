@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { SidebarContent } from "@/components/shell/sidebar-content";
 import { MobileTopbar } from "@/components/shell/mobile-topbar";
 
@@ -22,7 +23,9 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                 © {new Date().getFullYear()} PPM Riset Ekologi Bangunjiwa. Menanam pohon adalah
                 shodaqah jariyah.
               </p>
-              <p>Sebagian angka di situs ini masih data contoh.</p>
+              <Link href="/admin" className="hover:text-iron">
+                Admin
+              </Link>
             </div>
           </footer>
         </div>
