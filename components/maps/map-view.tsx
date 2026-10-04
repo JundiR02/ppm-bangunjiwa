@@ -5,9 +5,9 @@ import { MapContainer, TileLayer, CircleMarker, Popup } from "react-leaflet";
 import type { MapPoint } from "@/lib/dummy-data";
 
 const POINT_COLOR: Record<MapPoint["type"], string> = {
-  pohon: "#276a49",
-  watershed: "#2a8fcb",
-  "carbon-plot": "#a66e3c",
+  pohon: "#5e6655",
+  watershed: "#3f4244",
+  "carbon-plot": "#b8af9f",
 };
 
 export function MapView({

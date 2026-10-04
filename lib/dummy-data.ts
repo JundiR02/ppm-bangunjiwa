@@ -1,5 +1,5 @@
 import type { LucideIcon } from "lucide-react";
-import { TreePine, Cloud, Droplets, Users, Landmark } from "lucide-react";
+import { TreePine, Cloud, Droplets, Users } from "lucide-react";
 
 export type ImpactMetric = {
   id: string;
@@ -9,16 +9,12 @@ export type ImpactMetric = {
   icon: LucideIcon;
 };
 
-export const IMPACT_SUMMARY: { updatedAt: string; metrics: ImpactMetric[] } = {
-  updatedAt: "2026-08-01T23:00:00+07:00",
-  metrics: [
-    { id: "trees", label: "Pohon Ditanam", value: 18420, unit: "pohon", icon: TreePine },
-    { id: "co2", label: "Ton CO₂ Tersimpan", value: 1204, unit: "ton", icon: Cloud },
-    { id: "water", label: "Air Terhemat", value: 8400000, unit: "liter", icon: Droplets },
-    { id: "families", label: "Kesejahteraan Keluarga", value: 312, unit: "KK", icon: Users },
-    { id: "endowment", label: "Dana Abadi Terkumpul", value: 842500000, unit: "rupiah", icon: Landmark },
-  ],
-};
+export const IMPACT_METRICS: ImpactMetric[] = [
+  { id: "trees", label: "Pohon ditanam", value: 18420, unit: "pohon", icon: TreePine },
+  { id: "co2", label: "Ton CO₂ tersimpan", value: 1204, unit: "ton", icon: Cloud },
+  { id: "water", label: "Air terhemat", value: 8400000, unit: "liter", icon: Droplets },
+  { id: "families", label: "Keluarga terlibat", value: 312, unit: "KK", icon: Users },
+];
 
 export const THREE_PILLARS = [
   {
@@ -26,73 +22,87 @@ export const THREE_PILLARS = [
     title: "At-Tawassuth",
     subtitle: "Moderasi",
     description:
-      "Teknologi melayani manusia. Karbon tidak pernah menjadi tokoh utama sendirian — setiap metrik lingkungan selalu berdampingan setara dengan dampak sosial.",
+      "Teknologi melayani manusia. Setiap metrik lingkungan selalu berdampingan setara dengan dampak sosial.",
   },
   {
     id: "at-tawazun",
     title: "At-Tawazun",
     subtitle: "Keseimbangan",
     description:
-      "Pendidikan, komunitas, dan usaha berjalan setara. Tidak ada satu pilar yang lebih diutamakan dari yang lain dalam navigasi maupun perhatian.",
+      "Pendidikan, komunitas, dan usaha berjalan setara, tanpa satu pilar diutamakan dari yang lain.",
   },
   {
     id: "itidal",
     title: "I'tidal",
     subtitle: "Transparansi",
     description:
-      "Setiap donasi, setiap pohon, setiap dana, setiap kredit karbon dapat ditelusuri. Keterbukaan adalah amanah, bukan pilihan.",
+      "Setiap donasi, pohon, dan dana harus dapat ditelusuri. Keterbukaan adalah amanah, bukan pilihan.",
   },
 ];
 
-export const FEATURED_PROGRAMS = [
+export type ProgramGroup = "pendidikan-riset" | "komunitas" | "usaha-dana";
+
+export const PROGRAM_GROUPS: { id: ProgramGroup; label: string }[] = [
+  { id: "pendidikan-riset", label: "Ilmu & Riset" },
+  { id: "komunitas", label: "Komunitas" },
+  { id: "usaha-dana", label: "Usaha & Dana" },
+];
+
+export const FEATURED_PROGRAMS: {
+  id: string;
+  title: string;
+  description: string;
+  tag: string;
+  group: ProgramGroup;
+}[] = [
   {
     id: "dharma-pendidikan",
     title: "Dharma Pendidikan",
     description: "Kelas fiqih lingkungan, MRV, dan pranata mangsa untuk santri dan masyarakat.",
-    href: "/dharma-pendidikan",
-    pillar: "pendidikan" as const,
-  },
-  {
-    id: "khidmah-diniyah",
-    title: "Khidmah Diniyah",
-    description: "Jumat Bersih, Jumat Menanam, dan kegiatan pengabdian komunitas.",
-    href: "/khidmah-diniyah",
-    pillar: "khidmah" as const,
-  },
-  {
-    id: "amal-usaha",
-    title: "Amal Usaha",
-    description: "Bank sampah, panen air hujan, kompos, dan offset karbon.",
-    href: "/amal-usaha",
-    pillar: "usaha" as const,
+    tag: "Pendidikan",
+    group: "pendidikan-riset",
   },
   {
     id: "kajian-riset",
     title: "Kajian & Riset",
     description: "Repositori riset, peta, dan arsip pengetahuan pesantren hijau.",
-    href: "/kajian-riset",
-    pillar: "kajian" as const,
-  },
-  {
-    id: "dana-abadi",
-    title: "Dana Abadi",
-    description: "Penghimpunan dana abadi untuk keberlanjutan program pesantren. Segera hadir.",
-    href: "/dana-abadi",
-    pillar: "dana" as const,
+    tag: "Riset",
+    group: "pendidikan-riset",
   },
   {
     id: "forest",
     title: "Hutan Pesantren",
     description: "Kawasan konservasi dan reboisasi yang dikelola bersama santri dan KWT.",
-    href: "/kajian-riset/peta",
-    pillar: "forest" as const,
+    tag: "Konservasi",
+    group: "pendidikan-riset",
+  },
+  {
+    id: "khidmah-diniyah",
+    title: "Khidmah Diniyah",
+    description: "Jumat Bersih, Jumat Menanam, dan kegiatan pengabdian komunitas.",
+    tag: "Pengabdian",
+    group: "komunitas",
   },
   {
     id: "komunitas-kwt",
     title: "Komunitas KWT",
     description: "Forum, MRV Nexus, dan musyawarah digital bagi Kelompok Wanita Tani.",
-    href: "/komunitas-kwt",
-    pillar: "komunitas" as const,
+    tag: "KWT",
+    group: "komunitas",
+  },
+  {
+    id: "amal-usaha",
+    title: "Amal Usaha",
+    description: "Bank sampah, panen air hujan, kompos, dan offset karbon.",
+    tag: "Usaha",
+    group: "usaha-dana",
+  },
+  {
+    id: "dana-abadi",
+    title: "Dana Abadi",
+    description: "Penghimpunan dana abadi untuk keberlanjutan program pesantren.",
+    tag: "Segera hadir",
+    group: "usaha-dana",
   },
 ];
 
@@ -102,28 +112,24 @@ export const LATEST_ACTIVITIES = [
     title: "Jumat Menanam — Agustus 2026",
     date: "2026-08-07",
     excerpt: "Penanaman 500 bibit trembesi dan aren di Blok Watershed Utara bersama santri dan KWT Sekar Wangi.",
-    cover: "/images/activities/jumat-menanam.jpg",
   },
   {
     slug: "panen-kompos-juli-2026",
     title: "Panen Kompos Perdana",
     date: "2026-07-22",
     excerpt: "Hasil kompos organik pertama dari unit Amal Usaha siap dipasarkan ke warga sekitar.",
-    cover: "/images/activities/panen-kompos.jpg",
   },
   {
     slug: "sertifikasi-mrv-juni-2026",
     title: "Pelatihan MRV untuk Fasilitator KWT",
     date: "2026-06-30",
     excerpt: "20 fasilitator KWT menyelesaikan pelatihan pengukuran, pelaporan, dan verifikasi karbon.",
-    cover: "/images/activities/pelatihan-mrv.jpg",
   },
   {
-    slug: "wakaf-1000-pohon-mei-2026",
-    title: "Wakaf 1.000 Pohon Tercapai",
+    slug: "penanaman-mei-2026",
+    title: "Penanaman Bibit Tahap Kedua",
     date: "2026-05-14",
-    excerpt: "Target wakaf pohon tahap kedua tercapai berkat 640 donatur dari seluruh Indonesia.",
-    cover: "/images/activities/wakaf-1000-pohon.jpg",
+    excerpt: "Penanaman bibit tahap kedua di kawasan resapan bersama santri dan warga sekitar.",
   },
 ];
 
@@ -142,20 +148,6 @@ export const TESTIMONIALS = [
     quote:
       "Lewat MRV Nexus, laporan lapangan kami akhirnya terlihat dan dihargai — bukan sekadar catatan di buku tulis.",
   },
-  {
-    id: "t3",
-    name: "Bapak Hendra",
-    role: "Donatur Wakaf Pohon",
-    quote:
-      "Saya bisa melacak pohon yang saya wakafkan sampai titik GPS-nya. Rasanya donasi ini benar-benar nyata.",
-  },
-];
-
-export const TREE_SPECIES = [
-  { id: "trembesi", name: "Trembesi", latin: "Samanea saman", price: 150000 },
-  { id: "alpukat", name: "Alpukat", latin: "Persea americana", price: 175000 },
-  { id: "aren", name: "Aren", latin: "Arenga pinnata", price: 200000 },
-  { id: "bambu-petung", name: "Bambu Petung", latin: "Dendrocalamus asper", price: 125000 },
 ];
 
 export type MapPoint = {

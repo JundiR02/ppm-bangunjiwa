@@ -1,3 +1,5 @@
+import type { BarTone } from "@/components/hub/bar-stat";
+
 export const MISI_BANGUNJIWA = [
   "Menyelenggarakan kegiatan pembelajaran yang berbasis sosial kemasyarakatan untuk menghasilkan santri yang cerdas, mandiri, serta menguasai ilmu pengetahuan dan teknologi.",
   "Membina dan mengembangkan pendidikan pesantren dalam arti seluas-luasnya dengan semangat ta'awanu 'ala al-birri wat taqwa serta menerapkan konsep amar ma'ruf nahi munkar.",
@@ -67,7 +69,14 @@ export const KURIKULUM_ROWS: KurikulumRow[] = [
   { mataPelajaran: "Pengabdian Masyarakat", semester: [false, false, false, false, true], kitab: "—" },
 ];
 
-export const EKOSISTEM_NODES = [
+export const EKOSISTEM_NODES: {
+  id: string;
+  label: string;
+  title: string;
+  description: string;
+  href?: string;
+  linkLabel?: string;
+}[] = [
   {
     id: "bangunjiwa",
     label: "Simpul 1",
@@ -83,8 +92,6 @@ export const EKOSISTEM_NODES = [
     title: "MRV Nexus — Platform Data & Monitoring",
     description:
       "Sistem monitoring, reporting, dan verification untuk DAS Oyo, DAS Ulin, dan kawasan hutan sosial lain, dijalankan oleh alumni dan mahasantri Bangunjiwa.",
-    href: "/komunitas-kwt/mrv-nexus",
-    linkLabel: "Platform MRV Nexus",
   },
   {
     id: "donasi",
@@ -163,10 +170,10 @@ export const DONASI_TIERS = [
 export const DONASI_TARGET = 75000000;
 export const DONASI_TERKUMPUL = 42600000;
 
-export const DONASI_ALOKASI = [
-  { id: "lapangan", label: "Lapangan & enumerator", percent: 45, className: "bg-forest-700" },
-  { id: "data", label: "Pengolahan data", percent: 30, className: "bg-sage-500" },
-  { id: "pendampingan", label: "Pendampingan", percent: 25, className: "bg-sage-200" },
+export const DONASI_ALOKASI: { id: string; label: string; percent: number; tone: BarTone }[] = [
+  { id: "lapangan", label: "Lapangan & enumerator", percent: 45, tone: "pine" },
+  { id: "data", label: "Pengolahan data", percent: 30, tone: "iron" },
+  { id: "pendampingan", label: "Pendampingan", percent: 25, tone: "ash" },
 ];
 
 export const DONASI_TESTIMONIAL = {

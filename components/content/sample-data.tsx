@@ -11,12 +11,11 @@ export function SampleDataBadge({
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-1.5 rounded-full border border-earth-200 bg-earth-50 px-2.5 py-1 text-xs font-medium text-earth-600",
-        "dark:border-earth-600/40 dark:bg-earth-600/10 dark:text-earth-300",
+        "inline-flex items-center gap-1.5 rounded-full border border-ash bg-frost/70 px-2.5 py-1 text-[11px] font-medium text-iron-soft",
         className
       )}
     >
-      <Info className="size-3.5" />
+      <Info className="size-3.5 text-pine-deep" />
       {label}
     </span>
   );
@@ -35,15 +34,14 @@ export function PrototypeNotice({
     <div
       role="note"
       className={cn(
-        "flex gap-3 rounded-2xl border border-earth-200 bg-earth-50 p-5 text-sm leading-relaxed text-earth-600",
-        "dark:border-earth-600/40 dark:bg-earth-600/10 dark:text-earth-200",
+        "flex gap-3 rounded-[18px] border border-pine/30 bg-pine-soft/70 p-4 text-[13px] leading-relaxed text-iron",
         className
       )}
     >
-      <Info className="mt-0.5 size-4 shrink-0" />
+      <Info className="mt-0.5 size-4 shrink-0 text-pine-deep" />
       <div>
-        <p className="font-semibold">{title}</p>
-        <div className="mt-1">{children}</div>
+        <p className="font-semibold text-iron-deep">{title}</p>
+        <div className="mt-0.5">{children}</div>
       </div>
     </div>
   );
