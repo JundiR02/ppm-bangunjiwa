@@ -107,9 +107,14 @@ export function DonationInteractive({ programTitle }: { programTitle?: string })
         </p>
         <div className="mt-5 grid gap-3 md:grid-cols-2">
           <div className="flex flex-col rounded-2xl border border-white bg-frost p-5">
-            <p className="flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.08em] text-iron-soft">
-              <Landmark className="size-3.5" /> Transfer bank
-            </p>
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <p className="flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.08em] text-iron-soft">
+                <Landmark className="size-3.5" /> Transfer bank
+              </p>
+              <span className="rounded-full border border-pine/30 bg-pine-soft px-2.5 py-0.5 text-[11px] font-semibold text-pine-deep">
+                {bank.layanan}
+              </span>
+            </div>
             <p className="mt-4 text-[13px] text-iron-soft">{bank.nama}</p>
             <div className="mt-1 flex flex-wrap items-center justify-between gap-3">
               <p className="font-heading text-[1.75rem] font-light tracking-[0.04em] text-iron-deep tabular-nums">

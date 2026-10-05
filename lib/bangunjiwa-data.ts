@@ -146,6 +146,6 @@ export const DONASI_NOMINAL = [100000, 250000, 500000, 1000000];
 
 export const DONASI_PEMBAYARAN = {
   penerima: "Yayasan PPM Bangunjiwa",
-  bank: { nama: "Bank Syariah Indonesia (BSI)", noRekening: "7788443336" },
+  bank: { nama: "Bank Syariah Indonesia (BSI)", noRekening: "7788443336", layanan: "Layanan UPZ-Baznas" },
   qris: { src: "/brand/qris-yayasan-ppm-bangunjiwa.jpg", nmid: "ID1024319078993" },
 };
