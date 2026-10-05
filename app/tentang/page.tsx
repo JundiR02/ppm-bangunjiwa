@@ -3,6 +3,7 @@ import Image from "next/image";
 import {
   BookOpen,
   CalendarRange,
+  Camera,
   Compass,
   Database,
   ExternalLink,
@@ -163,6 +164,14 @@ export default function TentangPage() {
               className="inline-flex h-10 items-center gap-2 rounded-xl bg-iron px-4 text-[13px] font-medium text-frost shadow-panel transition-colors hover:bg-iron-deep"
             >
               <ExternalLink className="size-4" /> Informasi pesantren
+            </a>
+            <a
+              href={PROFIL_PESANTREN.instagram.url}
+              target="_blank"
+              rel="noopener"
+              className="inline-flex h-10 items-center gap-2 rounded-xl border border-white bg-frost px-4 text-[13px] font-medium text-iron shadow-panel transition-colors hover:bg-linen"
+            >
+              <Camera className="size-4" /> Instagram {PROFIL_PESANTREN.instagram.handle}
             </a>
           </div>
         </Panel>

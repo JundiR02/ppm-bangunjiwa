@@ -31,6 +31,9 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                 <a href={PROFIL_PESANTREN.infoUrl} target="_blank" rel="noopener" className="hover:text-iron">
                   Informasi pesantren
                 </a>
+                <a href={PROFIL_PESANTREN.instagram.url} target="_blank" rel="noopener" className="hover:text-iron">
+                  Instagram
+                </a>
                 <Link href="/admin" className="hover:text-iron">
                   Admin
                 </Link>
