@@ -23,6 +23,7 @@ import { SectionHeading } from "@/components/hub/section-heading";
 import { CurriculumTable } from "@/components/tentang/curriculum-table";
 import { EcosystemFlow } from "@/components/tentang/ecosystem-flow";
 import { ActivityGallery } from "@/components/tentang/activity-gallery";
+import { OrgStructure } from "@/components/tentang/org-structure";
 import {
   KURIKULUM_ROWS,
   KURIKULUM_SEMESTERS,
@@ -188,6 +189,15 @@ export default function TentangPage() {
           ))}
         </ol>
       </Panel>
+
+      <section id="struktur">
+        <SectionHeading
+          eyebrow="Struktur Organisasi"
+          title="Satu yayasan, empat lembaga pendidikan"
+          description="PPM Bangunjiwa adalah salah satu lembaga di bawah Yayasan Pesantren Masyarakat Bangunjiwa, bersama madrasah diniyah, TPQ, dan program pendidikan untuk guru TPQ serta wali santri."
+        />
+        <OrgStructure />
+      </section>
 
       <section id="program-riset">
         <SectionHeading

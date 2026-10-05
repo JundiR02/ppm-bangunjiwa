@@ -22,6 +22,7 @@ export const PRIMARY_NAV: NavLink[] = [
 export const PROFILE_LINKS = [
   { label: "Program Riset", href: "/tentang#program-riset" },
   { label: "Visi & Misi", href: "/tentang#visi-misi" },
+  { label: "Struktur Organisasi", href: "/tentang#struktur" },
   { label: "Kurikulum", href: "/tentang#kurikulum" },
   { label: "Ekosistem", href: "/tentang#ekosistem" },
   { label: "Kegiatan", href: "/tentang#kegiatan" },

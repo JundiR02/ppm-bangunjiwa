@@ -149,3 +149,75 @@ export const DONASI_PEMBAYARAN = {
   bank: { nama: "Bank Syariah Indonesia (BSI)", noRekening: "7788443336", layanan: "Layanan UPZ-Baznas" },
   qris: { src: "/brand/qris-yayasan-ppm-bangunjiwa.jpg", nmid: "ID1024319078993" },
 };
+
+export type KontakLembaga = {
+  kind: "alamat" | "whatsapp" | "telepon" | "email" | "instagram" | "nss";
+  label: string;
+  href?: string;
+};
+
+export type Lembaga = {
+  id: string;
+  singkatan: string;
+  nama: string;
+  peran: string;
+  logo: string;
+  kontak: KontakLembaga[];
+  /** Unit yang dikelola situs ini. */
+  current?: boolean;
+};
+
+export const YAYASAN = {
+  nama: "Yayasan Pesantren Masyarakat Bangunjiwa",
+  deskripsi: "Menaungi empat lembaga pendidikan, dari anak-anak, mahasiswa, hingga guru TPQ dan wali santri.",
+};
+
+export const LEMBAGA_BANGUNJIWA: Lembaga[] = [
+  {
+    id: "mdt-ngudi-luhur",
+    singkatan: "MDT",
+    nama: "Madrasah Diniyah Takmiliyah Ngudi Luhur",
+    peran: "Madrasah diniyah takmiliyah",
+    logo: "/images/lembaga/mdt-ngudi-luhur.png",
+    kontak: [
+      { kind: "alamat", label: "Tegalrejo RT 07 DK II Ngentak, Bangunjiwo, Kasihan, Bantul, DIY" },
+      { kind: "nss", label: "NSS 311234020118" },
+      { kind: "whatsapp", label: "0838-6257-6483", href: "https://wa.me/6283862576483" },
+      { kind: "email", label: "madin.ngudi.luhur@gmail.com", href: "mailto:madin.ngudi.luhur@gmail.com" },
+    ],
+  },
+  {
+    id: "tpq-plus",
+    singkatan: "TPQ",
+    nama: "TPQPlus Bangunjiwa",
+    peran: "Taman pendidikan Al-Qur'an",
+    logo: "/images/lembaga/tpq-plus.png",
+    kontak: [
+      { kind: "alamat", label: "Wonotawang RT 09, Ngentak, Bangunjiwa, Kasihan, Bantul, DIY" },
+      { kind: "telepon", label: "0877-3886-6689", href: "tel:+6287738866689" },
+      { kind: "telepon", label: "0895-4172-64882", href: "tel:+62895417264882" },
+      { kind: "email", label: "tpq.bangunjiwa01@gmail.com", href: "mailto:tpq.bangunjiwa01@gmail.com" },
+      { kind: "instagram", label: "@tpq.plus_bangunjiwa", href: "https://www.instagram.com/tpq.plus_bangunjiwa/" },
+    ],
+  },
+  {
+    id: "ppm-bangunjiwa",
+    singkatan: "PPM",
+    nama: "PPM Bangunjiwa",
+    peran: "Pesantren khusus mahasiswa",
+    logo: "/images/lembaga/ppm-bangunjiwa.png",
+    current: true,
+    kontak: [
+      { kind: "alamat", label: "Wonotawang, Bangunjiwa, Kasihan, Bantul, DIY" },
+      { kind: "instagram", label: "@ppm_bangunjiwa", href: "https://www.instagram.com/ppm_bangunjiwa/" },
+    ],
+  },
+  {
+    id: "pesantren-masyarakat",
+    singkatan: "PM",
+    nama: "Pesantren Masyarakat Bangunjiwa",
+    peran: "Pendidikan guru TPQ & kelas wali santri",
+    logo: "/images/lembaga/pesantren-masyarakat.png",
+    kontak: [],
+  },
+];
