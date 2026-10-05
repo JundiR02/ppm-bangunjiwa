@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArrowUpRight, MapPin } from "lucide-react";
-import { progressPercent, typeLabel, type Program } from "@/lib/programs";
+import { campaignHref, progressPercent, typeLabel, type Program } from "@/lib/programs";
 import { formatRupiahShort } from "@/lib/format";
 import { cn } from "@/lib/utils";
 
@@ -34,7 +34,7 @@ export function ProgramCard({ program, className }: { program: Program; classNam
   const percent = progressPercent(program);
   return (
     <Link
-      href={`/program?id=${program.slug}`}
+      href={campaignHref(program.slug)}
       className={cn(
         "group flex h-full flex-col gap-4 rounded-2xl border border-white bg-frost p-5 transition-colors hover:border-ash-deep",
         className

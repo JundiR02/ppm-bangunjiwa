@@ -8,7 +8,7 @@ import { Gauge } from "@/components/hub/gauge";
 import { Panel, PanelHeader, CircleLink } from "@/components/hub/panel";
 import { EmptyState } from "@/components/hub/empty-state";
 import { Skeleton } from "@/components/ui/skeleton";
-import { progressPercent } from "@/lib/programs";
+import { campaignHref, progressPercent } from "@/lib/programs";
 import { formatDate, formatRupiahShort } from "@/lib/format";
 
 export function HubKpis() {
@@ -61,14 +61,14 @@ export function FeaturedProgress({ className }: { className?: string }) {
       <PanelHeader
         title={featured ? "Progres Program" : "Progres Donasi"}
         icon={HandCoins}
-        action={featured ? <CircleLink href={`/program?id=${featured.slug}`} label={`Buka ${featured.title}`} /> : undefined}
+        action={featured ? <CircleLink href={campaignHref(featured.slug)} label={`Buka ${featured.title}`} /> : undefined}
       />
       {state.status === "loading" ? (
         <Skeleton className="mt-5 h-52 w-full rounded-2xl bg-linen" />
       ) : featured ? (
         <div className="mt-2 flex flex-col items-center gap-3">
           <Gauge value={progressPercent(featured) ?? 0} label="terkumpul" />
-          <Link href={`/program?id=${featured.slug}`} className="text-center font-heading text-[15px] font-semibold text-iron-deep hover:underline">
+          <Link href={campaignHref(featured.slug)} className="text-center font-heading text-[15px] font-semibold text-iron-deep hover:underline">
             {featured.title}
           </Link>
           <p className="text-[13px] text-iron-soft">

@@ -1,37 +1,19 @@
 import type { LucideIcon } from "lucide-react";
-import {
-  LayoutGrid,
-  Landmark,
-  Sprout,
-  HandHeart,
-  PiggyBank,
-  TreePine,
-  Recycle,
-  ChartPie,
-} from "lucide-react";
+import { LayoutGrid, Landmark, Sprout, ClipboardList, HandHeart, Phone } from "lucide-react";
+import { BIDANG_PROGRAM, LEMBAGA_BANGUNJIWA } from "@/lib/bangunjiwa-data";
 
-export type NavLink = { label: string; href: string; icon: LucideIcon };
+/** `match` lists extra path prefixes that should highlight the item. */
+export type NavLink = { label: string; href: string; icon: LucideIcon; match?: string[] };
 
 export const PRIMARY_NAV: NavLink[] = [
   { label: "Beranda", href: "/", icon: LayoutGrid },
   { label: "Tentang", href: "/tentang", icon: Landmark },
-  { label: "Program", href: "/program", icon: Sprout },
+  { label: "Program", href: "/program", icon: Sprout, match: BIDANG_PROGRAM.map((b) => b.href) },
+  { label: "PMB & PSB", href: "/psb", icon: ClipboardList },
   { label: "Donasi", href: "/donasi", icon: HandHeart },
+  { label: "Kontak", href: "/kontak", icon: Phone },
 ];
 
-export const PROFILE_LINKS = [
-  { label: "Program Riset", href: "/tentang#program-riset" },
-  { label: "Visi & Misi", href: "/tentang#visi-misi" },
-  { label: "Struktur Organisasi", href: "/tentang#struktur" },
-  { label: "Kurikulum", href: "/tentang#kurikulum" },
-  { label: "Ekosistem", href: "/tentang#ekosistem" },
-  { label: "Kegiatan", href: "/tentang#kegiatan" },
-];
+export const PROGRAM_LINKS = BIDANG_PROGRAM.map((b) => ({ label: b.nama, href: b.href }));
 
-/** Planned hub sections — rendered as disabled items, never as links, until the pages exist. */
-export const HUB_COMING_SOON: { label: string; icon: LucideIcon }[] = [
-  { label: "Dana Abadi", icon: PiggyBank },
-  { label: "Wakaf", icon: TreePine },
-  { label: "Ekonomi Sirkuler", icon: Recycle },
-  { label: "Transparansi", icon: ChartPie },
-];
+export const PENDIDIKAN_LINKS = LEMBAGA_BANGUNJIWA.map((l) => ({ label: l.nama, href: l.href }));

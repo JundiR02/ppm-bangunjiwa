@@ -22,7 +22,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
             <div className="flex flex-col gap-3 border-t border-ash/70 pt-5 text-xs text-iron-soft sm:flex-row sm:justify-between">
               <div className="flex flex-col gap-1">
                 <p>
-                  © {new Date().getFullYear()} PPM Riset Ekologi Bangunjiwa. Menanam pohon adalah
+                  © {new Date().getFullYear()} Yayasan Pesantren Masyarakat Bangunjiwa. Menanam pohon adalah
                   shodaqah jariyah.
                 </p>
                 <p>{PROFIL_PESANTREN.alamat}</p>
@@ -34,6 +34,9 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                 <a href={PROFIL_PESANTREN.instagram.url} target="_blank" rel="noopener" className="hover:text-iron">
                   Instagram
                 </a>
+                <Link href="/kontak" className="hover:text-iron">
+                  Kontak
+                </Link>
                 <Link href="/admin" className="hover:text-iron">
                   Admin
                 </Link>

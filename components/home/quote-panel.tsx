@@ -29,7 +29,7 @@ export function QuotePanel({ className }: { className?: string }) {
       </div>
       <div className="flex items-center justify-between border-t border-frost/15 pt-4">
         <span className="text-[13px] text-frost/75">Kenali pesantren kami</span>
-        <CircleLink href="/tentang" label="Tentang PPM Riset Ekologi Bangunjiwa" className="border-frost/20 bg-frost/10 text-frost hover:bg-frost hover:text-iron" />
+        <CircleLink href="/tentang" label="Tentang Yayasan Pesantren Masyarakat Bangunjiwa" className="border-frost/20 bg-frost/10 text-frost hover:bg-frost hover:text-iron" />
       </div>
     </div>
   );

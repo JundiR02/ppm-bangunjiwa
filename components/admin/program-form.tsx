@@ -5,6 +5,7 @@ import { FilePenLine, Plus, Trash2, TriangleAlert } from "lucide-react";
 import { Panel, PanelHeader } from "@/components/hub/panel";
 import { Field, FIELD, GhostButton, PrimaryButton } from "@/components/admin/fields";
 import {
+  campaignHref,
   getProgram,
   isValidSlug,
   PROGRAM_STATUSES,
@@ -108,7 +109,7 @@ export function ProgramForm({ program, onDone }: { program: Program | null; onDo
             label="Alamat halaman"
             htmlFor="slug"
             className="md:col-span-2"
-            hint={isNew ? <>Tautan program: /program?id={effectiveSlug || "…"}</> : "Alamat tidak bisa diubah setelah program dibuat."}
+            hint={isNew ? <>Tautan program: {campaignHref(effectiveSlug || "…")}</> : "Alamat tidak bisa diubah setelah program dibuat."}
           >
             <input
               id="slug"

@@ -6,6 +6,7 @@ import { usePublishedPrograms } from "@/components/programs/use-programs";
 import { ProgramCard } from "@/components/programs/program-card";
 import { EmptyState } from "@/components/hub/empty-state";
 import { Skeleton } from "@/components/ui/skeleton";
+import { CROWDFUNDING_PATH } from "@/lib/programs";
 import { cn } from "@/lib/utils";
 
 export function RunningPrograms({ limit, columns = "md:grid-cols-2", className }: { limit?: number; columns?: string; className?: string }) {
@@ -47,8 +48,8 @@ export function RunningPrograms({ limit, columns = "md:grid-cols-2", className }
         ))}
       </div>
       {limit && running.length > limit && (
-        <Link href="/program" className="mt-4 inline-block text-[13px] font-medium text-iron underline-offset-4 hover:underline">
-          Lihat semua {running.length} program
+        <Link href={CROWDFUNDING_PATH} className="mt-4 inline-block text-[13px] font-medium text-iron underline-offset-4 hover:underline">
+          Lihat semua {running.length} kampanye
         </Link>
       )}
     </div>

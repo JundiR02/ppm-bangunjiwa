@@ -13,12 +13,12 @@ import { Gauge } from "@/components/hub/gauge";
 import { BarStat, type BarTone } from "@/components/hub/bar-stat";
 import { EmptyState } from "@/components/hub/empty-state";
 import { Skeleton } from "@/components/ui/skeleton";
-import { getProgram, progressPercent, PROGRAM_TYPES, type Program, type ProgramType } from "@/lib/programs";
+import { CROWDFUNDING_PATH, getProgram, progressPercent, PROGRAM_TYPES, type Program, type ProgramType } from "@/lib/programs";
 import { formatDate, formatRupiahShort } from "@/lib/format";
 import { cn } from "@/lib/utils";
 
 const TONES: BarTone[] = ["pine", "iron", "ash"];
-const SITE = "PPM Riset Ekologi Bangunjiwa";
+const SITE = "Bangunjiwa";
 
 export function ProgramView() {
   const id = useSearchParams().get("id");
@@ -33,12 +33,12 @@ function ProgramList() {
 
   return (
     <>
-      <Eyebrow>Program</Eyebrow>
+      <Eyebrow>Crowdfunding · Dana Abadi Pesantren Hijau</Eyebrow>
       <h1 className="mt-5 max-w-2xl text-balance font-heading text-[2.4rem] font-normal leading-[1.08] tracking-[-0.02em] text-iron-deep sm:text-5xl">
-        Program yang dapat Anda dukung
+        Kampanye yang dapat Anda dukung
       </h1>
       <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-iron-soft">
-        Pendidikan, riset ekologi, dana abadi, dan ekonomi sirkuler — dikelola Yayasan PPM Bangunjiwa.
+        Kampanye penggalangan dana untuk pendidikan dan program Yayasan Pesantren Masyarakat Bangunjiwa.
       </p>
 
       <Panel className="mt-8">
@@ -113,8 +113,8 @@ function ProgramDetail({ slug }: { slug: string }) {
       <Panel>
         <EmptyState icon={state.status === "error" ? CircleAlert : SearchX} title={state.status === "error" ? "Program gagal dimuat" : "Program tidak ditemukan"}>
           {state.status === "error" ? "Periksa koneksi internet Anda, lalu muat ulang halaman." : "Program ini mungkin sudah tidak dipublikasikan."}
-          <Link href="/program" className="mt-3 block font-medium text-iron underline-offset-4 hover:underline">
-            Lihat semua program
+          <Link href={CROWDFUNDING_PATH} className="mt-3 block font-medium text-iron underline-offset-4 hover:underline">
+            Lihat semua kampanye
           </Link>
         </EmptyState>
       </Panel>
@@ -127,8 +127,8 @@ function ProgramDetail({ slug }: { slug: string }) {
 
   return (
     <>
-      <Link href="/program" className="inline-flex items-center gap-1.5 text-[13px] text-iron-soft hover:text-iron">
-        <ArrowLeft className="size-3.5" /> Semua program
+      <Link href={CROWDFUNDING_PATH} className="inline-flex items-center gap-1.5 text-[13px] text-iron-soft hover:text-iron">
+        <ArrowLeft className="size-3.5" /> Semua kampanye
       </Link>
 
       <section className="mt-5 grid gap-4 xl:grid-cols-12">

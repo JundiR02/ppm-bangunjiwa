@@ -4,6 +4,7 @@ import { Panel, PanelHeader, CircleLink, Eyebrow } from "@/components/hub/panel"
 import { QuotePanel } from "@/components/home/quote-panel";
 import { HubKpis, FeaturedProgress } from "@/components/home/hub-live";
 import { RunningPrograms } from "@/components/programs/running-programs";
+import { CROWDFUNDING_PATH } from "@/lib/programs";
 import { THREE_PILLARS } from "@/lib/dummy-data";
 
 export default function Home() {
@@ -19,8 +20,8 @@ export default function Home() {
               Merawat bumi dengan ilmu, iman, dan komunitas
             </h1>
             <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-iron-soft">
-              Portal digital PPM Riset Ekologi Bangunjiwa — pendidikan, riset ekologi, dan pengabdian
-              masyarakat dalam satu tempat.
+              Portal digital Yayasan Pesantren Masyarakat Bangunjiwa — pendidikan dirosah islamiyah,
+              pendidikan vokasi, kewirausahaan, dan Dana Abadi Pesantren Hijau dalam satu tempat.
             </p>
           </div>
           <div className="border-t border-dashed border-ash-deep/70 pt-6">
@@ -32,7 +33,7 @@ export default function Home() {
 
       <section className="mt-4 grid gap-4 xl:grid-cols-12">
         <Panel className="xl:col-span-8">
-          <PanelHeader title="Program Berjalan" icon={Sprout} action={<CircleLink href="/program" label="Semua program" />} />
+          <PanelHeader title="Kampanye Berjalan" icon={Sprout} action={<CircleLink href={CROWDFUNDING_PATH} label="Semua kampanye" />} />
           <RunningPrograms limit={4} className="mt-5" />
         </Panel>
         <QuotePanel className="xl:col-span-4" />
@@ -52,14 +53,14 @@ export default function Home() {
           </Panel>
         ))}
         <Panel className="flex flex-col gap-6 p-5 sm:p-5">
-          <p className="text-[11px] font-medium uppercase tracking-[0.08em] text-iron-soft">Profil</p>
+          <p className="text-[11px] font-medium uppercase tracking-[0.08em] text-iron-soft">Pendidikan</p>
           <div>
-            <h3 className="font-heading text-xl font-medium text-iron-deep">Kenali Bangunjiwa</h3>
-            <p className="mt-1.5 text-[13px] leading-relaxed text-iron-soft">Visi-misi, kurikulum, dan program riset ekologi.</p>
+            <h3 className="font-heading text-xl font-medium text-iron-deep">Belajar di Bangunjiwa</h3>
+            <p className="mt-1.5 text-[13px] leading-relaxed text-iron-soft">PPM, MDT, TPQ Plus, dan Pra-TPQ — dari usia PAUD hingga mahasiswa.</p>
           </div>
           <div className="mt-auto flex items-center justify-between border-t border-ash/60 pt-3">
-            <span className="text-[13px] font-medium text-iron">Tentang kami</span>
-            <CircleLink href="/tentang" label="Tentang kami" />
+            <span className="text-[13px] font-medium text-iron">Pendidikan</span>
+            <CircleLink href="/pendidikan" label="Pendidikan" />
           </div>
         </Panel>
         <Panel className="flex flex-col gap-6 bg-linen/70 p-5 sm:p-5">

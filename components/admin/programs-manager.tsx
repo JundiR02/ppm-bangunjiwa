@@ -10,7 +10,7 @@ import { ProgramForm } from "@/components/admin/program-form";
 import { ProgramChips } from "@/components/programs/program-card";
 import { invalidatePrograms } from "@/components/programs/use-programs";
 import { Skeleton } from "@/components/ui/skeleton";
-import { deleteProgram, listAllPrograms, type Program } from "@/lib/programs";
+import { campaignHref, deleteProgram, listAllPrograms, type Program } from "@/lib/programs";
 import { formatDate, formatRupiahShort } from "@/lib/format";
 
 export function ProgramsManager() {
@@ -102,7 +102,7 @@ export function ProgramsManager() {
                         <div className="flex justify-end gap-1.5">
                           {p.status !== "draft" && (
                             <Link
-                              href={`/program?id=${p.slug}`}
+                              href={campaignHref(p.slug)}
                               target="_blank"
                               aria-label={`Lihat ${p.title}`}
                               className="inline-flex size-9 items-center justify-center rounded-xl border border-white bg-frost text-iron shadow-panel hover:bg-linen"

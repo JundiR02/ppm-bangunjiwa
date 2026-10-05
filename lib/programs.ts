@@ -13,6 +13,13 @@ import {
 } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 
+/** Crowdfunding campaigns live under Dana Abadi Pesantren Hijau. */
+export const CROWDFUNDING_PATH = "/dana-abadi/crowdfunding";
+
+export function campaignHref(slug: string) {
+  return `${CROWDFUNDING_PATH}?id=${slug}`;
+}
+
 export const PROGRAM_TYPES = [
   { id: "donasi", label: "Donasi" },
   { id: "dana-abadi", label: "Dana Abadi" },

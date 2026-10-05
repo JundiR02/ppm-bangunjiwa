@@ -7,9 +7,9 @@ export function Logo({ onClick }: { onClick?: () => void }) {
       href="/"
       onClick={onClick}
       className="flex items-center gap-2.5"
-      aria-label="PPM Riset Ekologi Bangunjiwa — Beranda"
+      aria-label="Yayasan Pesantren Masyarakat Bangunjiwa — Beranda"
     >
-      <span className="flex size-10 shrink-0 items-center justify-center rounded-full border border-white bg-frost p-1.5 shadow-panel">
+      <span className="flex size-11 shrink-0 items-center justify-center">
         <Image
           src="/brand/logo-mark.png"
           alt=""
@@ -20,8 +20,8 @@ export function Logo({ onClick }: { onClick?: () => void }) {
         />
       </span>
       <span className="flex flex-col leading-tight">
-        <span className="font-heading text-[14px] font-bold text-iron-deep">PPM Riset Ekologi</span>
-        <span className="text-[11px] tracking-wide text-iron-soft">Bangunjiwa</span>
+        <span className="font-heading text-[14px] font-bold text-iron-deep">Bangunjiwa</span>
+        <span className="text-[11px] tracking-wide text-iron-soft">Pesantren Masyarakat</span>
       </span>
     </Link>
   );
