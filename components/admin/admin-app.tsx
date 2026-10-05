@@ -77,7 +77,7 @@ export function AdminApp() {
     </p>
   );
 
-  if (phase.s === "loading") return <Skeleton className="h-48 w-full rounded-[22px] bg-linen" />;
+  if (phase.s === "loading") return <Skeleton className="h-48 w-full rounded-xl bg-linen" />;
 
   if (phase.s === "signed-out") {
     return (
@@ -135,7 +135,7 @@ export function AdminApp() {
         <p className="mt-2 text-[13px] text-iron-soft">
           Masuk sebagai {user.email} · {isOwner(user) ? "Admin utama" : "Admin"}
         </p>
-        <div className="mt-5 flex gap-1 rounded-full border border-white bg-linen/80 p-1 sm:w-fit" role="tablist">
+        <div className="mt-5 flex gap-1 rounded-full border border-ash bg-linen/80 p-1 sm:w-fit" role="tablist">
           {(
             [
               ["program", "Program"],
@@ -149,7 +149,7 @@ export function AdminApp() {
               onClick={() => setTab(id)}
               className={cn(
                 "flex-1 rounded-full px-4 py-1.5 text-[13px] font-medium transition-colors",
-                tab === id ? "bg-iron text-frost" : "text-iron-soft hover:text-iron"
+                tab === id ? "bg-hijau text-frost" : "text-iron-soft hover:text-iron"
               )}
             >
               {label}

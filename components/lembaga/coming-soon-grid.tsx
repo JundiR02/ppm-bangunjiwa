@@ -3,38 +3,40 @@ import { cn } from "@/lib/utils";
 
 export type ComingSoonItem = { judul: string; keterangan?: string; sub?: string[]; href?: string };
 
-/** Sections whose official content isn't available yet — shown so visitors see what's planned. */
-export function ComingSoonGrid({ items, className }: { items: ComingSoonItem[]; className?: string }) {
+/**
+ * Sections whose official content isn't available yet. Kept to a quiet list so the
+ * page reads as "what's coming" rather than a wall of empty boxes.
+ */
+export function ComingSoonGrid({
+  items,
+  title = "Sedang disiapkan",
+  className,
+}: {
+  items: ComingSoonItem[];
+  title?: string;
+  className?: string;
+}) {
   return (
-    <ul className={cn("grid gap-3 sm:grid-cols-2 xl:grid-cols-3", className)}>
-      {items.map((item) => (
-        <li key={item.judul} className="flex flex-col gap-1.5 rounded-2xl border border-dashed border-ash-deep/70 bg-linen/50 p-4">
-          <div className="flex items-start justify-between gap-2">
-            <h3 className="font-heading text-[15px] font-medium text-iron-deep">
+    <section className={cn("mt-20 border-t border-ash pt-8", className)}>
+      <h2 className="font-heading text-xl text-iron-deep">{title}</h2>
+      <p className="mt-1 text-[14px] text-iron-soft">Informasi berikut akan ditambahkan setelah tersedia.</p>
+      <ul className="mt-6 grid gap-x-10 gap-y-4 sm:grid-cols-2 lg:grid-cols-3">
+        {items.map((item) => (
+          <li key={item.judul} className="text-[14px] leading-relaxed">
+            <span className="font-medium text-iron-deep">
               {item.href ? (
-                <Link href={item.href} className="hover:underline">
+                <Link href={item.href} className="hover:text-hijau hover:underline">
                   {item.judul}
                 </Link>
               ) : (
                 item.judul
               )}
-            </h3>
-            <span className="shrink-0 rounded-full bg-frost px-2 py-0.5 text-[10px] font-medium uppercase tracking-wide text-iron-soft">
-              Segera hadir
             </span>
-          </div>
-          {item.keterangan && <p className="text-[13px] leading-relaxed text-iron-soft">{item.keterangan}</p>}
-          {item.sub && (
-            <ul className="mt-1 flex flex-wrap gap-1.5">
-              {item.sub.map((s) => (
-                <li key={s} className="rounded-full bg-frost px-2.5 py-1 text-[11.5px] text-iron">
-                  {s}
-                </li>
-              ))}
-            </ul>
-          )}
-        </li>
-      ))}
-    </ul>
+            {item.keterangan && <span className="block text-iron-soft">{item.keterangan}</span>}
+            {item.sub && <span className="block text-iron-soft">{item.sub.join(" · ")}</span>}
+          </li>
+        ))}
+      </ul>
+    </section>
   );
 }

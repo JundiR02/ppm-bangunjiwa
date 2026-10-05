@@ -41,8 +41,8 @@ export function DonationInteractive({ programTitle }: { programTitle?: string })
                   setCustomAmount("");
                 }}
                 className={cn(
-                  "rounded-2xl border px-4 py-4 text-left font-heading text-xl font-light tracking-tight transition-colors",
-                  selected ? "border-iron bg-iron text-frost shadow-panel" : "border-white bg-frost text-iron-deep hover:border-ash-deep"
+                  "rounded-lg border px-4 py-4 text-left font-heading text-xl font-light tracking-tight transition-colors",
+                  selected ? "border-hijau bg-hijau text-frost shadow-panel" : "border-ash bg-frost text-iron-deep hover:border-ash-deep"
                 )}
               >
                 {formatRupiahShort(value)}
@@ -50,7 +50,7 @@ export function DonationInteractive({ programTitle }: { programTitle?: string })
             );
           })}
         </div>
-        <div className="mt-3 flex flex-wrap items-center gap-3 rounded-2xl border border-white bg-linen/70 px-4 py-3.5">
+        <div className="mt-3 flex flex-wrap items-center gap-3 rounded-lg border border-ash bg-linen/70 px-4 py-3.5">
           <label htmlFor="customAmount" className="text-[13px] text-iron-soft">
             Atau masukkan jumlah lain
           </label>
@@ -90,7 +90,7 @@ export function DonationInteractive({ programTitle }: { programTitle?: string })
         </div>
         <a
           href="#cara-berdonasi"
-          className="mt-5 flex h-11 w-full items-center justify-center rounded-xl bg-iron text-[14px] font-medium text-frost shadow-panel transition-colors hover:bg-iron-deep"
+          className="mt-5 flex h-11 w-full items-center justify-center rounded-xl bg-hijau text-[14px] font-medium text-frost shadow-panel transition-colors hover:bg-hijau-deep"
         >
           Lihat cara berdonasi
         </a>
@@ -106,7 +106,7 @@ export function DonationInteractive({ programTitle }: { programTitle?: string })
           Pilih salah satu. Donasi masuk langsung ke rekening {penerima}.
         </p>
         <div className="mt-5 grid gap-3 md:grid-cols-2">
-          <div className="flex flex-col rounded-2xl border border-white bg-frost p-5">
+          <div className="flex flex-col rounded-lg border border-ash bg-frost p-5">
             <div className="flex flex-wrap items-center justify-between gap-2">
               <p className="flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.08em] text-iron-soft">
                 <Landmark className="size-3.5" /> Transfer bank
@@ -139,7 +139,7 @@ export function DonationInteractive({ programTitle }: { programTitle?: string })
             </ol>
           </div>
 
-          <div className="flex flex-col rounded-2xl border border-white bg-frost p-5">
+          <div className="flex flex-col rounded-lg border border-ash bg-frost p-5">
             <p className="flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.08em] text-iron-soft">
               <QrCode className="size-3.5" /> QRIS
             </p>
@@ -156,7 +156,7 @@ export function DonationInteractive({ programTitle }: { programTitle?: string })
             <a
               href={qris.src}
               download="QRIS-Yayasan-PPM-Bangunjiwa.jpg"
-              className="mt-3 inline-flex h-10 items-center justify-center gap-2 rounded-xl bg-iron px-4 text-[13px] font-medium text-frost shadow-panel transition-colors hover:bg-iron-deep"
+              className="mt-3 inline-flex h-10 items-center justify-center gap-2 rounded-xl bg-hijau px-4 text-[13px] font-medium text-frost shadow-panel transition-colors hover:bg-hijau-deep"
             >
               <Download className="size-4" /> Unduh QRIS
             </a>

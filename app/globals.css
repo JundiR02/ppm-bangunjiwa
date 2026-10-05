@@ -4,26 +4,33 @@
 @import "leaflet/dist/leaflet.css";
 
 /* ---------------------------------------------------------------- */
-/* Palette: Ash Wood · Nordic Linen · Pine Smoke · Iron Grey · Frost */
-/* "-deep" / "-soft" shades are derived for accessible text and tints */
+/* Palette taken from the yayasan's logos: the green of the ring,     */
+/* the cream of the lotus petals, and the gold of the petal tips.     */
+/* Text tones (iron) are warm green-blacks so they sit on the cream.  */
 /* ---------------------------------------------------------------- */
 @theme {
-  --color-ash: #d7d1c6;
-  --color-ash-deep: #b8af9f;
-  --color-linen: #edeae3;
-  --color-pine: #8a937f;
-  --color-pine-deep: #5e6655;
-  --color-pine-soft: #dfe3d9;
-  --color-iron: #3f4244;
-  --color-iron-deep: #2b2d2f;
-  --color-iron-soft: #626567;
-  --color-frost: #f7f7f5;
+  --color-hijau: #0f5f3a;
+  --color-hijau-deep: #0a4329;
+  --color-hijau-ink: #072f1d;
+  --color-emas: #c9952b;
+  --color-emas-deep: #8a6414;
 
-  --font-heading: var(--font-manrope);
+  --color-ash: #e7dcc4;
+  --color-ash-deep: #c9ba98;
+  --color-linen: #f4eddc;
+  --color-pine: #2f7d52;
+  --color-pine-deep: #0f5f3a;
+  --color-pine-soft: #e1ecdf;
+  --color-iron: #2e3832;
+  --color-iron-deep: #18211b;
+  --color-iron-soft: #5a645d;
+  --color-frost: #fffcf5;
+
+  --font-heading: var(--font-source-serif);
   --font-sans: var(--font-inter);
   --font-arabic: var(--font-noto-naskh);
 
-  --shadow-panel: 0 1px 2px rgb(63 66 68 / 0.04), 0 14px 32px -20px rgb(63 66 68 / 0.22);
+  --shadow-panel: 0 1px 2px rgb(24 33 27 / 0.06);
 }
 
 @theme inline {
@@ -55,23 +62,23 @@
 }
 
 :root {
-  --background: var(--color-linen);
+  --background: var(--color-frost);
   --foreground: var(--color-iron);
   --card: var(--color-frost);
   --card-foreground: var(--color-iron);
   --popover: var(--color-frost);
   --popover-foreground: var(--color-iron);
-  --primary: var(--color-iron);
+  --primary: var(--color-hijau);
   --primary-foreground: var(--color-frost);
   --secondary: var(--color-linen);
   --secondary-foreground: var(--color-iron);
-  --muted: #e6e2da;
+  --muted: #ece3cf;
   --muted-foreground: var(--color-iron-soft);
   --accent: var(--color-pine-soft);
   --accent-foreground: var(--color-iron);
   --destructive: #a94438;
-  --border: #dedad1;
-  --input: #dedad1;
+  --border: #e3d8bf;
+  --input: #e3d8bf;
   --ring: var(--color-pine);
   --radius: 0.75rem;
 }
@@ -84,7 +91,8 @@
     @apply font-sans scroll-smooth;
   }
   body {
-    @apply bg-ash text-foreground;
+    @apply bg-frost text-foreground;
+    overflow-x: clip;
   }
   h1, h2, h3, h4, h5, h6 {
     @apply font-heading tracking-tight;
@@ -101,10 +109,9 @@
   .text-balance {
     text-wrap: balance;
   }
-  .hub-surface {
-    background:
-      radial-gradient(1100px 520px at 88% -8%, rgb(138 147 127 / 0.2), transparent 60%),
-      radial-gradient(900px 480px at 0% 105%, rgb(215 209 198 / 0.6), transparent 60%),
-      linear-gradient(180deg, var(--color-frost), var(--color-linen));
+  /* Stretch a band to the viewport edges from inside the centered page container. */
+  .full-bleed {
+    margin-inline: calc(50% - 50vw);
+    padding-inline: calc(50vw - 50%);
   }
 }

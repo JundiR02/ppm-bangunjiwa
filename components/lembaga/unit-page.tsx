@@ -1,7 +1,5 @@
-import { Phone } from "lucide-react";
 import { PageTop } from "@/components/shell/page-top";
-import { Panel, PanelHeader, Eyebrow } from "@/components/hub/panel";
-import { SectionHeading } from "@/components/hub/section-heading";
+import { Eyebrow } from "@/components/hub/panel";
 import { ComingSoonGrid } from "@/components/lembaga/coming-soon-grid";
 import { ContactList } from "@/components/lembaga/contact-list";
 import { UnitLogo } from "@/components/lembaga/unit-logo";
@@ -18,7 +16,7 @@ export function unitOutline(lembaga: Lembaga, exclude: string[] = []) {
 
 export function UnitContacts({ lembaga, className }: { lembaga: Lembaga; className?: string }) {
   if (lembaga.kontak.length === 0) {
-    return <p className={`text-[13px] leading-relaxed text-iron-soft ${className ?? ""}`}>Kontak {lembaga.nama} akan segera ditambahkan.</p>;
+    return <p className={`text-[14px] leading-relaxed text-iron-soft ${className ?? ""}`}>Kontak {lembaga.nama} akan segera ditambahkan.</p>;
   }
   return <ContactList kontak={lembaga.kontak} className={className} />;
 }
@@ -29,36 +27,28 @@ export function UnitPage({ lembaga, crumb }: { lembaga: Lembaga; crumb: string }
     <>
       <PageTop parent={PENDIDIKAN_PARENT} crumb={crumb} />
 
-      <section className="grid gap-4 xl:grid-cols-12">
-        <div className="flex flex-col gap-6 pb-2 xl:col-span-7 xl:pr-6">
-          <div className="flex items-center gap-3">
-            <UnitLogo src={lembaga.logo} alt={`Logo ${lembaga.nama}`} fallback={lembaga.singkatan} className="size-16" />
-            <Eyebrow>
-              {lembaga.peran} · {lembaga.untuk}
-            </Eyebrow>
-          </div>
-          <div>
-            <h1 className="text-balance font-heading text-[2.4rem] font-normal leading-[1.08] tracking-[-0.02em] text-iron-deep sm:text-5xl">
-              {lembaga.nama}
-            </h1>
-            <p className="mt-2 text-[14px] font-medium text-iron">{lembaga.namaLengkap}</p>
-            <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-iron-soft">{lembaga.ringkas}</p>
-          </div>
+      <section className="grid gap-10 lg:grid-cols-[1.5fr_1fr] lg:gap-16">
+        <div>
+          <UnitLogo
+            src={lembaga.logo}
+            alt={`Logo ${lembaga.nama}`}
+            fallback={lembaga.singkatan}
+            className="size-24 rounded-full border-0 bg-linen"
+          />
+          <Eyebrow className="mt-6">
+            {lembaga.peran} · {lembaga.untuk}
+          </Eyebrow>
+          <h1 className="mt-2 text-balance font-heading text-[2.4rem] leading-[1.1] text-iron-deep sm:text-5xl">{lembaga.nama}</h1>
+          <p className="mt-2 text-[15px] text-iron">{lembaga.namaLengkap}</p>
+          <p className="mt-5 max-w-xl text-[17px] leading-relaxed text-iron-soft">{lembaga.ringkas}</p>
         </div>
-        <Panel className="xl:col-span-5">
-          <PanelHeader title="Kontak" icon={Phone} />
+        <aside className="border-t border-ash pt-6 lg:mt-24 lg:border-t-0 lg:border-l lg:pt-0 lg:pl-8">
+          <h2 className="font-heading text-xl text-iron-deep">Kontak</h2>
           <UnitContacts lembaga={lembaga} className="mt-4" />
-        </Panel>
+        </aside>
       </section>
 
-      <section id="segera">
-        <SectionHeading
-          eyebrow="Sedang Disiapkan"
-          title={`Informasi ${lembaga.nama} selengkapnya`}
-          description="Bagian berikut akan diisi setelah informasi resminya tersedia. Untuk sementara, hubungi kontak di atas."
-        />
-        <ComingSoonGrid items={unitOutline(lembaga)} />
-      </section>
+      <ComingSoonGrid items={unitOutline(lembaga)} title={`Informasi ${lembaga.nama} yang sedang disiapkan`} />
     </>
   );
 }

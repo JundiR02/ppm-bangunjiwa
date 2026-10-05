@@ -216,7 +216,7 @@ export function ProgramForm({ program, onDone }: { program: Program | null; onDo
           <legend className="mb-1 text-[13px] font-semibold text-iron-deep">Testimoni (opsional)</legend>
           <p className="text-[12px] text-iron-soft">Pastikan sudah ada izin dari orang yang dikutip.</p>
           {testimonials.map((t, i) => (
-            <div key={i} className="flex flex-col gap-2 rounded-2xl border border-white bg-linen/50 p-3">
+            <div key={i} className="flex flex-col gap-2 rounded-lg border border-ash bg-linen/50 p-3">
               <textarea
                 aria-label={`Kutipan testimoni ${i + 1}`}
                 rows={2}

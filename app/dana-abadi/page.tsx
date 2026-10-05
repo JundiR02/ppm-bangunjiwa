@@ -1,11 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { HandHeart, Sprout } from "lucide-react";
 import { BidangPage } from "@/components/lembaga/bidang-page";
-import { Panel, PanelHeader, CircleLink } from "@/components/hub/panel";
-import { RunningPrograms } from "@/components/programs/running-programs";
+import { RunningCampaignsSection } from "@/components/home/running-campaigns-section";
 import { DONASI_PEMBAYARAN, getBidang } from "@/lib/bangunjiwa-data";
-import { CROWDFUNDING_PATH } from "@/lib/programs";
 
 const BIDANG = getBidang("dana-abadi");
 
@@ -17,25 +14,24 @@ export const metadata: Metadata = {
 export default function DanaAbadiPage() {
   return (
     <BidangPage bidang={BIDANG}>
-      <section className="mt-4 grid gap-4 xl:grid-cols-12">
-        <Panel className="flex flex-col gap-4 xl:col-span-5">
-          <PanelHeader title="Donasi Langsung" icon={HandHeart} />
-          <p className="text-[13px] leading-relaxed text-iron-soft">
-            Transfer ke rekening {DONASI_PEMBAYARAN.bank.nama} {DONASI_PEMBAYARAN.bank.layanan} atas nama{" "}
-            {DONASI_PEMBAYARAN.penerima}, atau pindai QRIS yayasan.
-          </p>
+      <section className="full-bleed mt-20 bg-linen py-12">
+        <div className="mx-auto grid max-w-[1200px] items-center gap-6 md:grid-cols-[1.5fr_auto]">
+          <div>
+            <h2 className="font-heading text-3xl text-iron-deep">Donasi langsung ke yayasan</h2>
+            <p className="mt-3 max-w-xl text-[16px] leading-relaxed text-iron-soft">
+              Transfer ke rekening {DONASI_PEMBAYARAN.bank.nama} {DONASI_PEMBAYARAN.bank.layanan} atas nama{" "}
+              {DONASI_PEMBAYARAN.penerima}, atau pindai QRIS yayasan.
+            </p>
+          </div>
           <Link
             href="/donasi"
-            className="mt-auto inline-flex h-10 w-fit items-center gap-2 rounded-xl bg-iron px-4 text-[13px] font-medium text-frost shadow-panel transition-colors hover:bg-iron-deep"
+            className="inline-flex w-fit items-center rounded-md bg-hijau px-5 py-3 text-[15px] font-medium text-frost transition-colors hover:bg-hijau-deep"
           >
-            <HandHeart className="size-4" /> Buka halaman donasi
+            Lihat rekening & QRIS
           </Link>
-        </Panel>
-        <Panel className="xl:col-span-7">
-          <PanelHeader title="Kampanye Berjalan" icon={Sprout} action={<CircleLink href={CROWDFUNDING_PATH} label="Semua kampanye" />} />
-          <RunningPrograms limit={2} className="mt-5" />
-        </Panel>
+        </div>
       </section>
+      <RunningCampaignsSection />
     </BidangPage>
   );
 }

@@ -1,22 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import {
-  BookOpen,
-  CalendarRange,
-  Compass,
-  Database,
-  HeartHandshake,
-  Landmark,
-  Layers,
-  Map as MapIcon,
-  Phone,
-  Target,
-  Users,
-} from "lucide-react";
-import type { LucideIcon } from "lucide-react";
 import { PageTop } from "@/components/shell/page-top";
-import { Panel, PanelHeader, Eyebrow } from "@/components/hub/panel";
-import { Kpi } from "@/components/hub/kpi";
+import { Eyebrow } from "@/components/hub/panel";
 import { SectionHeading } from "@/components/hub/section-heading";
 import { CurriculumTable } from "@/components/tentang/curriculum-table";
 import { EcosystemFlow } from "@/components/tentang/ecosystem-flow";
@@ -24,26 +9,12 @@ import { ActivityGallery } from "@/components/tentang/activity-gallery";
 import { ComingSoonGrid } from "@/components/lembaga/coming-soon-grid";
 import { PENDIDIKAN_PARENT, UnitContacts, unitOutline } from "@/components/lembaga/unit-page";
 import { UnitLogo } from "@/components/lembaga/unit-logo";
-import {
-  getLembaga,
-  KURIKULUM_ROWS,
-  KURIKULUM_SEMESTERS,
-  MISI_BANGUNJIWA,
-  PEMINATAN_RISET,
-  PPM_PROGRAM,
-  RISET_PILLARS,
-} from "@/lib/bangunjiwa-data";
+import { getLembaga, MISI_BANGUNJIWA, PEMINATAN_RISET, PPM_PROGRAM, RISET_PILLARS } from "@/lib/bangunjiwa-data";
 
 export const metadata: Metadata = {
   title: "PPM Bangunjiwa",
   description:
     "PPM Bangunjiwa — pesantren mahasiswa yang mencetak SDM riset ekologi untuk ekosistem MRV Nexus, memadukan pendidikan keislaman dengan IT, pemetaan, dan pengabdian masyarakat.",
-};
-
-const PILLAR_ICON: Record<string, LucideIcon> = {
-  "it-data": Database,
-  "pemetaan-survei": MapIcon,
-  "sdm-enumerator": Users,
 };
 
 const PPM = getLembaga("ppm");
@@ -55,91 +26,69 @@ export default function PpmPage() {
     <>
       <PageTop parent={PENDIDIKAN_PARENT} crumb="PPM" />
 
-      <section className="grid gap-4 xl:grid-cols-12">
-        <div className="flex flex-col justify-between gap-8 pb-2 xl:col-span-7 xl:pr-6">
-          <div>
-            <div className="flex items-center gap-3">
-              <UnitLogo src={PPM.logo} alt={`Logo ${PPM.nama}`} />
-              <Eyebrow>Pesantren Mahasiswa · {PPM.untuk}</Eyebrow>
-            </div>
-            <h1 className="mt-5 text-balance font-heading text-[2.4rem] font-normal leading-[1.08] tracking-[-0.02em] text-iron-deep sm:text-5xl">
-              Rumah kedua bagi mahasantri, dapur SDM riset ekologi
-            </h1>
-            <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-iron-soft">
-              Bangunjiwa mendampingi mahasantri menempuh pendidikan keislaman sambil kuliah, sekaligus membina
-              mereka menjadi tenaga IT, pemetaan, dan pengelola SDM survei untuk ekosistem MRV Nexus.
-            </p>
-          </div>
-          <div className="grid grid-cols-2 gap-6 border-t border-dashed border-ash-deep/70 pt-6 sm:grid-cols-4">
-            <Kpi icon={CalendarRange} label="Semester">{KURIKULUM_SEMESTERS.length}</Kpi>
-            <Kpi icon={BookOpen} label="Mata pelajaran">{KURIKULUM_ROWS.length}</Kpi>
-            <Kpi icon={Layers} label="Pilar SDM">{RISET_PILLARS.length}</Kpi>
-            <Kpi icon={Compass} label="Peminatan riset">{PEMINATAN_RISET.length}</Kpi>
-          </div>
+      <section className="grid items-center gap-10 lg:grid-cols-[1.2fr_1fr] lg:gap-14">
+        <div>
+          <UnitLogo src={PPM.logo} alt={`Logo ${PPM.nama}`} className="size-24 rounded-full border-0 bg-linen" />
+          <Eyebrow className="mt-6">Pesantren Mahasiswa · {PPM.untuk}</Eyebrow>
+          <h1 className="mt-2 font-heading text-[2.4rem] leading-[1.1] text-iron-deep sm:text-5xl">{PPM.nama}</h1>
+          <p className="mt-5 max-w-xl text-[17px] leading-relaxed text-iron-soft">
+            Bangunjiwa mendampingi mahasantri menempuh pendidikan keislaman sambil kuliah, sekaligus membina mereka
+            menjadi tenaga IT, pemetaan, dan pengelola SDM survei untuk ekosistem MRV Nexus.
+          </p>
         </div>
-        <figure className="relative min-h-[320px] overflow-hidden rounded-[22px] border border-white/80 shadow-panel xl:col-span-5">
+        <figure>
           <Image
             src="/images/bangunjiwa/kajian-quran.jpg"
             alt="Kajian Al-Qur'an bersama santri Bangunjiwa"
-            fill
+            width={496}
+            height={348}
             priority
-            className="object-cover"
-            sizes="(min-width: 1280px) 40vw, 100vw"
+            className="w-full max-w-[496px] rounded-lg object-cover"
           />
-          <figcaption className="absolute bottom-3 left-3 rounded-full bg-frost/90 px-3 py-1 text-[11px] font-medium text-iron-deep backdrop-blur">
-            Kajian Al-Qur&apos;an bersama mahasantri
-          </figcaption>
+          <figcaption className="mt-2 text-[13px] text-iron-soft">Kajian Al-Qur&apos;an bersama mahasantri</figcaption>
         </figure>
       </section>
 
-      <section id="visi-misi" className="mt-4 grid gap-4 xl:grid-cols-12">
-        <Panel className="xl:col-span-7">
-          <PanelHeader title="Tentang PPM" icon={Landmark} />
-          <div className="mt-4 flex flex-col gap-3 text-[14px] leading-relaxed text-iron-soft">
+      <section id="visi-misi" className="mt-20 grid gap-12 lg:grid-cols-[1.3fr_1fr]">
+        <div>
+          <h2 className="font-heading text-3xl text-iron-deep">Tentang PPM</h2>
+          <div className="mt-5 flex flex-col gap-4 text-[16px] leading-relaxed text-iron">
             <p>
               PPM Riset Ekologi Bangunjiwa berawal sebagai Pesantren Mahasiswa yang menaungi mahasantri untuk
-              menyeimbangkan keilmuan duniawi dan ukhrowi. Kini, Bangunjiwa berkembang menjadi pusat pendidikan
-              yang juga mencetak sumber daya manusia untuk mengelola ekosistem riset ekologi MRV Nexus.
+              menyeimbangkan keilmuan duniawi dan ukhrowi. Kini, Bangunjiwa berkembang menjadi pusat pendidikan yang
+              juga mencetak sumber daya manusia untuk mengelola ekosistem riset ekologi MRV Nexus.
             </p>
             <p>
-              Di sini, mahasantri tidak hanya belajar tahsin, tahfidz, dan kitab kuning, tetapi juga dibina
-              menguasai IT, pemetaan (GIS), dan pengelolaan SDM survei — sambil tetap menjalankan peran mereka
-              sebagai mahasiswa aktif di kampus masing-masing.
+              Di sini, mahasantri tidak hanya belajar tahsin, tahfidz, dan kitab kuning, tetapi juga dibina menguasai
+              IT, pemetaan (GIS), dan pengelolaan SDM survei, sambil tetap menjalankan peran mereka sebagai mahasiswa
+              aktif di kampus masing-masing.
             </p>
             <p>
-              Bangunjiwa menjadi jembatan bagi mahasantri untuk melaksanakan pengabdian masyarakat secara nyata:
-              turun ke DAS dan kawasan hutan sosial sebagai enumerator, pengelola data, dan pemetaan bersama MRV
-              Nexus, menerapkan semangat ta&apos;awanu &apos;ala al-birri wat taqwa dalam kehidupan sehari-hari.
+              Bangunjiwa menjadi jembatan bagi mahasantri untuk melaksanakan pengabdian masyarakat secara nyata: turun
+              ke DAS dan kawasan hutan sosial sebagai enumerator, pengelola data, dan pemetaan bersama MRV Nexus,
+              menerapkan semangat ta&apos;awanu &apos;ala al-birri wat taqwa dalam kehidupan sehari-hari.
             </p>
           </div>
-        </Panel>
-        <div
-          className="flex flex-col justify-between gap-8 rounded-[22px] bg-iron p-6 text-frost shadow-panel sm:p-7 xl:col-span-5"
-          style={{ backgroundImage: "radial-gradient(circle at 100% 0%, rgb(138 147 127 / 0.45), transparent 55%)" }}
-        >
-          <span className="text-[11px] font-medium uppercase tracking-[0.1em] text-frost/60">Visi</span>
-          <h2 className="text-balance font-heading text-xl font-normal leading-snug sm:text-2xl">
-            Menjadi lembaga pendidikan keislaman berbasis riset ekologi dan pengabdian masyarakat, sekaligus
-            sumber SDM bagi ekosistem MRV Nexus
-          </h2>
-          <p className="flex items-center gap-2 border-t border-frost/15 pt-4 text-[13px] text-frost/70">
-            <span className="size-1.5 rounded-full bg-pine" aria-hidden />
-            Ilmu duniawi dan ukhrowi, berjalan seimbang
-          </p>
         </div>
+        <figure className="self-start border-l-4 border-hijau pl-6">
+          <figcaption className="text-[13px] font-semibold text-emas-deep">Visi</figcaption>
+          <blockquote className="mt-2 font-heading text-2xl leading-snug text-iron-deep">
+            Menjadi lembaga pendidikan keislaman berbasis riset ekologi dan pengabdian masyarakat, sekaligus sumber SDM
+            bagi ekosistem MRV Nexus.
+          </blockquote>
+        </figure>
       </section>
 
-      <Panel className="mt-4">
-        <PanelHeader title="Misi" icon={Target} />
-        <ol className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
-          {MISI_BANGUNJIWA.map((misi, i) => (
-            <li key={misi} className="rounded-2xl border border-white bg-frost p-4">
-              <span className="font-heading text-sm font-semibold text-pine-deep">{String(i + 1).padStart(2, "0")}</span>
-              <p className="mt-2 text-[13px] leading-relaxed text-iron">{misi}</p>
+      <section className="mt-16">
+        <h2 className="font-heading text-2xl text-iron-deep">Misi</h2>
+        <ol className="mt-6 grid list-decimal gap-x-12 gap-y-4 pl-5 marker:font-heading marker:text-hijau md:grid-cols-2">
+          {MISI_BANGUNJIWA.map((misi) => (
+            <li key={misi} className="pl-2 text-[15px] leading-relaxed text-iron">
+              {misi}
             </li>
           ))}
         </ol>
-      </Panel>
+      </section>
 
       <section id="program-unggulan">
         <SectionHeading
@@ -147,57 +96,41 @@ export default function PpmPage() {
           title="Tiga program PPM Bangunjiwa"
           description="Selain pesantren bagi mahasiswa dan santri umum, PPM menyelenggarakan diklat bagi guru serta wali santri dan pendamping belajar."
         />
-        <div className="grid gap-4 md:grid-cols-3">
+        <ul className="grid gap-x-8 gap-y-8 md:grid-cols-3">
           {PPM_PROGRAM.map((program) => (
-            <Panel key={program.judul} className="flex items-start gap-4">
-              <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-pine-soft text-pine-deep">
-                <HeartHandshake className="size-5" strokeWidth={1.75} />
-              </span>
-              <div>
-                <h3 className="font-heading text-lg font-medium text-iron-deep">{program.judul}</h3>
-                <p className="mt-1.5 text-[13px] leading-relaxed text-iron-soft">{program.keterangan}</p>
-              </div>
-            </Panel>
+            <li key={program.judul} className="border-t-2 border-hijau pt-5">
+              <h3 className="font-heading text-xl text-iron-deep">{program.judul}</h3>
+              <p className="mt-2 text-[15px] leading-relaxed text-iron-soft">{program.keterangan}</p>
+            </li>
           ))}
-        </div>
+        </ul>
       </section>
 
       <section id="program-riset">
         <SectionHeading
           eyebrow="Program Riset Ekologi"
           title="Tiga pilar SDM untuk ekosistem MRV Nexus"
-          description="Selain pendidikan keislaman, mahasantri dibina lintas tiga bidang agar siap mengelola MRV Nexus — platform monitoring, reporting, dan verification untuk DAS dan hutan sosial."
+          description="Selain pendidikan keislaman, mahasantri dibina lintas tiga bidang agar siap mengelola MRV Nexus, platform monitoring, reporting, dan verification untuk DAS dan hutan sosial."
         />
-        <div className="grid gap-4 md:grid-cols-3">
-          {RISET_PILLARS.map((pillar, i) => {
-            const Icon = PILLAR_ICON[pillar.id];
-            return (
-              <Panel key={pillar.id} className="flex flex-col gap-5">
-                <div className="flex items-center justify-between">
-                  <span className="flex size-10 items-center justify-center rounded-xl bg-pine-soft text-pine-deep">
-                    <Icon className="size-5" strokeWidth={1.75} />
-                  </span>
-                  <span className="font-heading text-xs text-ash-deep">{String(i + 1).padStart(2, "0")}</span>
-                </div>
-                <div>
-                  <h3 className="font-heading text-lg font-medium text-iron-deep">{pillar.title}</h3>
-                  <p className="mt-2 text-[13px] leading-relaxed text-iron-soft">{pillar.description}</p>
-                </div>
-              </Panel>
-            );
-          })}
-        </div>
-        <Panel className="mt-4">
-          <PanelHeader title="Peminatan Riset — Semester IV & V" icon={Compass} />
-          <div className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+        <ul className="grid gap-x-8 gap-y-8 md:grid-cols-3">
+          {RISET_PILLARS.map((pillar) => (
+            <li key={pillar.id} className="border-t-2 border-hijau pt-5">
+              <h3 className="font-heading text-xl text-iron-deep">{pillar.title}</h3>
+              <p className="mt-2 text-[15px] leading-relaxed text-iron-soft">{pillar.description}</p>
+            </li>
+          ))}
+        </ul>
+        <div className="mt-12">
+          <h3 className="font-heading text-xl text-iron-deep">Peminatan riset, semester IV dan V</h3>
+          <dl className="mt-4 border-t border-ash">
             {PEMINATAN_RISET.map((item) => (
-              <div key={item.tag} className="rounded-2xl bg-linen p-4">
-                <span className="text-[11px] font-semibold uppercase tracking-[0.08em] text-pine-deep">{item.tag}</span>
-                <p className="mt-1.5 text-[13px] leading-relaxed text-iron">{item.description}</p>
+              <div key={item.tag} className="grid gap-1 border-b border-ash py-3 sm:grid-cols-[160px_1fr]">
+                <dt className="text-[15px] font-medium text-hijau">{item.tag}</dt>
+                <dd className="text-[15px] text-iron">{item.description}</dd>
               </div>
             ))}
-          </div>
-        </Panel>
+          </dl>
+        </div>
       </section>
 
       <section id="kurikulum">
@@ -206,18 +139,16 @@ export default function PpmPage() {
           title="Kurikulum Pesantren Riset Ekologi Bangunjiwa"
           description="Disusun bertahap dari semester I hingga V, memadukan Al-Qur'an, ilmu alat, dan fikih dengan peminatan riset ekologi serta pengabdian masyarakat."
         />
-        <Panel className="px-3 sm:px-4">
-          <CurriculumTable />
-          <p className="mt-4 px-1 text-xs text-iron-soft">
-            Ditetapkan oleh Direktur Pendidikan PPM Riset Ekologi Bangunjiwa, M. Hamid Lufafi, S.Pd.
-          </p>
-        </Panel>
+        <CurriculumTable />
+        <p className="mt-4 text-[13px] text-iron-soft">
+          Ditetapkan oleh Direktur Pendidikan PPM Riset Ekologi Bangunjiwa, M. Hamid Lufafi, S.Pd.
+        </p>
       </section>
 
       <section id="ekosistem">
         <SectionHeading
           eyebrow="Ekosistem Terintegrasi"
-          title="Satu ekosistem, tiga simpul yang saling menghidupi"
+          title="Bangunjiwa, MRV Nexus, dan donasi publik"
           description="Bangunjiwa mencetak SDM, MRV Nexus mengoperasikan data lapangan, dan donasi publik mendanai keberlangsungan keduanya."
         />
         <EcosystemFlow />
@@ -227,25 +158,16 @@ export default function PpmPage() {
         <SectionHeading
           eyebrow="Kegiatan & Fasilitas"
           title="Keseharian mahasantri Bangunjiwa"
-          description="Dari kajian malam, tahsin bersama, hingga ruang tinggal yang nyaman untuk belajar dan beristirahat."
+          description="Dari kajian malam, tahsin bersama, hingga ruang tinggal untuk belajar dan beristirahat."
         />
         <ActivityGallery />
       </section>
 
-      <section id="segera">
-        <SectionHeading
-          eyebrow="Sedang Disiapkan"
-          title="Informasi PPM berikutnya"
-          description="Bagian berikut akan diisi setelah informasi resminya tersedia."
-        />
-        <ComingSoonGrid items={unitOutline(PPM, PPM_SUDAH_ADA)} />
-      </section>
+      <ComingSoonGrid items={unitOutline(PPM, PPM_SUDAH_ADA)} title="Informasi PPM yang sedang disiapkan" />
 
-      <section id="kontak" className="mt-4">
-        <Panel>
-          <PanelHeader title="Kontak PPM" icon={Phone} />
-          <UnitContacts lembaga={PPM} className="mt-4" />
-        </Panel>
+      <section id="kontak" className="mt-16 border-t border-ash pt-8">
+        <h2 className="font-heading text-xl text-iron-deep">Kontak PPM</h2>
+        <UnitContacts lembaga={PPM} className="mt-4" />
       </section>
     </>
   );

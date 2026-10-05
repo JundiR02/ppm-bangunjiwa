@@ -13,7 +13,7 @@ export function EmptyState({
   className?: string;
 }) {
   return (
-    <div className={cn("flex flex-col items-center justify-center gap-2 rounded-2xl border border-dashed border-ash-deep/60 px-5 py-8 text-center", className)}>
+    <div className={cn("flex flex-col items-center justify-center gap-2 rounded-lg border border-dashed border-ash-deep/60 px-5 py-8 text-center", className)}>
       <span className="flex size-10 items-center justify-center rounded-full bg-linen text-iron-soft">
         <Icon className="size-5" strokeWidth={1.75} />
       </span>

@@ -65,7 +65,7 @@ export function ProgramsManager() {
       {error && <p role="alert" className="mx-5 mt-4 text-[13px] text-destructive sm:mx-6">Terjadi kesalahan: {error}</p>}
       <div className="mt-5 px-3 sm:px-4">
         {programs === null && !error ? (
-          <Skeleton className="h-32 w-full rounded-2xl bg-linen" />
+          <Skeleton className="h-32 w-full rounded-lg bg-linen" />
         ) : programs && programs.length === 0 ? (
           <EmptyState icon={LayoutList} title="Belum ada program">
             Klik &ldquo;Program baru&rdquo; untuk menambahkan program pertama.
@@ -105,7 +105,7 @@ export function ProgramsManager() {
                               href={campaignHref(p.slug)}
                               target="_blank"
                               aria-label={`Lihat ${p.title}`}
-                              className="inline-flex size-9 items-center justify-center rounded-xl border border-white bg-frost text-iron shadow-panel hover:bg-linen"
+                              className="inline-flex size-9 items-center justify-center rounded-xl border border-ash bg-frost text-iron shadow-panel hover:bg-linen"
                             >
                               <ExternalLink className="size-4" />
                             </Link>

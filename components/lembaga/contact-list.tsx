@@ -14,18 +14,18 @@ const KONTAK_ICON: Record<KontakLembaga["kind"], LucideIcon> = {
 
 export function ContactList({ kontak, className }: { kontak: KontakLembaga[]; className?: string }) {
   return (
-    <ul className={cn("flex flex-col gap-2", className)}>
+    <ul className={cn("flex flex-col gap-2.5", className)}>
       {kontak.map((k) => {
         const Icon = KONTAK_ICON[k.kind];
         const content = (
           <>
-            <Icon className="mt-0.5 size-3.5 shrink-0 text-iron-soft" strokeWidth={1.75} />
+            <Icon className="mt-1 size-4 shrink-0 text-pine-deep" strokeWidth={1.75} />
             <span className="min-w-0 break-words">{k.label}</span>
           </>
         );
         const external = k.href?.startsWith("http");
         return (
-          <li key={k.label} className="text-[13px] leading-snug text-iron">
+          <li key={k.label} className="text-[15px] leading-snug text-iron">
             {k.href ? (
               <a
                 href={k.href}

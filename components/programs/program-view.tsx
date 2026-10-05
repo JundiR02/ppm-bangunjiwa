@@ -52,7 +52,7 @@ function ProgramList() {
                 onClick={() => setFilter(t.id)}
                 className={cn(
                   "rounded-full px-3 py-1.5 text-[12px] font-medium transition-colors",
-                  filter === t.id ? "bg-iron text-frost" : "bg-linen text-iron-soft hover:text-iron"
+                  filter === t.id ? "bg-hijau text-frost" : "bg-linen text-iron-soft hover:text-iron"
                 )}
               >
                 {t.label}
@@ -63,7 +63,7 @@ function ProgramList() {
         {state.status === "loading" ? (
           <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
             {Array.from({ length: 3 }, (_, i) => (
-              <Skeleton key={i} className="h-44 rounded-2xl bg-linen" />
+              <Skeleton key={i} className="h-44 rounded-lg bg-linen" />
             ))}
           </div>
         ) : state.status === "error" ? (
@@ -107,7 +107,7 @@ function ProgramDetail({ slug }: { slug: string }) {
     };
   }, [slug]);
 
-  if (state.status === "loading") return <Skeleton className="h-96 w-full rounded-[22px] bg-linen" />;
+  if (state.status === "loading") return <Skeleton className="h-96 w-full rounded-xl bg-linen" />;
   if (state.status !== "ready") {
     return (
       <Panel>

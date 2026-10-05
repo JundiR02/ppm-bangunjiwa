@@ -11,7 +11,7 @@ export function Panel({
   return (
     <div
       className={cn(
-        "rounded-[22px] border border-white/80 bg-frost/80 p-5 shadow-panel backdrop-blur-sm sm:p-6",
+        "rounded-xl border border-ash bg-frost p-5 sm:p-6",
         className
       )}
       {...props}
@@ -36,11 +36,9 @@ export function PanelHeader({
     <div className={cn("flex items-center justify-between gap-3", className)}>
       <div className="flex min-w-0 items-center gap-2.5">
         {Icon && (
-          <span className="flex size-8 shrink-0 items-center justify-center rounded-lg border border-white bg-linen text-iron">
-            <Icon className="size-4" strokeWidth={1.75} />
-          </span>
+          <Icon className="size-[18px] shrink-0 text-pine-deep" strokeWidth={1.75} />
         )}
-        <h2 className="font-heading text-[15px] font-semibold text-iron-deep">{title}</h2>
+        <h2 className="font-heading text-lg font-medium text-iron-deep">{title}</h2>
       </div>
       {action}
     </div>
@@ -53,7 +51,7 @@ export function CircleLink({ href, label, className }: { href: string; label: st
       href={href}
       aria-label={label}
       className={cn(
-        "flex size-9 shrink-0 items-center justify-center rounded-full border border-white bg-frost text-iron shadow-panel transition-colors hover:bg-iron hover:text-frost",
+        "flex size-9 shrink-0 items-center justify-center rounded-full border border-ash text-pine-deep transition-colors hover:border-hijau hover:bg-hijau hover:text-frost",
         className
       )}
     >
@@ -64,14 +62,6 @@ export function CircleLink({ href, label, className }: { href: string; label: st
 
 export function Eyebrow({ children, className }: { children: React.ReactNode; className?: string }) {
   return (
-    <span
-      className={cn(
-        "inline-flex items-center gap-2 rounded-full border border-white/80 bg-frost/70 px-3 py-1 text-xs font-medium text-iron shadow-panel",
-        className
-      )}
-    >
-      <span className="size-1.5 rounded-full bg-pine" aria-hidden />
-      {children}
-    </span>
+    <span className={cn("inline-block text-[13px] font-semibold text-emas-deep", className)}>{children}</span>
   );
 }

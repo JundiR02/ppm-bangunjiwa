@@ -4,7 +4,7 @@ export type BarTone = "pine" | "iron" | "ash";
 
 const TONE: Record<BarTone, string> = {
   pine: "bg-pine",
-  iron: "bg-iron",
+  iron: "bg-hijau",
   ash: "bg-ash-deep",
 };
 

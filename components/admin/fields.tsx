@@ -32,7 +32,7 @@ export function GhostButton({ className, ...props }: React.ComponentProps<"butto
     <button
       type="button"
       className={cn(
-        "inline-flex h-9 items-center justify-center gap-1.5 rounded-xl border border-white bg-frost px-3 text-[13px] font-medium text-iron shadow-panel transition-colors hover:bg-linen disabled:opacity-50",
+        "inline-flex h-9 items-center justify-center gap-1.5 rounded-xl border border-ash bg-frost px-3 text-[13px] font-medium text-iron shadow-panel transition-colors hover:bg-linen disabled:opacity-50",
         className
       )}
       {...props}
@@ -44,7 +44,7 @@ export function PrimaryButton({ className, ...props }: React.ComponentProps<"but
   return (
     <button
       className={cn(
-        "inline-flex h-10 items-center justify-center gap-1.5 rounded-xl bg-iron px-4 text-[13px] font-medium text-frost shadow-panel transition-colors hover:bg-iron-deep disabled:opacity-50",
+        "inline-flex h-10 items-center justify-center gap-1.5 rounded-xl bg-hijau px-4 text-[13px] font-medium text-frost shadow-panel transition-colors hover:bg-hijau-deep disabled:opacity-50",
         className
       )}
       {...props}

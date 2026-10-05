@@ -1,84 +1,132 @@
-import { Sprout, TreePine } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { PageTop } from "@/components/shell/page-top";
-import { Panel, PanelHeader, CircleLink, Eyebrow } from "@/components/hub/panel";
-import { QuotePanel } from "@/components/home/quote-panel";
-import { HubKpis, FeaturedProgress } from "@/components/home/hub-live";
-import { RunningPrograms } from "@/components/programs/running-programs";
-import { CROWDFUNDING_PATH } from "@/lib/programs";
-import { THREE_PILLARS } from "@/lib/dummy-data";
+import { QuoteBand } from "@/components/home/quote-panel";
+import { RunningCampaignsSection } from "@/components/home/running-campaigns-section";
+import { UnitLogo } from "@/components/lembaga/unit-logo";
+import { BIDANG_PROGRAM, LEMBAGA_BANGUNJIWA, PROFIL_PESANTREN } from "@/lib/bangunjiwa-data";
 
 export default function Home() {
   return (
     <>
       <PageTop />
 
-      <section className="grid gap-4 xl:grid-cols-12">
-        <div className="flex flex-col justify-between gap-8 pb-2 xl:col-span-8 xl:pr-6">
-          <div>
-            <Eyebrow>Pesantren Hijau · Riset Ekologi</Eyebrow>
-            <h1 className="mt-5 max-w-2xl text-balance font-heading text-[2.4rem] font-normal leading-[1.08] tracking-[-0.02em] text-iron-deep sm:text-5xl">
-              Merawat bumi dengan ilmu, iman, dan komunitas
-            </h1>
-            <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-iron-soft">
-              Portal digital Yayasan Pesantren Masyarakat Bangunjiwa — pendidikan dirosah islamiyah,
-              pendidikan vokasi, kewirausahaan, dan Dana Abadi Pesantren Hijau dalam satu tempat.
-            </p>
-          </div>
-          <div className="border-t border-dashed border-ash-deep/70 pt-6">
-            <HubKpis />
+      <section className="grid items-center gap-12 pt-6 pb-4 lg:grid-cols-[1.05fr_1fr] lg:pt-12">
+        <div>
+          <p className="text-[14px] font-semibold text-emas-deep">Bangunjiwa, Kasihan, Bantul</p>
+          <h1 className="mt-4 text-balance font-heading text-[2.6rem] leading-[1.08] text-iron-deep sm:text-[3.4rem]">
+            Yayasan Pesantren Masyarakat Bangunjiwa
+          </h1>
+          <p className="mt-5 max-w-xl text-[17px] leading-relaxed text-iron-soft">
+            Mengaji dan belajar ilmu agama untuk anak usia PAUD hingga mahasiswa, ditambah pendidikan vokasi dan
+            unit usaha yayasan.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Link
+              href="/pendidikan"
+              className="inline-flex items-center gap-2 rounded-md bg-hijau px-5 py-3 text-[15px] font-medium text-frost transition-colors hover:bg-hijau-deep"
+            >
+              Lihat lembaga pendidikan <ArrowRight className="size-4" />
+            </Link>
+            <Link
+              href="/psb"
+              className="inline-flex items-center rounded-md border border-ash-deep px-5 py-3 text-[15px] font-medium text-iron-deep transition-colors hover:border-hijau hover:text-hijau"
+            >
+              Pendaftaran santri baru
+            </Link>
           </div>
         </div>
-        <FeaturedProgress className="flex flex-col xl:col-span-4" />
+
+        <div className="relative mx-auto w-full max-w-[520px] pb-10 sm:pb-16">
+          <Image
+            src="/images/bangunjiwa/kajian-quran.jpg"
+            alt="Santri mengaji Al-Qur'an bersama ustadz"
+            width={496}
+            height={348}
+            priority
+            className="w-[88%] rounded-lg object-cover"
+          />
+          <Image
+            src="/images/bangunjiwa/santriwati-menulis.jpg"
+            alt="Santriwati menulis pelajaran"
+            width={496}
+            height={348}
+            className="absolute right-0 bottom-0 w-[52%] rounded-lg border-4 border-frost object-cover"
+          />
+        </div>
       </section>
 
-      <section className="mt-4 grid gap-4 xl:grid-cols-12">
-        <Panel className="xl:col-span-8">
-          <PanelHeader title="Kampanye Berjalan" icon={Sprout} action={<CircleLink href={CROWDFUNDING_PATH} label="Semua kampanye" />} />
-          <RunningPrograms limit={4} className="mt-5" />
-        </Panel>
-        <QuotePanel className="xl:col-span-4" />
+      <section aria-label="Lembaga pendidikan" className="full-bleed mt-16 bg-linen py-10">
+        <ul className="mx-auto grid max-w-[1200px] grid-cols-2 gap-y-8 lg:grid-cols-4 lg:divide-x lg:divide-ash">
+          {LEMBAGA_BANGUNJIWA.map((l) => (
+            <li key={l.id} className="px-2 lg:px-6">
+              <Link href={l.href} className="group flex items-center gap-4">
+                <UnitLogo src={l.logo} alt="" fallback={l.singkatan} className="size-14 rounded-full border-0 bg-frost" />
+                <span>
+                  <span className="block font-heading text-[17px] text-iron-deep group-hover:text-hijau">{l.nama}</span>
+                  <span className="block text-[13px] text-iron-soft">{l.untuk}</span>
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ul>
       </section>
 
-      <section className="mt-4 grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
-        {THREE_PILLARS.map((pillar, i) => (
-          <Panel key={pillar.id} className="flex flex-col gap-6 p-5 sm:p-5">
-            <div className="flex items-center justify-between">
-              <p className="text-[11px] font-medium uppercase tracking-[0.08em] text-iron-soft">{pillar.subtitle}</p>
-              <span className="font-heading text-xs text-ash-deep">{String(i + 1).padStart(2, "0")}</span>
-            </div>
-            <div>
-              <h3 className="font-heading text-xl font-medium text-iron-deep">{pillar.title}</h3>
-              <p className="mt-1.5 text-[13px] leading-relaxed text-iron-soft">{pillar.description}</p>
-            </div>
-          </Panel>
-        ))}
-        <Panel className="flex flex-col gap-6 p-5 sm:p-5">
-          <p className="text-[11px] font-medium uppercase tracking-[0.08em] text-iron-soft">Pendidikan</p>
-          <div>
-            <h3 className="font-heading text-xl font-medium text-iron-deep">Belajar di Bangunjiwa</h3>
-            <p className="mt-1.5 text-[13px] leading-relaxed text-iron-soft">PPM, MDT, TPQ Plus, dan Pra-TPQ — dari usia PAUD hingga mahasiswa.</p>
+      <section className="mt-24 grid gap-10 lg:grid-cols-[1fr_2fr]">
+        <div>
+          <h2 className="font-heading text-3xl leading-tight text-iron-deep sm:text-4xl">Program yayasan</h2>
+          <p className="mt-4 max-w-sm text-[15px] leading-relaxed text-iron-soft">
+            Empat bidang yang dijalankan yayasan, dari pendidikan sampai pendanaan.
+          </p>
+          <Link href="/program" className="mt-6 inline-flex items-center gap-2 text-[15px] font-medium text-hijau hover:underline">
+            Semua program <ArrowRight className="size-4" />
+          </Link>
+        </div>
+        <ul className="border-t border-ash">
+          {BIDANG_PROGRAM.map((bidang) => (
+            <li key={bidang.id} className="border-b border-ash">
+              <Link href={bidang.href} className="group grid gap-2 py-6 sm:grid-cols-[1fr_1.2fr] sm:gap-8">
+                <span className="font-heading text-xl text-iron-deep group-hover:text-hijau">{bidang.nama}</span>
+                <span className="text-[14px] leading-relaxed text-iron-soft">
+                  {bidang.items.map((item) => item.judul).join(" · ")}
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <QuoteBand />
+
+      <RunningCampaignsSection />
+
+      <section className="mt-24 grid items-center gap-10 lg:grid-cols-2">
+        <Image
+          src="/images/bangunjiwa/fasad-asrama.jpg"
+          alt="Bangunan asrama Bangunjiwa"
+          width={484}
+          height={405}
+          className="w-full max-w-[480px] rounded-lg object-cover"
+        />
+        <div>
+          <h2 className="font-heading text-3xl leading-tight text-iron-deep sm:text-4xl">Berkunjung ke Bangunjiwa</h2>
+          <p className="mt-4 text-[16px] leading-relaxed text-iron-soft">{PROFIL_PESANTREN.alamat}</p>
+          <p className="mt-2 text-[15px] text-iron-soft">Pengasuh: {PROFIL_PESANTREN.pengasuh.join(" dan ")}</p>
+          <div className="mt-6 flex flex-wrap gap-4 text-[15px] font-medium">
+            <Link href="/kontak" className="text-hijau hover:underline">
+              Kontak setiap lembaga
+            </Link>
+            <a
+              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(PROFIL_PESANTREN.alamat)}`}
+              target="_blank"
+              rel="noopener"
+              className="text-hijau hover:underline"
+            >
+              Buka di Google Maps
+            </a>
           </div>
-          <div className="mt-auto flex items-center justify-between border-t border-ash/60 pt-3">
-            <span className="text-[13px] font-medium text-iron">Pendidikan</span>
-            <CircleLink href="/pendidikan" label="Pendidikan" />
-          </div>
-        </Panel>
-        <Panel className="flex flex-col gap-6 bg-linen/70 p-5 sm:p-5">
-          <div className="flex items-center justify-between">
-            <p className="text-[11px] font-medium uppercase tracking-[0.08em] text-iron-soft">Wakaf</p>
-            <span className="rounded-full bg-frost px-2 py-0.5 text-[10px] font-medium uppercase tracking-wide text-iron-soft">
-              Segera hadir
-            </span>
-          </div>
-          <div>
-            <h3 className="flex items-center gap-2 font-heading text-xl font-medium text-iron-deep">
-              <TreePine className="size-5 text-pine-deep" strokeWidth={1.75} /> Wakaf Pohon
-            </h3>
-            <p className="mt-1.5 text-[13px] leading-relaxed text-iron-soft">
-              Sedang disiapkan. Mekanisme pengelolaan dan pelaporannya diumumkan setelah siap.
-            </p>
-          </div>
-        </Panel>
+        </div>
       </section>
     </>
   );

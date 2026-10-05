@@ -14,7 +14,7 @@ export default function CrowdfundingPage() {
   return (
     <>
       <PageTop parent={{ label: "Dana Abadi Pesantren Hijau", href: "/dana-abadi" }} crumb="Crowdfunding" />
-      <Suspense fallback={<Skeleton className="h-64 w-full rounded-[22px] bg-linen" />}>
+      <Suspense fallback={<Skeleton className="h-64 w-full rounded-xl bg-linen" />}>
         <ProgramView />
       </Suspense>
     </>

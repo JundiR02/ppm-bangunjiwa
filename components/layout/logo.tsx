@@ -20,8 +20,8 @@ export function Logo({ onClick }: { onClick?: () => void }) {
         />
       </span>
       <span className="flex flex-col leading-tight">
-        <span className="font-heading text-[14px] font-bold text-iron-deep">Bangunjiwa</span>
-        <span className="text-[11px] tracking-wide text-iron-soft">Pesantren Masyarakat</span>
+        <span className="font-heading text-[17px] font-semibold text-iron-deep">Bangunjiwa</span>
+        <span className="text-[12px] text-iron-soft">Pesantren Masyarakat</span>
       </span>
     </Link>
   );

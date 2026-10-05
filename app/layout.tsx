@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Manrope, Inter, Noto_Naskh_Arabic } from "next/font/google";
+import { Source_Serif_4, Inter, Noto_Naskh_Arabic } from "next/font/google";
 import "./globals.css";
 import { AppShell } from "@/components/shell/app-shell";
 
-const manrope = Manrope({
-  variable: "--font-manrope",
+const sourceSerif = Source_Serif_4({
+  variable: "--font-source-serif",
   subsets: ["latin"],
 });
 
@@ -36,7 +36,7 @@ export default function RootLayout({
   return (
     <html
       lang="id"
-      className={`${manrope.variable} ${inter.variable} ${notoNaskhArabic.variable} antialiased`}
+      className={`${sourceSerif.variable} ${inter.variable} ${notoNaskhArabic.variable} antialiased`}
     >
       <body>
         <AppShell>{children}</AppShell>

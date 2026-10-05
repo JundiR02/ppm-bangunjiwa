@@ -6,7 +6,7 @@ export function UnitLogo({ src, alt, fallback, className }: { src?: string; alt:
   return (
     <span
       className={cn(
-        "flex size-14 shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-white shadow-panel",
+        "flex size-14 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-ash shadow-panel",
         src ? "bg-frost p-1" : "bg-pine-soft",
         className
       )}

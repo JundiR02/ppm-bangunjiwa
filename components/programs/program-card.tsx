@@ -15,7 +15,7 @@ export function ProgressBar({ percent, className }: { percent: number; className
 export function ProgramChips({ program }: { program: Program }) {
   return (
     <div className="flex flex-wrap items-center gap-1.5">
-      <span className="rounded-full border border-white bg-linen px-2.5 py-0.5 text-[11px] font-medium text-iron">
+      <span className="rounded-full border border-ash bg-linen px-2.5 py-0.5 text-[11px] font-medium text-iron">
         {typeLabel(program.type)}
       </span>
       <span
@@ -36,7 +36,7 @@ export function ProgramCard({ program, className }: { program: Program; classNam
     <Link
       href={campaignHref(program.slug)}
       className={cn(
-        "group flex h-full flex-col gap-4 rounded-2xl border border-white bg-frost p-5 transition-colors hover:border-ash-deep",
+        "group flex h-full flex-col gap-4 rounded-lg border border-ash bg-frost p-5 transition-colors hover:border-ash-deep",
         className
       )}
     >

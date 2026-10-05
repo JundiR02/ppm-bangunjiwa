@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Suspense } from "react";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { PageTop } from "@/components/shell/page-top";
-import { Panel, Eyebrow } from "@/components/hub/panel";
+import { Eyebrow } from "@/components/hub/panel";
 import { LegacyCampaignRedirect } from "@/components/programs/legacy-campaign-redirect";
 import { BIDANG_PROGRAM } from "@/lib/bangunjiwa-data";
 
@@ -32,46 +32,37 @@ export default function ProgramPage() {
         </p>
       </div>
 
-      <ol className="mt-8 grid gap-4 md:grid-cols-2">
-        {BIDANG_PROGRAM.map((bidang, i) => (
-          <li key={bidang.id} className="flex">
-            <Panel className="flex w-full flex-col gap-4">
-              <div className="flex items-center justify-between">
-                <span className="font-heading text-sm font-semibold text-pine-deep">{String(i + 1).padStart(2, "0")}</span>
-                <Link
-                  href={bidang.href}
-                  aria-label={`Buka ${bidang.nama}`}
-                  className="flex size-9 shrink-0 items-center justify-center rounded-full border border-white bg-frost text-iron shadow-panel transition-colors hover:bg-iron hover:text-frost"
-                >
-                  <ArrowUpRight className="size-4" />
+      <ul className="mt-10 border-t border-ash">
+        {BIDANG_PROGRAM.map((bidang) => (
+          <li key={bidang.id} className="grid gap-4 border-b border-ash py-8 lg:grid-cols-[1fr_1.4fr] lg:gap-12">
+            <div>
+              <h2 className="font-heading text-2xl text-iron-deep">
+                <Link href={bidang.href} className="hover:text-hijau">
+                  {bidang.nama}
                 </Link>
-              </div>
-              <div>
-                <h2 className="font-heading text-xl font-medium text-iron-deep">
-                  <Link href={bidang.href} className="hover:underline">
-                    {bidang.nama}
-                  </Link>
-                </h2>
-                <p className="mt-1.5 text-[13px] leading-relaxed text-iron-soft">{bidang.ringkas}</p>
-              </div>
-              <ul className="mt-auto flex flex-col gap-1.5 border-t border-ash/60 pt-4">
-                {bidang.items.map((item) => (
-                  <li key={item.judul} className="flex items-center gap-2 text-[13px] text-iron">
-                    <span className="size-1.5 shrink-0 rounded-full bg-pine" aria-hidden />
-                    {item.href ? (
-                      <Link href={item.href} className="hover:text-pine-deep hover:underline">
-                        {item.judul}
-                      </Link>
-                    ) : (
-                      item.judul
-                    )}
-                  </li>
-                ))}
-              </ul>
-            </Panel>
+              </h2>
+              <p className="mt-2 text-[15px] leading-relaxed text-iron-soft">{bidang.ringkas}</p>
+              <Link href={bidang.href} className="mt-4 inline-flex items-center gap-2 text-[14px] font-medium text-hijau hover:underline">
+                Selengkapnya <ArrowRight className="size-4" />
+              </Link>
+            </div>
+            <ul className="flex flex-col gap-2 lg:pt-1">
+              {bidang.items.map((item) => (
+                <li key={item.judul} className="text-[15px] text-iron">
+                  {item.href ? (
+                    <Link href={item.href} className="hover:text-hijau hover:underline">
+                      {item.judul}
+                    </Link>
+                  ) : (
+                    item.judul
+                  )}
+                  {item.keterangan && <span className="text-iron-soft"> · {item.keterangan}</span>}
+                </li>
+              ))}
+            </ul>
           </li>
         ))}
-      </ol>
+      </ul>
     </>
   );
 }

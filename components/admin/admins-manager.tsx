@@ -51,11 +51,11 @@ export function AdminsManager({ user }: { user: User }) {
           Orang lain dapat meminta akses dengan masuk di halaman ini memakai akun Google mereka.
         </p>
         {requests.length === 0 ? (
-          <p className="mt-5 rounded-2xl bg-linen/70 p-4 text-[13px] text-iron-soft">Tidak ada permintaan baru.</p>
+          <p className="mt-5 rounded-lg bg-linen/70 p-4 text-[13px] text-iron-soft">Tidak ada permintaan baru.</p>
         ) : (
           <ul className="mt-5 flex flex-col gap-2">
             {requests.map((r) => (
-              <li key={r.uid} className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-white bg-frost p-3">
+              <li key={r.uid} className="flex flex-wrap items-center justify-between gap-3 rounded-lg border border-ash bg-frost p-3">
                 <div className="min-w-0">
                   <p className="truncate text-[13px] font-medium text-iron-deep">{r.name || r.email}</p>
                   <p className="truncate text-xs text-iron-soft">{r.email}</p>
@@ -77,12 +77,12 @@ export function AdminsManager({ user }: { user: User }) {
       <Panel>
         <PanelHeader title="Daftar Admin" icon={ShieldCheck} />
         <ul className="mt-5 flex flex-col gap-2">
-          <li className="flex items-center justify-between gap-3 rounded-2xl bg-iron p-3 text-frost">
+          <li className="flex items-center justify-between gap-3 rounded-lg bg-hijau p-3 text-frost">
             <span className="truncate text-[13px] font-medium">{OWNER_EMAIL}</span>
             <span className="shrink-0 rounded-full bg-frost/15 px-2 py-0.5 text-[11px]">Admin utama</span>
           </li>
           {admins.map((a) => (
-            <li key={a.uid} className="flex items-center justify-between gap-3 rounded-2xl border border-white bg-frost p-3">
+            <li key={a.uid} className="flex items-center justify-between gap-3 rounded-lg border border-ash bg-frost p-3">
               <div className="min-w-0">
                 <p className="truncate text-[13px] font-medium text-iron-deep">{a.email}</p>
                 <p className="truncate text-xs text-iron-soft">Disetujui oleh {a.approvedBy}</p>

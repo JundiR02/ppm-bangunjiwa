@@ -7,7 +7,7 @@ export function ActivityGallery() {
       {KEGIATAN_GALLERY.map((item, i) => (
         <figure
           key={item.id}
-          className={`group relative overflow-hidden rounded-[22px] border border-white/80 shadow-panel ${
+          className={`group relative overflow-hidden rounded-lg ${
             i === 0 ? "col-span-2 row-span-2 min-h-[280px]" : "aspect-square"
           }`}
         >
@@ -18,7 +18,7 @@ export function ActivityGallery() {
             className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
             sizes={i === 0 ? "(min-width: 768px) 50vw, 100vw" : "(min-width: 768px) 25vw, 50vw"}
           />
-          <figcaption className="absolute bottom-3 left-3 max-w-[calc(100%-1.5rem)] rounded-full bg-frost/90 px-3 py-1 text-[11px] font-medium text-iron-deep backdrop-blur">
+          <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-hijau-ink/80 to-transparent px-3 pt-8 pb-2.5 text-[13px] text-frost">
             {item.caption}
           </figcaption>
         </figure>
