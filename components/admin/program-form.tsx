@@ -1,15 +1,19 @@
 "use client";
 
 import * as React from "react";
-import { FilePenLine, Plus, Trash2, TriangleAlert } from "lucide-react";
+import { FilePenLine, ImagePlus, Plus, Trash2, TriangleAlert } from "lucide-react";
 import { Panel, PanelHeader } from "@/components/hub/panel";
 import { Field, FIELD, GhostButton, PrimaryButton } from "@/components/admin/fields";
 import {
   campaignHref,
+  deadlineFromDateInput,
+  deadlineToDateInput,
+  getPoster,
   getProgram,
   isValidSlug,
   PROGRAM_STATUSES,
   PROGRAM_TYPES,
+  savePoster,
   saveProgram,
   slugify,
   type Program,
@@ -18,9 +22,14 @@ import {
   type ProgramType,
 } from "@/lib/programs";
 import { formatDate } from "@/lib/format";
+import { posterDataUrl } from "@/lib/poster-image";
 
 type Row = { label: string; percent: string };
 type Testi = { quote: string; who: string };
+type Pkg = { label: string; price: string; note: string };
+type Contact = { name: string; phone: string };
+/** undefined while an existing poster is still loading; null when there is none. */
+type PosterState = string | null | undefined;
 
 function digits(v: string) {
   return v.replace(/[^0-9]/g, "");
@@ -47,6 +56,30 @@ export function ProgramForm({ program, onDone }: { program: Program | null; onDo
     program?.allocation.map((a) => ({ label: a.label, percent: String(a.percent) })) ?? []
   );
   const [testimonials, setTestimonials] = React.useState<Testi[]>(program?.testimonials ?? []);
+  const [deadline, setDeadline] = React.useState(deadlineToDateInput(program?.deadline ?? null));
+  const [packages, setPackages] = React.useState<Pkg[]>(
+    program?.packages.map((p) => ({ label: p.label, price: p.price?.toString() ?? "", note: p.note })) ?? []
+  );
+  const [contacts, setContacts] = React.useState<Contact[]>(program?.contacts ?? []);
+  const [poster, setPoster] = React.useState<PosterState>(program?.hasPoster ? undefined : null);
+  const [posterError, setPosterError] = React.useState("");
+
+  React.useEffect(() => {
+    if (!program?.hasPoster) return;
+    getPoster(program.slug).then(setPoster, () =>
+      setPosterError("Poster lama gagal dimuat. Menyimpan tanpa memilih poster baru akan mempertahankan poster lama.")
+    );
+  }, [program]);
+
+  async function pickPoster(file: File | undefined) {
+    if (!file) return;
+    setPosterError("");
+    try {
+      setPoster(await posterDataUrl(file));
+    } catch (err) {
+      setPosterError(err instanceof Error ? err.message : String(err));
+    }
+  }
   const [errors, setErrors] = React.useState<string[]>([]);
   const [saving, setSaving] = React.useState(false);
 
@@ -60,6 +93,10 @@ export function ProgramForm({ program, onDone }: { program: Program | null; onDo
     if (allocation.some((r) => !r.label.trim() || r.percent === "")) e.push("Setiap baris alokasi harus punya nama dan persentase.");
     if (allocationSum > 100) e.push(`Total alokasi ${allocationSum}%, tidak boleh lebih dari 100%.`);
     if (testimonials.some((t) => !t.quote.trim())) e.push("Kutipan testimoni tidak boleh kosong.");
+    if (packages.some((p) => !p.label.trim())) e.push("Setiap paket harus punya nama.");
+    if (contacts.some((c) => !c.name.trim() || c.phone.replace(/[^0-9]/g, "").length < 9)) {
+      e.push("Setiap kontak harus punya nama dan nomor yang valid.");
+    }
     return e;
   }
 
@@ -86,8 +123,14 @@ export function ProgramForm({ program, onDone }: { program: Program | null; onDo
         donorCount: toNumber(donorCount),
         allocation: allocation.map((r) => ({ label: r.label.trim(), percent: Number(r.percent) })),
         testimonials: testimonials.map((t) => ({ quote: t.quote.trim(), who: t.who.trim() })),
+        deadline: deadlineFromDateInput(deadline),
+        packages: packages.map((p) => ({ label: p.label.trim(), price: toNumber(p.price), note: p.note.trim() })),
+        contacts: contacts.map((c) => ({ name: c.name.trim(), phone: c.phone.trim() })),
+        // An existing poster that failed to load is kept as it was.
+        hasPoster: poster === undefined ? (program?.hasPoster ?? false) : poster !== null,
       };
       await saveProgram(effectiveSlug, input, program);
+      if (poster !== undefined && (poster !== null || program?.hasPoster)) await savePoster(effectiveSlug, poster);
       onDone(true);
     } catch (err) {
       setErrors([`Gagal menyimpan: ${err instanceof Error ? err.message : String(err)}`]);
@@ -157,6 +200,119 @@ export function ProgramForm({ program, onDone }: { program: Program | null; onDo
           <Field label="Lokasi" htmlFor="location" className="md:col-span-2">
             <input id="location" className={FIELD} maxLength={160} placeholder="contoh: DAS Oyo, Gunungkidul" value={location} onChange={(e) => setLocation(e.target.value)} />
           </Field>
+        </fieldset>
+
+        <fieldset className="grid gap-4 md:grid-cols-2">
+          <legend className="mb-3 text-[13px] font-semibold text-iron-deep">Poster & batas waktu</legend>
+          <div className="flex flex-col gap-2">
+            <span className="text-xs font-medium text-iron">Poster (opsional)</span>
+            {poster ? (
+              // eslint-disable-next-line @next/next/no-img-element -- data URL preview; nothing for next/image to optimise
+              <img src={poster} alt="Pratinjau poster" className="max-h-72 w-fit rounded-lg border border-ash" />
+            ) : poster === undefined && !posterError ? (
+              <p className="text-[12.5px] text-iron-soft">Memuat poster…</p>
+            ) : null}
+            <div className="flex flex-wrap gap-2">
+              <label className="inline-flex h-9 cursor-pointer items-center gap-1.5 rounded-xl border border-ash bg-frost px-3 text-[13px] font-medium text-iron hover:bg-linen">
+                <ImagePlus className="size-4" /> {poster ? "Ganti poster" : "Pilih gambar"}
+                <input type="file" accept="image/*" className="sr-only" onChange={(e) => pickPoster(e.target.files?.[0])} />
+              </label>
+              {poster && (
+                <GhostButton onClick={() => setPoster(null)}>
+                  <Trash2 className="size-4" /> Hapus poster
+                </GhostButton>
+              )}
+            </div>
+            <p className="text-[11.5px] leading-relaxed text-iron-soft">Gambar diperkecil otomatis sebelum disimpan.</p>
+            {posterError && <p className="text-[12px] text-destructive">{posterError}</p>}
+          </div>
+          <Field
+            label="Batas waktu pendaftaran (opsional)"
+            htmlFor="deadline"
+            hint="Setelah tanggal ini kampanye otomatis tampil sebagai ditutup dan tombol donasi disembunyikan."
+          >
+            <input id="deadline" type="date" className={FIELD} value={deadline} onChange={(e) => setDeadline(e.target.value)} />
+          </Field>
+        </fieldset>
+
+        <fieldset className="flex flex-col gap-3">
+          <legend className="mb-1 text-[13px] font-semibold text-iron-deep">Pilihan paket / harga (opsional)</legend>
+          {packages.map((p, i) => (
+            <div key={i} className="grid gap-2 md:grid-cols-[1fr_160px_1.4fr_auto]">
+              <input
+                aria-label={`Nama paket ${i + 1}`}
+                className={FIELD}
+                placeholder="contoh: Kambing"
+                maxLength={60}
+                value={p.label}
+                onChange={(e) => setPackages(packages.map((x, j) => (j === i ? { ...x, label: e.target.value } : x)))}
+              />
+              <input
+                aria-label={`Harga paket ${i + 1}`}
+                inputMode="numeric"
+                className={FIELD}
+                placeholder="Harga (Rp)"
+                value={p.price}
+                onChange={(e) => setPackages(packages.map((x, j) => (j === i ? { ...x, price: digits(e.target.value) } : x)))}
+              />
+              <input
+                aria-label={`Keterangan paket ${i + 1}`}
+                className={FIELD}
+                placeholder="contoh: mulai dari, sesuai varian bobot"
+                maxLength={120}
+                value={p.note}
+                onChange={(e) => setPackages(packages.map((x, j) => (j === i ? { ...x, note: e.target.value } : x)))}
+              />
+              <GhostButton aria-label={`Hapus paket ${i + 1}`} onClick={() => setPackages(packages.filter((_, j) => j !== i))}>
+                <Trash2 className="size-4" />
+              </GhostButton>
+            </div>
+          ))}
+          <GhostButton
+            className="self-start"
+            onClick={() => setPackages([...packages, { label: "", price: "", note: "" }])}
+            disabled={packages.length >= 10}
+          >
+            <Plus className="size-4" /> Tambah paket
+          </GhostButton>
+        </fieldset>
+
+        <fieldset className="flex flex-col gap-3">
+          <legend className="mb-1 text-[13px] font-semibold text-iron-deep">Kontak konfirmasi (opsional)</legend>
+          <p className="text-[12px] text-iron-soft">
+            Nomor tampil di halaman kampanye sebagai tautan WhatsApp. Pastikan pemilik nomor sudah setuju.
+          </p>
+          {contacts.map((c, i) => (
+            <div key={i} className="grid gap-2 md:grid-cols-[1fr_1fr_auto]">
+              <input
+                aria-label={`Nama kontak ${i + 1}`}
+                className={FIELD}
+                placeholder="contoh: Ust. Hamid"
+                maxLength={60}
+                value={c.name}
+                onChange={(e) => setContacts(contacts.map((x, j) => (j === i ? { ...x, name: e.target.value } : x)))}
+              />
+              <input
+                aria-label={`Nomor kontak ${i + 1}`}
+                inputMode="tel"
+                className={FIELD}
+                placeholder="contoh: 0838-6257-6483"
+                maxLength={20}
+                value={c.phone}
+                onChange={(e) => setContacts(contacts.map((x, j) => (j === i ? { ...x, phone: e.target.value } : x)))}
+              />
+              <GhostButton aria-label={`Hapus kontak ${i + 1}`} onClick={() => setContacts(contacts.filter((_, j) => j !== i))}>
+                <Trash2 className="size-4" />
+              </GhostButton>
+            </div>
+          ))}
+          <GhostButton
+            className="self-start"
+            onClick={() => setContacts([...contacts, { name: "", phone: "" }])}
+            disabled={contacts.length >= 5}
+          >
+            <Plus className="size-4" /> Tambah kontak
+          </GhostButton>
         </fieldset>
 
         <fieldset className="grid gap-4 md:grid-cols-3">
@@ -255,7 +411,7 @@ export function ProgramForm({ program, onDone }: { program: Program | null; onDo
         )}
 
         <div className="flex flex-wrap gap-2 border-t border-ash/60 pt-5">
-          <PrimaryButton type="submit" disabled={saving}>
+          <PrimaryButton type="submit" disabled={saving || (poster === undefined && !posterError)}>
             {saving ? "Menyimpan…" : "Simpan program"}
           </PrimaryButton>
           <GhostButton className="h-10" onClick={() => onDone(false)} disabled={saving}>

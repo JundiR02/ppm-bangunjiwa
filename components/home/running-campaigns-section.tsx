@@ -3,12 +3,12 @@
 import Link from "next/link";
 import { ProgramCard } from "@/components/programs/program-card";
 import { usePublishedPrograms } from "@/components/programs/use-programs";
-import { CROWDFUNDING_PATH } from "@/lib/programs";
+import { CROWDFUNDING_PATH, isAcceptingDonations } from "@/lib/programs";
 
 /** Home-page campaigns band; renders nothing until there is at least one running campaign. */
 export function RunningCampaignsSection() {
   const state = usePublishedPrograms();
-  const running = state.programs.filter((p) => p.status === "berjalan");
+  const running = state.programs.filter((p) => isAcceptingDonations(p));
   if (state.status !== "ready" || running.length === 0) return null;
 
   return (

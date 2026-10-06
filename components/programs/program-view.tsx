@@ -13,8 +13,18 @@ import { Gauge } from "@/components/hub/gauge";
 import { BarStat, type BarTone } from "@/components/hub/bar-stat";
 import { EmptyState } from "@/components/hub/empty-state";
 import { Skeleton } from "@/components/ui/skeleton";
-import { CROWDFUNDING_PATH, getProgram, progressPercent, PROGRAM_TYPES, type Program, type ProgramType } from "@/lib/programs";
-import { formatDate, formatRupiahShort } from "@/lib/format";
+import {
+  CROWDFUNDING_PATH,
+  getPoster,
+  getProgram,
+  isAcceptingDonations,
+  progressPercent,
+  PROGRAM_TYPES,
+  whatsappHref,
+  type Program,
+  type ProgramType,
+} from "@/lib/programs";
+import { formatDate, formatRupiah, formatRupiahShort } from "@/lib/format";
 import { cn } from "@/lib/utils";
 
 const TONES: BarTone[] = ["pine", "iron", "ash"];
@@ -168,6 +178,8 @@ function ProgramDetail({ slug }: { slug: string }) {
         )}
       </section>
 
+      <CampaignInfo program={p} />
+
       {(p.description || p.allocation.length > 0) && (
         <section className="mt-4 grid gap-4 xl:grid-cols-12">
           {p.description && (
@@ -207,11 +219,93 @@ function ProgramDetail({ slug }: { slug: string }) {
         </section>
       )}
 
-      {p.status === "berjalan" && (
+      {isAcceptingDonations(p) && (
         <div className="mt-4">
           <DonationInteractive programTitle={p.title} />
         </div>
       )}
     </>
+  );
+}
+
+/** Poster, deadline, price options, and confirmation contacts — shown only for the parts a campaign has. */
+function CampaignInfo({ program: p }: { program: Program }) {
+  const [poster, setPoster] = React.useState<string | null>(null);
+  React.useEffect(() => {
+    if (!p.hasPoster) return;
+    let alive = true;
+    getPoster(p.slug).then((url) => alive && setPoster(url), () => undefined);
+    return () => {
+      alive = false;
+    };
+  }, [p.slug, p.hasPoster]);
+
+  const open = isAcceptingDonations(p);
+  const hasDetails = p.deadline || p.packages.length > 0 || p.contacts.length > 0;
+  if (!p.hasPoster && !hasDetails) return null;
+
+  return (
+    <section className={cn("mt-10 grid gap-10", p.hasPoster && "lg:grid-cols-[minmax(0,420px)_1fr]")}>
+      {p.hasPoster &&
+        (poster ? (
+          // eslint-disable-next-line @next/next/no-img-element -- poster is a data URL from Firestore
+          <img src={poster} alt={`Poster ${p.title}`} className="w-full rounded-lg border border-ash" />
+        ) : (
+          <Skeleton className="aspect-[3/4] w-full rounded-lg bg-linen" />
+        ))}
+      {hasDetails && (
+        <div className="flex flex-col gap-8">
+          {p.deadline && (
+            <p
+              className={cn(
+                "rounded-lg px-4 py-3 text-[15px]",
+                open ? "bg-pine-soft text-pine-deep" : "bg-muted text-iron"
+              )}
+            >
+              {open ? (
+                <>
+                  Pendaftaran dibuka sampai <strong className="font-semibold">{formatDate(p.deadline)}</strong>.
+                </>
+              ) : (
+                <>Pendaftaran sudah ditutup pada {formatDate(p.deadline)}.</>
+              )}
+            </p>
+          )}
+          {p.packages.length > 0 && (
+            <div>
+              <h2 className="font-heading text-2xl text-iron-deep">Pilihan</h2>
+              <dl className="mt-3 border-t border-ash">
+                {p.packages.map((pkg) => (
+                  <div key={pkg.label} className="grid gap-1 border-b border-ash py-3 sm:grid-cols-[1fr_auto] sm:gap-6">
+                    <dt>
+                      <span className="text-[16px] font-medium text-iron-deep">{pkg.label}</span>
+                      {pkg.note && <span className="block text-[14px] text-iron-soft">{pkg.note}</span>}
+                    </dt>
+                    {pkg.price != null && (
+                      <dd className="font-heading text-xl text-hijau tabular-nums">{formatRupiah(pkg.price)}</dd>
+                    )}
+                  </div>
+                ))}
+              </dl>
+            </div>
+          )}
+          {p.contacts.length > 0 && (
+            <div>
+              <h2 className="font-heading text-2xl text-iron-deep">Konfirmasi</h2>
+              <ul className="mt-3 flex flex-col gap-2">
+                {p.contacts.map((c) => (
+                  <li key={c.phone} className="text-[15px] text-iron">
+                    <span className="font-medium text-iron-deep">{c.name}</span>:{" "}
+                    <a href={whatsappHref(c.phone)} target="_blank" rel="noopener" className="text-hijau hover:underline">
+                      {c.phone}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+      )}
+    </section>
   );
 }

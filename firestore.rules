@@ -27,9 +27,14 @@ service cloud.firestore {
       return slug.matches('^[a-z0-9]+(-[a-z0-9]+)*$') && slug.size() <= 80
         && d.keys().hasOnly(['title', 'type', 'status', 'summary', 'description', 'location',
                              'target', 'collected', 'donorCount', 'allocation', 'testimonials',
+                             'deadline', 'packages', 'contacts', 'hasPoster',
                              'figuresUpdatedAt', 'updatedAt'])
         && d.title is string && d.title.size() > 0 && d.title.size() <= 160
-        && d.type in ['donasi', 'dana-abadi', 'wakaf', 'pendidikan', 'ekologi', 'ekonomi-sirkuler']
+        && d.type in ['donasi', 'dana-abadi', 'wakaf', 'pendidikan', 'ekologi', 'ekonomi-sirkuler', 'kurban']
+        && (!('deadline' in d) || d.deadline == null || d.deadline is timestamp)
+        && (!('packages' in d) || (d.packages is list && d.packages.size() <= 10))
+        && (!('contacts' in d) || (d.contacts is list && d.contacts.size() <= 5))
+        && (!('hasPoster' in d) || d.hasPoster is bool)
         && d.status in ['draft', 'berjalan', 'selesai']
         && d.summary is string && d.summary.size() <= 400
         && d.description is string && d.description.size() <= 10000
@@ -48,6 +53,20 @@ service cloud.firestore {
       allow get: if resource == null || resource.data.status in ['berjalan', 'selesai'] || isAdmin();
       allow list: if resource.data.status in ['berjalan', 'selesai'] || isAdmin();
       allow create, update: if isAdmin() && validProgram(slug, request.resource.data);
+      allow delete: if isAdmin();
+    }
+
+    // Campaign posters, kept apart from programs so listing campaigns doesn't download images.
+    // Readable once the campaign itself is public; the data URL must fit well inside the 1 MiB doc limit.
+    match /programPosters/{slug} {
+      allow get: if isAdmin()
+        || get(/databases/$(database)/documents/programs/$(slug)).data.status in ['berjalan', 'selesai'];
+      allow create, update: if isAdmin()
+        && request.resource.data.keys().hasOnly(['dataUrl', 'updatedAt'])
+        && request.resource.data.dataUrl is string
+        && request.resource.data.dataUrl.size() <= 950000
+        && request.resource.data.dataUrl.matches('^data:image/jpeg;base64,.*')
+        && request.resource.data.updatedAt == request.time;
       allow delete: if isAdmin();
     }
 

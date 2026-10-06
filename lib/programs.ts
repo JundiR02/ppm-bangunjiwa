@@ -27,6 +27,7 @@ export const PROGRAM_TYPES = [
   { id: "pendidikan", label: "Pendidikan" },
   { id: "ekologi", label: "Ekologi" },
   { id: "ekonomi-sirkuler", label: "Ekonomi Sirkuler" },
+  { id: "kurban", label: "Kurban" },
 ] as const;
 
 export const PROGRAM_STATUSES = [
@@ -51,6 +52,14 @@ export type Program = {
   donorCount: number | null;
   allocation: { label: string; percent: number }[];
   testimonials: { quote: string; who: string }[];
+  /** End of registration; after it the campaign stops accepting donations even if still "berjalan". */
+  deadline: Date | null;
+  /** Price options, e.g. "Kambing — mulai Rp3.000.000". */
+  packages: { label: string; price: number | null; note: string }[];
+  /** People donors confirm with; phones become WhatsApp links. */
+  contacts: { name: string; phone: string }[];
+  /** The poster image lives in programPosters/{slug} so listing campaigns stays light. */
+  hasPoster: boolean;
   figuresUpdatedAt: Date | null;
   updatedAt: Date | null;
 };
@@ -78,6 +87,27 @@ export function isValidSlug(slug: string) {
   return /^[a-z0-9]+(-[a-z0-9]+)*$/.test(slug) && slug.length <= 80;
 }
 
+/** A "berjalan" campaign whose deadline has passed is closed, without anyone having to edit it. */
+export function isAcceptingDonations(p: Pick<Program, "status" | "deadline">, now = Date.now()) {
+  return p.status === "berjalan" && (p.deadline == null || p.deadline.getTime() >= now);
+}
+
+/** Registration closes at the end of the chosen day, Yogyakarta time. */
+export function deadlineFromDateInput(value: string): Date | null {
+  return value ? new Date(`${value}T23:59:59+07:00`) : null;
+}
+
+export function deadlineToDateInput(deadline: Date | null): string {
+  if (!deadline) return "";
+  return new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Jakarta" }).format(deadline);
+}
+
+/** wa.me link for an Indonesian number written as 08…, 62…, or +62…. */
+export function whatsappHref(phone: string) {
+  const d = phone.replace(/[^0-9]/g, "");
+  return `https://wa.me/${d.startsWith("0") ? `62${d.slice(1)}` : d}`;
+}
+
 export function progressPercent(p: Pick<Program, "target" | "collected">) {
   if (!p.target || p.collected == null) return null;
   return Math.min(100, Math.round((p.collected / p.target) * 100));
@@ -101,6 +131,10 @@ function fromDoc(slug: string, d: DocumentData): Program {
     donorCount: d.donorCount ?? null,
     allocation: d.allocation ?? [],
     testimonials: d.testimonials ?? [],
+    deadline: toDate(d.deadline),
+    packages: d.packages ?? [],
+    contacts: d.contacts ?? [],
+    hasPoster: d.hasPoster ?? false,
     figuresUpdatedAt: toDate(d.figuresUpdatedAt),
     updatedAt: toDate(d.updatedAt),
   };
@@ -153,4 +187,17 @@ export async function saveProgram(slug: string, input: ProgramInput, previous: P
 
 export async function deleteProgram(slug: string) {
   await deleteDoc(doc(programs(), slug));
+  await deleteDoc(doc(posters(), slug));
+}
+
+const posters = () => collection(db(), "programPosters");
+
+export async function getPoster(slug: string): Promise<string | null> {
+  const snap = await withTimeout(getDoc(doc(posters(), slug)));
+  return snap.exists() ? (snap.data().dataUrl as string) : null;
+}
+
+export async function savePoster(slug: string, dataUrl: string | null) {
+  if (dataUrl === null) await deleteDoc(doc(posters(), slug));
+  else await setDoc(doc(posters(), slug), { dataUrl, updatedAt: serverTimestamp() });
 }

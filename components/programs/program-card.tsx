@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowUpRight, MapPin } from "lucide-react";
-import { campaignHref, progressPercent, typeLabel, type Program } from "@/lib/programs";
-import { formatRupiahShort } from "@/lib/format";
+import { campaignHref, isAcceptingDonations, progressPercent, typeLabel, type Program } from "@/lib/programs";
+import { formatDate, formatRupiahShort } from "@/lib/format";
 import { cn } from "@/lib/utils";
 
 export function ProgressBar({ percent, className }: { percent: number; className?: string }) {
@@ -12,7 +12,14 @@ export function ProgressBar({ percent, className }: { percent: number; className
   );
 }
 
+function statusLabel(program: Program) {
+  if (program.status === "draft") return "Draft";
+  if (program.status === "selesai") return "Selesai";
+  return isAcceptingDonations(program) ? "Berjalan" : "Ditutup";
+}
+
 export function ProgramChips({ program }: { program: Program }) {
+  const open = isAcceptingDonations(program);
   return (
     <div className="flex flex-wrap items-center gap-1.5">
       <span className="rounded-full border border-ash bg-linen px-2.5 py-0.5 text-[11px] font-medium text-iron">
@@ -21,11 +28,14 @@ export function ProgramChips({ program }: { program: Program }) {
       <span
         className={cn(
           "rounded-full px-2.5 py-0.5 text-[11px] font-medium",
-          program.status === "berjalan" ? "bg-pine-soft text-pine-deep" : "bg-muted text-iron-soft"
+          open ? "bg-pine-soft text-pine-deep" : "bg-muted text-iron-soft"
         )}
       >
-        {program.status === "berjalan" ? "Berjalan" : program.status === "selesai" ? "Selesai" : "Draft"}
+        {statusLabel(program)}
       </span>
+      {open && program.deadline && (
+        <span className="text-[11px] text-iron-soft">sampai {formatDate(program.deadline)}</span>
+      )}
     </div>
   );
 }
