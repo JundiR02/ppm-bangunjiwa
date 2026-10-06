@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { PageTop } from "@/components/shell/page-top";
 import { QuoteBand } from "@/components/home/quote-panel";
+import { GeometricPattern } from "@/components/home/ornament";
 import { RunningCampaignsSection } from "@/components/home/running-campaigns-section";
 import { UnitLogo } from "@/components/lembaga/unit-logo";
 import { BIDANG_PROGRAM, LEMBAGA_BANGUNJIWA, PROFIL_PESANTREN } from "@/lib/bangunjiwa-data";
@@ -57,15 +58,32 @@ export default function Home() {
         </div>
       </section>
 
-      <section aria-label="Lembaga pendidikan" className="full-bleed mt-16 bg-linen py-10">
-        <ul className="mx-auto grid max-w-[1200px] grid-cols-2 gap-y-8 lg:grid-cols-4 lg:divide-x lg:divide-ash">
+      <section
+        aria-label="Lembaga pendidikan"
+        className="full-bleed relative mt-16 overflow-hidden border-y border-emas/30 py-10"
+        style={{
+          backgroundImage:
+            "radial-gradient(ellipse 50% 90% at 50% 0%, rgb(201 149 43 / 0.12), transparent 70%), linear-gradient(180deg, var(--color-linen) 0%, #efe5cd 100%)",
+        }}
+      >
+        <GeometricPattern
+          id="pola-lembaga"
+          opacity={0.35}
+          mask="linear-gradient(90deg, black 0%, transparent 18%, transparent 82%, black 100%)"
+        />
+        <ul className="relative mx-auto grid max-w-[1200px] grid-cols-2 gap-y-8 lg:grid-cols-4 lg:divide-x lg:divide-emas/25">
           {LEMBAGA_BANGUNJIWA.map((l) => (
             <li key={l.id} className="px-2 lg:px-6">
               <Link href={l.href} className="group flex items-center gap-4">
-                <UnitLogo src={l.logo} alt="" fallback={l.singkatan} className="size-14 rounded-full border-0 bg-frost" />
-                <span>
-                  <span className="block font-heading text-[17px] text-iron-deep group-hover:text-hijau">{l.nama}</span>
-                  <span className="block text-[13px] text-iron-soft">{l.untuk}</span>
+                <UnitLogo
+                  src={l.logo}
+                  alt=""
+                  fallback={l.singkatan}
+                  className="size-14 rounded-full border-0 bg-frost ring-1 ring-emas/40 transition-shadow group-hover:ring-2 group-hover:ring-emas"
+                />
+                <span className="min-w-0">
+                  <span className="block font-heading text-[17px] leading-snug text-iron-deep group-hover:text-hijau">{l.nama}</span>
+                  <span className="mt-0.5 block text-[13px] text-iron-soft">{l.untuk}</span>
                 </span>
               </Link>
             </li>
