@@ -9,7 +9,7 @@ export function EcosystemFlow() {
           <h3 className="font-heading text-xl leading-snug text-iron-deep">{node.title}</h3>
           <p className="mt-2 flex-1 text-[15px] leading-relaxed text-iron-soft">{node.description}</p>
           {node.href && node.linkLabel && (
-            <Link href={node.href} className="mt-4 inline-flex w-fit items-center gap-2 text-[14px] font-medium text-hijau hover:underline">
+            <Link href={node.href} className="mt-2 inline-flex min-h-11 w-fit items-center gap-2 text-[14px] font-medium text-hijau hover:underline">
               {node.linkLabel}
             </Link>
           )}

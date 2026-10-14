@@ -26,19 +26,19 @@ export default function KontakPage() {
         <div className="lg:pt-2">
           <h2 className="font-heading text-xl text-iron-deep">{YAYASAN.nama}</h2>
           <p className="mt-3 text-[15px] leading-relaxed text-iron">{PROFIL_PESANTREN.alamat}</p>
-          <div className="mt-3 flex flex-wrap gap-x-5 gap-y-2 text-[14px] font-medium">
+          <div className="mt-2 flex flex-wrap gap-x-6 text-[14px] font-medium">
             <a
               href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(PROFIL_PESANTREN.alamat)}`}
               target="_blank"
               rel="noopener"
-              className="text-hijau hover:underline"
+              className="inline-flex min-h-11 items-center text-hijau hover:underline"
             >
               Google Maps
             </a>
-            <a href={PROFIL_PESANTREN.infoUrl} target="_blank" rel="noopener" className="text-hijau hover:underline">
+            <a href={PROFIL_PESANTREN.infoUrl} target="_blank" rel="noopener" className="inline-flex min-h-11 items-center text-hijau hover:underline">
               Informasi pesantren
             </a>
-            <a href={PROFIL_PESANTREN.instagram.url} target="_blank" rel="noopener" className="text-hijau hover:underline">
+            <a href={PROFIL_PESANTREN.instagram.url} target="_blank" rel="noopener" className="inline-flex min-h-11 items-center text-hijau hover:underline">
               {PROFIL_PESANTREN.instagram.handle}
             </a>
           </div>
@@ -52,7 +52,7 @@ export default function KontakPage() {
               <UnitLogo src={l.logo} alt="" fallback={l.singkatan} className="size-14 rounded-full border-0 bg-linen" />
               <div>
                 <h2 className="font-heading text-xl text-iron-deep">
-                  <Link href={l.href} className="hover:text-hijau">
+                  <Link href={l.href} className="inline-flex min-h-11 items-center hover:text-hijau">
                     {l.nama}
                   </Link>
                 </h2>

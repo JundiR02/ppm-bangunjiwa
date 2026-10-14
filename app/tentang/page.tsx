@@ -61,26 +61,26 @@ export default function TentangPage() {
         <div>
           <h2 className="font-heading text-2xl text-iron-deep">Alamat</h2>
           <p className="mt-4 text-[16px] leading-relaxed text-iron">{PROFIL_PESANTREN.alamat}</p>
-          <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-[14px] font-medium">
+          <div className="mt-2 flex flex-wrap gap-x-6 text-[14px] font-medium">
             <a
               href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(PROFIL_PESANTREN.alamat)}`}
               target="_blank"
               rel="noopener"
-              className="text-hijau hover:underline"
+              className="inline-flex min-h-11 items-center text-hijau hover:underline"
             >
               Google Maps
             </a>
-            <a href={PROFIL_PESANTREN.infoUrl} target="_blank" rel="noopener" className="text-hijau hover:underline">
+            <a href={PROFIL_PESANTREN.infoUrl} target="_blank" rel="noopener" className="inline-flex min-h-11 items-center text-hijau hover:underline">
               Informasi pesantren
             </a>
-            <a href={PROFIL_PESANTREN.instagram.url} target="_blank" rel="noopener" className="text-hijau hover:underline">
+            <a href={PROFIL_PESANTREN.instagram.url} target="_blank" rel="noopener" className="inline-flex min-h-11 items-center text-hijau hover:underline">
               Instagram {PROFIL_PESANTREN.instagram.handle}
             </a>
           </div>
         </div>
       </section>
 
-      <section id="struktur" className="mt-20">
+      <section id="struktur" className="mt-14 sm:mt-20">
         <h2 className="font-heading text-3xl text-iron-deep sm:text-4xl">Struktur organisasi</h2>
         <p className="mt-3 mb-10 max-w-2xl text-[16px] leading-relaxed text-iron-soft">
           Yayasan menjalankan empat bidang program. Lembaga pendidikan berada di bawah bidang Pendidikan Dirosah

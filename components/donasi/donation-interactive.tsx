@@ -42,7 +42,7 @@ export function DonationInteractive({ programTitle }: { programTitle?: string })
                 }}
                 className={cn(
                   "rounded-lg border px-4 py-4 text-left font-heading text-xl font-light tracking-tight transition-colors",
-                  selected ? "border-hijau bg-hijau text-frost shadow-panel" : "border-ash bg-frost text-iron-deep hover:border-ash-deep"
+                  selected ? "border-hijau bg-hijau text-frost shadow-panel" : "border-garis bg-frost text-iron-deep hover:border-hijau"
                 )}
               >
                 {formatRupiahShort(value)}
@@ -50,7 +50,8 @@ export function DonationInteractive({ programTitle }: { programTitle?: string })
             );
           })}
         </div>
-        <div className="mt-3 flex flex-wrap items-center gap-3 rounded-lg border border-ash bg-linen/70 px-4 py-3.5">
+        {/* The input itself has no outline; the whole row carries the focus ring so it stays visible. */}
+        <div className="mt-3 flex flex-wrap items-center gap-3 rounded-lg border border-garis bg-frost px-4 py-1.5 focus-within:outline-3 focus-within:outline-offset-2 focus-within:outline-hijau">
           <label htmlFor="customAmount" className="text-[13px] text-iron-soft">
             Atau masukkan jumlah lain
           </label>
@@ -63,13 +64,13 @@ export function DonationInteractive({ programTitle }: { programTitle?: string })
               placeholder="0"
               value={customAmount}
               onChange={(e) => handleCustomAmountChange(e.target.value)}
-              className="w-full min-w-0 bg-transparent font-heading text-xl font-light text-iron-deep outline-none placeholder:text-iron-soft/50"
+              className="h-11 w-full min-w-0 bg-transparent font-heading text-xl font-light text-iron-deep outline-none placeholder:text-iron-soft"
             />
           </div>
         </div>
       </Panel>
 
-      <Panel className="xl:sticky xl:top-6 xl:col-span-4 xl:col-start-9 xl:row-span-2 xl:row-start-1">
+      <Panel className="xl:sticky xl:top-24 xl:col-span-4 xl:col-start-9 xl:row-span-2 xl:row-start-1">
         <PanelHeader title="Ringkasan" icon={ReceiptText} />
         <div className="mt-5 flex flex-col text-[13px]">
           <div className="flex justify-between gap-4 border-b border-ash/60 py-2.5 text-iron-soft">
@@ -156,7 +157,7 @@ export function DonationInteractive({ programTitle }: { programTitle?: string })
             <a
               href={qris.src}
               download="QRIS-Yayasan-PPM-Bangunjiwa.jpg"
-              className="mt-3 inline-flex h-10 items-center justify-center gap-2 rounded-xl bg-hijau px-4 text-[13px] font-medium text-frost shadow-panel transition-colors hover:bg-hijau-deep"
+              className="mt-3 inline-flex h-11 items-center justify-center gap-2 rounded-xl bg-hijau px-4 text-[13px] font-medium text-frost shadow-panel transition-colors hover:bg-hijau-deep"
             >
               <Download className="size-4" /> Unduh QRIS
             </a>

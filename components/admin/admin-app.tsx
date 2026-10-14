@@ -9,6 +9,7 @@ import { GhostButton, PrimaryButton } from "@/components/admin/fields";
 import { ProgramsManager } from "@/components/admin/programs-manager";
 import { AdminsManager } from "@/components/admin/admins-manager";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Loading } from "@/components/hub/loading";
 import { auth } from "@/lib/firebase";
 import { hasPendingRequest, isAdmin, isOwner, requestAdminAccess } from "@/lib/admin";
 import { cn } from "@/lib/utils";
@@ -77,7 +78,13 @@ export function AdminApp() {
     </p>
   );
 
-  if (phase.s === "loading") return <Skeleton className="h-48 w-full rounded-xl bg-linen" />;
+  if (phase.s === "loading") {
+    return (
+      <Loading label="Memeriksa status login…">
+        <Skeleton className="h-48 w-full rounded-xl bg-linen" />
+      </Loading>
+    );
+  }
 
   if (phase.s === "signed-out") {
     return (

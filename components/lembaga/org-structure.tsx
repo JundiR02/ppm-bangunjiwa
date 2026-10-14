@@ -26,16 +26,16 @@ export function OrgStructure() {
         {BIDANG_PROGRAM.map((bidang) => (
           <li key={bidang.id} className="border-t-2 border-hijau pt-5">
             <h3 className="font-heading text-xl leading-snug text-iron-deep">
-              <Link href={bidang.href} className="hover:text-hijau">
+              <Link href={bidang.href} className="inline-flex min-h-11 items-center hover:text-hijau">
                 {bidang.nama}
               </Link>
             </h3>
-            <ul className="mt-4 flex flex-col gap-3">
+            <ul className="mt-2 flex flex-col gap-1">
               {bidang.items.map((item) => (
                 <li key={item.judul} className="text-[14px] leading-snug">
                   <span className="font-medium text-iron">
                     {item.href ? (
-                      <Link href={item.href} className="hover:text-hijau hover:underline">
+                      <Link href={item.href} className="inline-flex min-h-11 items-center hover:text-hijau hover:underline">
                         {item.judul}
                       </Link>
                     ) : (

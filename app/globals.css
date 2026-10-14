@@ -16,6 +16,9 @@
   --color-emas-deep: #8a6414;
   /* Gold for text on the green surfaces: the logo gold itself is only 2.9:1 there. */
   --color-emas-muda: #f2d38a;
+  /* Edge of inputs and outline buttons: 3.7:1 on frost, 3.3:1 on linen (non-text contrast 3:1).
+     `ash` stays for decorative rules only. */
+  --color-garis: #8c826b;
 
   --color-ash: #e7dcc4;
   --color-ash-deep: #c9ba98;
@@ -91,6 +94,8 @@
   }
   html {
     @apply font-sans scroll-smooth;
+    /* Keeps anything scrolled into view (focus, anchors) clear of the 64px sticky header. */
+    scroll-padding-top: 5rem;
   }
   body {
     @apply bg-frost text-foreground;

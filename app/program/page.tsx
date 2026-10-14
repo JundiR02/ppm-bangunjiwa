@@ -34,20 +34,20 @@ export default function ProgramPage() {
           <li key={bidang.id} className="grid gap-4 border-b border-ash py-8 lg:grid-cols-[1fr_1.4fr] lg:gap-12">
             <div>
               <h2 className="font-heading text-2xl text-iron-deep">
-                <Link href={bidang.href} className="hover:text-hijau">
+                <Link href={bidang.href} className="inline-flex min-h-11 items-center hover:text-hijau">
                   {bidang.nama}
                 </Link>
               </h2>
               <p className="mt-2 text-[15px] leading-relaxed text-iron-soft">{bidang.ringkas}</p>
-              <Link href={bidang.href} className="mt-4 inline-flex items-center gap-2 text-[14px] font-medium text-hijau hover:underline">
+              <Link href={bidang.href} className="mt-2 inline-flex min-h-11 items-center gap-2 text-[14px] font-medium text-hijau hover:underline">
                 Buka halaman {bidang.nama}
               </Link>
             </div>
-            <ul className="flex flex-col gap-2 lg:pt-1">
+            <ul className="flex flex-col">
               {bidang.items.map((item) => (
                 <li key={item.judul} className="text-[15px] text-iron">
                   {item.href ? (
-                    <Link href={item.href} className="hover:text-hijau hover:underline">
+                    <Link href={item.href} className="inline-flex min-h-11 items-center hover:text-hijau hover:underline">
                       {item.judul}
                     </Link>
                   ) : (

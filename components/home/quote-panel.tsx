@@ -4,7 +4,7 @@ import { GeometricPattern, StarDivider } from "@/components/home/ornament";
 export function QuoteBand() {
   return (
     <section
-      className="full-bleed relative mt-24 overflow-hidden py-16 text-frost sm:py-20"
+      className="full-bleed relative mt-16 overflow-hidden py-14 text-frost sm:mt-24 sm:py-20"
       style={{
         backgroundImage:
           "radial-gradient(ellipse 60% 55% at 50% 0%, rgb(201 149 43 / 0.22), transparent 70%), linear-gradient(135deg, var(--color-hijau) 0%, var(--color-hijau-deep) 55%, var(--color-hijau-ink) 100%)",

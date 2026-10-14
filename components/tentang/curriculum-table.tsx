@@ -3,7 +3,10 @@ import { KURIKULUM_ROWS, KURIKULUM_SEMESTERS } from "@/lib/bangunjiwa-data";
 
 export function CurriculumTable() {
   return (
-    <div className="overflow-x-auto">
+    <>
+    <p className="mb-2 text-[13px] text-iron-soft md:hidden">Geser tabel ke samping untuk melihat semua semester.</p>
+    {/* Focusable so keyboard users can scroll it with the arrow keys. */}
+    <div className="overflow-x-auto" role="region" aria-label="Tabel kurikulum per semester" tabIndex={0}>
       <table className="w-full min-w-[680px] border-separate border-spacing-0 text-[14px]">
         <thead>
           <tr className="text-[13px] text-iron-soft">
@@ -43,5 +46,6 @@ export function CurriculumTable() {
         </tbody>
       </table>
     </div>
+    </>
   );
 }

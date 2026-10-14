@@ -12,10 +12,10 @@ export function RunningCampaignsSection() {
   if (state.status !== "ready" || running.length === 0) return null;
 
   return (
-    <section className="mt-24">
+    <section className="mt-16 sm:mt-24">
       <div className="flex items-end justify-between gap-4 border-b border-ash pb-4">
         <h2 className="font-heading text-3xl text-iron-deep">Kampanye yang sedang berjalan</h2>
-        <Link href={CROWDFUNDING_PATH} className="shrink-0 text-[14px] font-medium text-hijau hover:underline">
+        <Link href={CROWDFUNDING_PATH} className="inline-flex min-h-11 shrink-0 items-center text-[14px] font-medium text-hijau hover:underline">
           Lihat semua
         </Link>
       </div>

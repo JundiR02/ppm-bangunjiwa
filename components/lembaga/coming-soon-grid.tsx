@@ -17,7 +17,7 @@ export function ComingSoonGrid({
   className?: string;
 }) {
   return (
-    <section className={cn("mt-20 border-t border-ash pt-8", className)}>
+    <section className={cn("mt-14 border-t border-ash pt-8 sm:mt-20", className)}>
       <h2 className="font-heading text-xl text-iron-deep">{title}</h2>
       <p className="mt-1 text-[14px] text-iron-soft">Informasi berikut akan ditambahkan setelah tersedia.</p>
       <ul className="mt-6 grid gap-x-10 gap-y-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -25,7 +25,7 @@ export function ComingSoonGrid({
           <li key={item.judul} className="text-[14px] leading-relaxed">
             <span className="font-medium text-iron-deep">
               {item.href ? (
-                <Link href={item.href} className="hover:text-hijau hover:underline">
+                <Link href={item.href} className="inline-flex min-h-11 items-center hover:text-hijau hover:underline">
                   {item.judul}
                 </Link>
               ) : (

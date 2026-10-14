@@ -13,6 +13,7 @@ import { Gauge } from "@/components/hub/gauge";
 import { BarStat, type BarTone } from "@/components/hub/bar-stat";
 import { EmptyState } from "@/components/hub/empty-state";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Loading } from "@/components/hub/loading";
 import {
   CROWDFUNDING_PATH,
   getPoster,
@@ -70,11 +71,13 @@ function ProgramList() {
           </div>
         )}
         {state.status === "loading" ? (
-          <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
-            {Array.from({ length: 3 }, (_, i) => (
-              <Skeleton key={i} className="h-44 rounded-lg bg-linen" />
-            ))}
-          </div>
+          <Loading label="Memuat daftar kampanye…">
+            <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+              {Array.from({ length: 3 }, (_, i) => (
+                <Skeleton key={i} className="h-44 rounded-lg bg-linen" />
+              ))}
+            </div>
+          </Loading>
         ) : state.status === "error" ? (
           <EmptyState icon={CircleAlert} title="Daftar kampanye gagal dimuat">
             Periksa koneksi internet Anda, lalu muat ulang halaman.
@@ -120,7 +123,13 @@ function ProgramDetail({ slug }: { slug: string }) {
     };
   }, [slug]);
 
-  if (state.status === "loading") return <Skeleton className="h-96 w-full rounded-xl bg-linen" />;
+  if (state.status === "loading") {
+    return (
+      <Loading label="Memuat kampanye…">
+        <Skeleton className="h-96 w-full rounded-xl bg-linen" />
+      </Loading>
+    );
+  }
   if (state.status !== "ready") {
     return (
       <Panel>
@@ -254,7 +263,9 @@ function CampaignInfo({ program: p }: { program: Program }) {
           // eslint-disable-next-line @next/next/no-img-element -- poster is a data URL from Firestore
           <img src={poster} alt={`Poster ${p.title}`} className="w-full rounded-lg border border-ash" />
         ) : (
-          <Skeleton className="aspect-[3/4] w-full rounded-lg bg-linen" />
+          <Loading label="Memuat poster kampanye…">
+            <Skeleton className="aspect-[3/4] w-full rounded-lg bg-linen" />
+          </Loading>
         ))}
       {hasDetails && (
         <div className="flex flex-col gap-8">
@@ -299,7 +310,7 @@ function CampaignInfo({ program: p }: { program: Program }) {
                 {p.contacts.map((c) => (
                   <li key={c.phone} className="text-[15px] text-iron">
                     <span className="font-medium text-iron-deep">{c.name}</span>:{" "}
-                    <a href={whatsappHref(c.phone)} target="_blank" rel="noopener" className="text-hijau hover:underline">
+                    <a href={whatsappHref(c.phone)} target="_blank" rel="noopener" className="inline-flex min-h-11 items-center text-hijau hover:underline">
                       {c.phone}
                     </a>
                   </li>

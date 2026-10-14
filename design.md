@@ -21,7 +21,8 @@ Dial: ENERGY 2 / RHYTHM 2 / MOTION 1
 | `emas-deep` | `#8a6414` | Teks label emas di atas krem (4.6:1 di `linen`). |
 | `emas-muda` | `#f2d38a` | Teks emas di atas hijau. Emas logo hanya 2.9:1 di atas `hijau`, jadi tidak dipakai untuk teks di sana. |
 | `frost` | `#fffcf5` | Latar halaman (krem kelopak). |
-| `linen` / `ash` | `#f4eddc` / `#e7dcc4` | Pita krem, garis pemisah. |
+| `linen` / `ash` | `#f4eddc` / `#e7dcc4` | Pita krem, garis pemisah dekoratif. |
+| `garis` | `#8c826b` | Tepi kolom isian dan tombol bergaris (3.7:1 di `frost`, 3.3:1 di `linen`). `ash` terlalu samar untuk batas komponen. |
 | `iron` / `iron-deep` / `iron-soft` | `#2e3832` / `#18211b` / `#5a645d` | Teks: hijau-hitam hangat, bukan abu netral. |
 
 Aturan: hijau dan krem adalah dasar, emas satu-satunya aksen. Merah logo tidak dipakai di UI.
@@ -52,5 +53,7 @@ Aturan: hijau dan krem adalah dasar, emas satu-satunya aksen. Merah logo tidak d
 ## Aksesibilitas
 
 - Semua teks lolos WCAG AA; pasangan warna di atas diperiksa dengan pemeriksa kontras.
-- Setiap tautan punya fokus yang terlihat.
+- Fokus keyboard: garis hijau 3px (7.5:1 di krem), emas muda di footer gelap. Jangan pakai `outline-none` tanpa pengganti.
+- Tautan "Lewati ke konten" sebagai tab pertama; `scroll-padding-top` menjaga elemen terfokus tidak tertutup header lengket.
+- Kerangka memuat dibungkus `Loading` agar pembaca layar mendengar apa yang sedang dimuat.
 - Di HP tidak boleh ada gulir horizontal; susunan multi-kolom menjadi tumpukan.

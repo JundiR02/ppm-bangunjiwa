@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 export default function DanaAbadiPage() {
   return (
     <BidangPage bidang={BIDANG}>
-      <section className="full-bleed mt-20 bg-linen py-12">
+      <section className="full-bleed mt-14 bg-linen py-10 sm:mt-20 sm:py-12">
         <div className="mx-auto grid max-w-[1200px] items-center gap-6 md:grid-cols-[1.5fr_auto]">
           <div>
             <h2 className="font-heading text-3xl text-iron-deep">Donasi langsung ke yayasan</h2>

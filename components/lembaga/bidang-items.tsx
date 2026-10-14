@@ -11,7 +11,7 @@ export function BidangItems({ items, className }: { items: BidangProgram["items"
           <div>
             <h2 className="font-heading text-2xl text-iron-deep">
               {item.href ? (
-                <Link href={item.href} className="hover:text-hijau">
+                <Link href={item.href} className="inline-flex min-h-11 items-center hover:text-hijau">
                   {item.judul}
                 </Link>
               ) : (
@@ -31,7 +31,7 @@ export function BidangItems({ items, className }: { items: BidangProgram["items"
               </ul>
             )}
             {item.href ? (
-              <Link href={item.href} className="inline-flex w-fit items-center gap-2 text-[14px] font-medium text-hijau hover:underline">
+              <Link href={item.href} className="inline-flex min-h-11 w-fit items-center gap-2 text-[14px] font-medium text-hijau hover:underline">
                 Buka halaman {item.judul}
               </Link>
             ) : (

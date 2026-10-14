@@ -49,11 +49,9 @@ export function SiteHeader() {
         </nav>
 
         <Sheet open={open} onOpenChange={setOpen}>
-          <SheetTrigger
-            aria-label="Buka menu"
-            className="flex size-10 items-center justify-center rounded-md border border-ash text-iron lg:hidden"
-          >
-            <Menu className="size-5" />
+          <SheetTrigger className="flex h-11 items-center gap-2 rounded-md border border-garis px-3.5 text-[14px] font-medium text-iron lg:hidden">
+            <Menu className="size-5" aria-hidden />
+            Menu
           </SheetTrigger>
           <SheetContent side="right" className="w-[300px] overflow-y-auto border-ash bg-frost p-6">
             <SheetTitle className="sr-only">Menu</SheetTitle>

@@ -14,12 +14,13 @@ const KONTAK_ICON: Record<KontakLembaga["kind"], LucideIcon> = {
 
 export function ContactList({ kontak, className }: { kontak: KontakLembaga[]; className?: string }) {
   return (
-    <ul className={cn("flex flex-col gap-2.5", className)}>
+    // Rows are 44px tall so each phone/email/Instagram link is a full thumb target; plain rows match for rhythm.
+    <ul className={cn("flex flex-col", className)}>
       {kontak.map((k) => {
         const Icon = KONTAK_ICON[k.kind];
         const content = (
           <>
-            <Icon className="mt-1 size-4 shrink-0 text-pine-deep" strokeWidth={1.75} />
+            <Icon className="size-4 shrink-0 text-pine-deep" strokeWidth={1.75} />
             <span className="min-w-0 break-words">{k.label}</span>
           </>
         );
@@ -31,12 +32,12 @@ export function ContactList({ kontak, className }: { kontak: KontakLembaga[]; cl
                 href={k.href}
                 target={external ? "_blank" : undefined}
                 rel={external ? "noopener" : undefined}
-                className="flex gap-2 transition-colors hover:text-pine-deep"
+                className="flex min-h-11 items-center gap-2 py-1.5 transition-colors hover:text-pine-deep [&>svg]:self-start [&>svg]:mt-[0.35rem]"
               >
                 {content}
               </a>
             ) : (
-              <span className="flex gap-2">{content}</span>
+              <span className="flex min-h-11 items-center gap-2 py-1.5 [&>svg]:self-start [&>svg]:mt-[0.35rem]">{content}</span>
             )}
           </li>
         );

@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 
 export const FIELD =
-  "w-full rounded-xl border border-border bg-frost px-3.5 py-2.5 text-sm text-iron-deep outline-none transition-shadow placeholder:text-iron-soft/60 focus:border-pine focus:ring-3 focus:ring-pine/20 disabled:bg-linen disabled:text-iron-soft";
+  "w-full rounded-xl border border-garis bg-frost px-3.5 py-2.5 text-sm text-iron-deep placeholder:text-iron-soft focus-visible:border-hijau disabled:bg-linen disabled:text-iron-soft";
 
 export function Field({
   label,
@@ -32,7 +32,7 @@ export function GhostButton({ className, ...props }: React.ComponentProps<"butto
     <button
       type="button"
       className={cn(
-        "inline-flex h-9 items-center justify-center gap-1.5 rounded-xl border border-ash bg-frost px-3 text-[13px] font-medium text-iron shadow-panel transition-colors hover:bg-linen disabled:opacity-50",
+        "inline-flex h-9 items-center justify-center gap-1.5 rounded-xl border border-garis bg-frost px-3 text-[13px] font-medium text-iron shadow-panel transition-colors hover:bg-linen disabled:opacity-50",
         className
       )}
       {...props}

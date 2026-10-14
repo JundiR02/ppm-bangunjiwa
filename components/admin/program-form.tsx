@@ -213,7 +213,7 @@ export function ProgramForm({ program, onDone }: { program: Program | null; onDo
               <p className="text-[12.5px] text-iron-soft">Memuat poster…</p>
             ) : null}
             <div className="flex flex-wrap gap-2">
-              <label className="inline-flex h-9 cursor-pointer items-center gap-1.5 rounded-xl border border-ash bg-frost px-3 text-[13px] font-medium text-iron hover:bg-linen">
+              <label className="inline-flex h-9 cursor-pointer items-center gap-1.5 rounded-xl border border-garis bg-frost px-3 text-[13px] font-medium text-iron hover:bg-linen focus-within:outline-3 focus-within:outline-offset-2 focus-within:outline-hijau">
                 <ImagePlus className="size-4" /> {poster ? "Ganti poster" : "Pilih gambar"}
                 <input type="file" accept="image/*" className="sr-only" onChange={(e) => pickPoster(e.target.files?.[0])} />
               </label>

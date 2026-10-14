@@ -37,7 +37,7 @@ export default function PsbPage() {
                 </p>
                 <h2 className="mt-1 font-heading text-2xl text-iron-deep">{l.penerimaan.nama}</h2>
                 <p className="mt-1 text-[15px] text-iron">
-                  <Link href={l.href} className="hover:text-hijau hover:underline">
+                  <Link href={l.href} className="inline-flex min-h-11 items-center hover:text-hijau hover:underline">
                     {l.nama}
                   </Link>
                 </p>

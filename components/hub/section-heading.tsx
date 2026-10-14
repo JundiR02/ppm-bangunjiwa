@@ -13,7 +13,7 @@ export function SectionHeading({
   className?: string;
 }) {
   return (
-    <div className={cn("mt-20 mb-8 max-w-2xl", className)}>
+    <div className={cn("mt-14 mb-6 max-w-2xl sm:mt-20 sm:mb-8", className)}>
       <Eyebrow>{eyebrow}</Eyebrow>
       <h2 className="mt-2 text-balance font-heading text-3xl leading-tight text-iron-deep sm:text-4xl">
         {title}

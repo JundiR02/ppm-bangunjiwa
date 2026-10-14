@@ -12,17 +12,17 @@ export default function Home() {
     <>
       <PageTop />
 
-      <section className="grid items-center gap-12 pt-6 pb-4 lg:grid-cols-[1.05fr_1fr] lg:pt-12">
+      <section className="grid items-center gap-10 pt-2 pb-4 md:grid-cols-[1.05fr_1fr] md:gap-8 lg:gap-12 lg:pt-12">
         <div>
           <p className="text-[14px] font-semibold text-emas-deep">Bangunjiwa, Kasihan, Bantul</p>
-          <h1 className="mt-4 text-balance font-heading text-[2.6rem] leading-[1.08] text-iron-deep sm:text-[3.4rem]">
+          <h1 className="mt-4 text-balance font-heading text-[2.4rem] leading-[1.08] text-iron-deep sm:text-[3rem] md:text-[2.6rem] lg:text-[3.4rem]">
             Yayasan Pesantren Masyarakat Bangunjiwa
           </h1>
           <p className="mt-5 max-w-xl text-[17px] leading-relaxed text-iron-soft">
             Mengaji dan belajar ilmu agama untuk anak usia PAUD hingga mahasiswa, ditambah pendidikan vokasi dan
             unit usaha yayasan.
           </p>
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="mt-7 flex flex-wrap gap-3">
             <Link
               href="/pendidikan"
               className="inline-flex items-center gap-2 rounded-md bg-hijau px-5 py-3 text-[15px] font-medium text-frost transition-colors hover:bg-hijau-deep"
@@ -31,14 +31,14 @@ export default function Home() {
             </Link>
             <Link
               href="/psb"
-              className="inline-flex items-center rounded-md border border-ash-deep px-5 py-3 text-[15px] font-medium text-iron-deep transition-colors hover:border-hijau hover:text-hijau"
+              className="inline-flex items-center rounded-md border border-garis px-5 py-3 text-[15px] font-medium text-iron-deep transition-colors hover:border-hijau hover:text-hijau"
             >
               Pendaftaran santri baru
             </Link>
           </div>
         </div>
 
-        <div className="relative mx-auto w-full max-w-[520px] pb-10 sm:pb-16">
+        <div className="relative mx-auto w-full max-w-[520px] pb-10 sm:pb-16 md:mx-0">
           <Image
             src="/images/bangunjiwa/kajian-quran.jpg"
             alt="Santri mengaji Al-Qur'an bersama ustadz"
@@ -59,13 +59,13 @@ export default function Home() {
 
       <JenjangTangga />
 
-      <section className="mt-24 grid gap-10 lg:grid-cols-[1fr_2fr]">
+      <section className="mt-16 grid gap-8 sm:mt-24 lg:grid-cols-[1fr_2fr] lg:gap-10">
         <div>
           <h2 className="font-heading text-3xl leading-tight text-iron-deep sm:text-4xl">Program yayasan</h2>
           <p className="mt-4 max-w-sm text-[15px] leading-relaxed text-iron-soft">
             Empat bidang yang dijalankan yayasan, dari pendidikan sampai pendanaan.
           </p>
-          <Link href="/program" className="mt-6 inline-flex items-center gap-2 text-[15px] font-medium text-hijau hover:underline">
+          <Link href="/program" className="mt-4 inline-flex min-h-11 items-center gap-2 text-[15px] font-medium text-hijau hover:underline">
             Lihat keempat bidang program
           </Link>
         </div>
@@ -87,7 +87,7 @@ export default function Home() {
 
       <RunningCampaignsSection />
 
-      <section className="mt-24 grid items-center gap-10 lg:grid-cols-2">
+      <section className="mt-16 grid items-center gap-8 sm:mt-24 md:grid-cols-2 lg:gap-10">
         <Image
           src="/images/bangunjiwa/fasad-asrama.jpg"
           alt="Bangunan asrama Bangunjiwa"
@@ -99,15 +99,15 @@ export default function Home() {
           <h2 className="font-heading text-3xl leading-tight text-iron-deep sm:text-4xl">Berkunjung ke Bangunjiwa</h2>
           <p className="mt-4 text-[16px] leading-relaxed text-iron-soft">{PROFIL_PESANTREN.alamat}</p>
           <p className="mt-2 text-[15px] text-iron-soft">Pengasuh: {PROFIL_PESANTREN.pengasuh.join(" dan ")}</p>
-          <div className="mt-6 flex flex-wrap gap-4 text-[15px] font-medium">
-            <Link href="/kontak" className="text-hijau hover:underline">
+          <div className="mt-4 flex flex-wrap gap-x-6 text-[15px] font-medium">
+            <Link href="/kontak" className="inline-flex min-h-11 items-center text-hijau hover:underline">
               Kontak setiap lembaga
             </Link>
             <a
               href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(PROFIL_PESANTREN.alamat)}`}
               target="_blank"
               rel="noopener"
-              className="text-hijau hover:underline"
+              className="inline-flex min-h-11 items-center text-hijau hover:underline"
             >
               Buka di Google Maps
             </a>

@@ -12,17 +12,18 @@ const URUTAN: Lembaga["id"][] = ["pra-tpq", "tpq-plus", "mdt", "ppm"];
  * label at 4.5:1 (checked), so no step goes lighter than #1d6a43.
  */
 const ANAK_TANGGA = [
-  { from: "#1d6a43", to: "#175c3a", height: "lg:min-h-[15rem]", indent: "ml-0" },
-  { from: "#145a38", to: "#0f4e31", height: "lg:min-h-[18.5rem]", indent: "ml-4 sm:ml-8" },
-  { from: "#0f4e31", to: "#0a4329", height: "lg:min-h-[22rem]", indent: "ml-8 sm:ml-16" },
-  { from: "#0a4329", to: "#072f1d", height: "lg:min-h-[25.5rem]", indent: "ml-12 sm:ml-24" },
+  // Phone: a stack stepping right. Tablet: 70%-wide steps climbing diagonally. Desktop: four columns rising.
+  { from: "#1d6a43", to: "#175c3a", height: "lg:min-h-[15rem]", indent: "ml-0 md:w-[70%]" },
+  { from: "#145a38", to: "#0f4e31", height: "lg:min-h-[18.5rem]", indent: "ml-4 sm:ml-8 md:ml-[10%] md:w-[70%]" },
+  { from: "#0f4e31", to: "#0a4329", height: "lg:min-h-[22rem]", indent: "ml-8 sm:ml-16 md:ml-[20%] md:w-[70%]" },
+  { from: "#0a4329", to: "#072f1d", height: "lg:min-h-[25.5rem]", indent: "ml-12 sm:ml-24 md:ml-[30%] md:w-[70%]" },
 ];
 
 export function JenjangTangga() {
   const units = URUTAN.map((id) => LEMBAGA_BANGUNJIWA.find((l) => l.id === id)!);
 
   return (
-    <section aria-labelledby="jenjang-judul" className="mt-20">
+    <section aria-labelledby="jenjang-judul" className="mt-14 sm:mt-20">
       <div className="max-w-2xl">
         <h2 id="jenjang-judul" className="font-heading text-3xl leading-tight text-iron-deep sm:text-4xl">
           Jenjang pendidikan
@@ -36,7 +37,7 @@ export function JenjangTangga() {
         {units.map((l, i) => {
           const step = ANAK_TANGGA[i];
           return (
-            <li key={l.id} className={cn(step.indent, "lg:ml-0")}>
+            <li key={l.id} className={cn(step.indent, "lg:ml-0 lg:w-auto")}>
               <Link
                 href={l.href}
                 className={cn(

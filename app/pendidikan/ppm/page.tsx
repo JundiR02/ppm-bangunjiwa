@@ -49,7 +49,7 @@ export default function PpmPage() {
         </figure>
       </section>
 
-      <section id="visi-misi" className="mt-20 grid gap-12 lg:grid-cols-[1.3fr_1fr]">
+      <section id="visi-misi" className="mt-14 grid gap-10 sm:mt-20 lg:grid-cols-[1.3fr_1fr] lg:gap-12">
         <div>
           <h2 className="font-heading text-3xl text-iron-deep">Tentang PPM</h2>
           <div className="mt-5 flex flex-col gap-4 text-[16px] leading-relaxed text-iron">

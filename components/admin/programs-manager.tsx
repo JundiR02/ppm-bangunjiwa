@@ -10,6 +10,7 @@ import { ProgramForm } from "@/components/admin/program-form";
 import { ProgramChips } from "@/components/programs/program-card";
 import { invalidatePrograms } from "@/components/programs/use-programs";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Loading } from "@/components/hub/loading";
 import { campaignHref, deleteProgram, listAllPrograms, type Program } from "@/lib/programs";
 import { formatDate, formatRupiahShort } from "@/lib/format";
 
@@ -65,7 +66,9 @@ export function ProgramsManager() {
       {error && <p role="alert" className="mx-5 mt-4 text-[13px] text-destructive sm:mx-6">Terjadi kesalahan: {error}</p>}
       <div className="mt-5 px-3 sm:px-4">
         {programs === null && !error ? (
-          <Skeleton className="h-32 w-full rounded-lg bg-linen" />
+          <Loading label="Memuat daftar program…">
+            <Skeleton className="h-32 w-full rounded-lg bg-linen" />
+          </Loading>
         ) : programs && programs.length === 0 ? (
           <EmptyState icon={LayoutList} title="Belum ada program">
             Klik &ldquo;Program baru&rdquo; untuk menambahkan program pertama.
