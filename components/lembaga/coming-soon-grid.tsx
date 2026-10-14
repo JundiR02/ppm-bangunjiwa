@@ -33,7 +33,7 @@ export function ComingSoonGrid({
               )}
             </span>
             {item.keterangan && <span className="block text-iron-soft">{item.keterangan}</span>}
-            {item.sub && <span className="block text-iron-soft">{item.sub.join(", ")}</span>}
+            {item.sub && <span className="block text-iron-soft">{item.sub.join(" · ")}</span>}
           </li>
         ))}
       </ul>

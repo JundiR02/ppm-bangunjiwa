@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { PageTop } from "@/components/shell/page-top";
-import { KitabHadits } from "@/components/home/kitab-hadits";
+import { QuoteBand } from "@/components/home/quote-panel";
 import { JenjangTangga } from "@/components/home/jenjang-tangga";
 import { RunningCampaignsSection } from "@/components/home/running-campaigns-section";
 import { BIDANG_PROGRAM, PROFIL_PESANTREN } from "@/lib/bangunjiwa-data";
@@ -13,19 +14,20 @@ export default function Home() {
 
       <section className="grid items-center gap-10 pt-2 pb-4 md:grid-cols-[1.05fr_1fr] md:gap-8 lg:gap-12 lg:pt-12">
         <div>
-          <h1 className="text-balance font-heading text-[2.4rem] leading-[1.08] text-iron-deep sm:text-[3rem] md:text-[2.6rem] lg:text-[3.4rem]">
+          <p className="text-[14px] font-semibold text-emas-deep">Bangunjiwa, Kasihan, Bantul</p>
+          <h1 className="mt-4 text-balance font-heading text-[2.4rem] leading-[1.08] text-iron-deep sm:text-[3rem] md:text-[2.6rem] lg:text-[3.4rem]">
             Yayasan Pesantren Masyarakat Bangunjiwa
           </h1>
           <p className="mt-5 max-w-xl text-[17px] leading-relaxed text-iron-soft">
-            Mengaji dan belajar ilmu agama untuk anak usia PAUD hingga mahasiswa di Bangunjiwa, Kasihan, Bantul,
-            ditambah pendidikan vokasi dan unit usaha yayasan.
+            Mengaji dan belajar ilmu agama untuk anak usia PAUD hingga mahasiswa, ditambah pendidikan vokasi dan
+            unit usaha yayasan.
           </p>
           <div className="mt-7 flex flex-wrap gap-3">
             <Link
               href="/pendidikan"
-              className="inline-flex items-center rounded-md bg-hijau px-5 py-3 text-[15px] font-medium text-frost transition-colors hover:bg-hijau-deep"
+              className="inline-flex items-center gap-2 rounded-md bg-hijau px-5 py-3 text-[15px] font-medium text-frost transition-colors hover:bg-hijau-deep"
             >
-              Lihat lembaga pendidikan
+              Lihat lembaga pendidikan <ArrowRight className="size-4" />
             </Link>
             <Link
               href="/psb"
@@ -73,7 +75,7 @@ export default function Home() {
               <Link href={bidang.href} className="group grid gap-2 py-6 sm:grid-cols-[1fr_1.2fr] sm:gap-8">
                 <span className="font-heading text-xl text-iron-deep group-hover:text-hijau">{bidang.nama}</span>
                 <span className="text-[14px] leading-relaxed text-iron-soft">
-                  {bidang.items.map((item) => item.judul).join(", ")}
+                  {bidang.items.map((item) => item.judul).join(" · ")}
                 </span>
               </Link>
             </li>
@@ -81,7 +83,7 @@ export default function Home() {
         </ul>
       </section>
 
-      <KitabHadits />
+      <QuoteBand />
 
       <RunningCampaignsSection />
 

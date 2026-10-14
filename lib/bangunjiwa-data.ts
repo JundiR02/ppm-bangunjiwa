@@ -281,11 +281,6 @@ export const LEMBAGA_BANGUNJIWA: Lembaga[] = [
   },
 ];
 
-/** `untuk` mid-sentence: "Usia SD–remaja" becomes "usia SD–remaja"; acronyms after the first word stay. */
-export function untukDalamKalimat(lembaga: Pick<Lembaga, "untuk">) {
-  return lembaga.untuk.charAt(0).toLowerCase() + lembaga.untuk.slice(1);
-}
-
 export function getLembaga(id: Lembaga["id"]) {
   return LEMBAGA_BANGUNJIWA.find((l) => l.id === id)!;
 }

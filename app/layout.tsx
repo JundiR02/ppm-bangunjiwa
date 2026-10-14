@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Source_Serif_4, Inter, Amiri } from "next/font/google";
+import { Source_Serif_4, Inter, Noto_Naskh_Arabic } from "next/font/google";
 import "./globals.css";
 import { AppShell } from "@/components/shell/app-shell";
 
@@ -13,9 +13,8 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
-// Amiri follows the Bulaq naskh used in printed kitab kuning, so Arabic reads like the texts santri study.
-const amiri = Amiri({
-  variable: "--font-amiri",
+const notoNaskhArabic = Noto_Naskh_Arabic({
+  variable: "--font-noto-naskh",
   subsets: ["arabic"],
   weight: ["400", "700"],
 });
@@ -37,7 +36,7 @@ export default function RootLayout({
   return (
     <html
       lang="id"
-      className={`${sourceSerif.variable} ${inter.variable} ${amiri.variable} antialiased`}
+      className={`${sourceSerif.variable} ${inter.variable} ${notoNaskhArabic.variable} antialiased`}
     >
       <body>
         <AppShell>{children}</AppShell>

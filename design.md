@@ -20,26 +20,23 @@ Dial: ENERGY 2 / RHYTHM 2 / MOTION 1
 | `emas` | `#c9952b` | Ujung kelopak logo. Ornamen dan garis, di atas krem atau hijau tergelap saja. |
 | `emas-deep` | `#8a6414` | Teks label emas di atas krem (4.6:1 di `linen`). |
 | `emas-muda` | `#f2d38a` | Teks emas di atas hijau. Emas logo hanya 2.9:1 di atas `hijau`, jadi tidak dipakai untuk teks di sana. |
-| `frost` | `#fbfaf6` | Latar halaman: putih tulang yang dingin, sengaja tidak krem, supaya kuning kitab menonjol. |
-| `linen` / `ash` | `#f1efe7` / `#e2ded2` | Pita terang, garis pemisah dekoratif. |
-| `kertas` | `#efe2b3` | Kertas kitab kuning. Hanya untuk halaman kitab bermakna gandul. |
-| `tinta` | `#1e1a14` | Tinta teks Arab di atas `kertas` (13.4:1). |
+| `frost` | `#fffcf5` | Latar halaman (krem kelopak). |
+| `linen` / `ash` | `#f4eddc` / `#e7dcc4` | Pita krem, garis pemisah dekoratif. |
 | `garis` | `#8c826b` | Tepi kolom isian dan tombol bergaris (3.7:1 di `frost`, 3.3:1 di `linen`). `ash` terlalu samar untuk batas komponen. |
 | `iron` / `iron-deep` / `iron-soft` | `#2e3832` / `#18211b` / `#5a645d` | Teks: hijau-hitam hangat, bukan abu netral. |
 
-Aturan: hijau dan putih tulang adalah dasar, emas untuk garis, kuning kitab hanya di satu tempat. Merah logo tidak dipakai di UI.
+Aturan: hijau dan krem adalah dasar, emas satu-satunya aksen. Merah logo tidak dipakai di UI.
 
 ## Tipografi
 
-- Judul: Source Serif 4 (permintaan pengelola: "seperti Claude").
+- Judul: Source Serif 4. Dipilih karena serif yang tenang dan editorial terasa lebih dekat ke lembaga pendidikan ketimbang sans teknologi.
 - Teks dan antarmuka: Inter.
-- Arab: Amiri, naskh bergaya cetakan kitab klasik. Hanya untuk kutipan Qur'an/hadits.
-- Makna gandul: Source Serif miring, kecil, hijau, dimiringkan 12 derajat di bawah tiap kata Arab.
-- Tanpa label kecil di atas judul, tanpa titik tengah sebagai pemisah, tanpa panah di tombol. Informasi tambahan ditulis sebagai kalimat.
+- Arab: Noto Naskh Arabic, hanya untuk kutipan Qur'an/hadits.
+- Label kecil di atas judul: teks emas biasa (`emas-deep`), bukan pil, bukan huruf kapital berjarak lebar.
 
 ## Motif
 
-- Halaman kitab bermakna gandul (Beranda): hadits di atas `kertas` dalam bingkai garis ganda seperti halaman kitab, setiap kata dengan artinya menggantung miring di bawahnya. Ini satu-satunya elemen yang mencolok; bagian lain tenang. Terjemahan per kata perlu ditinjau ustadz.
+- Bintang delapan (dua persegi bertumpuk) dalam garis emas tipis. Dipakai sebagai pola latar yang memudar di belakang konten (pita hadits) dan sebagai pembatas kecil. Satu motif, diulang, tidak ditambah ornamen lain.
 - Garis emas sebagai "pijakan" pada tangga jenjang pendidikan.
 
 ## Tata letak
@@ -47,7 +44,7 @@ Aturan: hijau dan putih tulang adalah dasar, emas untuk garis, kuning kitab hany
 - Navigasi di atas, footer hijau tua. Tidak ada sidebar dashboard.
 - Halaman disusun dari bagian yang bentuknya berbeda-beda: hero teks + foto, daftar editorial bergaris, kolom dengan garis hijau di atas, pita selebar layar. Bukan grid kartu yang diulang.
 - Kartu hanya untuk hal yang memang berupa objek terpisah (kampanye). Sudut kecil (`rounded-lg`), tanpa bayangan besar, tanpa efek kaca.
-- Gradasi hanya bila membawa makna: tangga jenjang (makin tua usia, makin gelap dan makin tinggi).
+- Gradasi hanya bila membawa makna: pita hadits (hijau ke hijau tua) dan tangga jenjang (makin tua usia, makin gelap dan makin tinggi).
 
 ## Gerak
 
