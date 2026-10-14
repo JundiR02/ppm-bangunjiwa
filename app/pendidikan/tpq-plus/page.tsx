@@ -6,7 +6,7 @@ const TPQ = getLembaga("tpq-plus");
 
 export const metadata: Metadata = {
   title: TPQ.nama,
-  description: `${TPQ.namaLengkap} — ${TPQ.ringkas}`,
+  description: `${TPQ.namaLengkap}. ${TPQ.ringkas}`,
 };
 
 export default function TpqPlusPage() {

@@ -19,7 +19,7 @@ export function QuoteBand() {
         <blockquote className="mt-7 text-balance font-heading text-2xl leading-snug sm:text-3xl">
           &ldquo;Barang siapa menanam tanaman, baginya pahala seperti apa yang dimakan darinya.&rdquo;
         </blockquote>
-        <figcaption className="mt-4 text-[14px] text-emas">HR. Ahmad</figcaption>
+        <figcaption className="mt-4 text-[14px] text-emas-muda">HR. Ahmad</figcaption>
       </figure>
     </section>
   );

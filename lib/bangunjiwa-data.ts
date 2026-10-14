@@ -64,7 +64,7 @@ export const KURIKULUM_ROWS: KurikulumRow[] = [
   { mataPelajaran: "Hadits", semester: [false, false, true, false, false], kitab: "Arba'in Nawawi" },
   { mataPelajaran: "Tasawwuf", semester: [false, false, false, true, false], kitab: "Bidayatul Hidayah" },
   { mataPelajaran: "Qiroatul Kutub", semester: [false, false, false, true, false], kitab: "Modul" },
-  { mataPelajaran: "Pengabdian Masyarakat", semester: [false, false, false, false, true], kitab: "—" },
+  { mataPelajaran: "Pengabdian Masyarakat", semester: [false, false, false, false, true], kitab: "-" },
 ];
 
 export const EKOSISTEM_NODES: {
@@ -78,7 +78,7 @@ export const EKOSISTEM_NODES: {
   {
     id: "bangunjiwa",
     label: "Simpul 1",
-    title: "PPM Riset Ekologi Bangunjiwa — Pendidikan & SDM",
+    title: "PPM Riset Ekologi Bangunjiwa: Pendidikan & SDM",
     description:
       "Mencetak mahasantri yang cakap IT, pemetaan, dan pengelolaan SDM survei, siap terjun ke lapangan maupun mengelola sistem digital.",
     href: "/pendidikan/ppm#program-riset",
@@ -87,7 +87,7 @@ export const EKOSISTEM_NODES: {
   {
     id: "mrv-nexus",
     label: "Simpul 2",
-    title: "MRV Nexus — Platform Data & Monitoring",
+    title: "MRV Nexus: Platform Data & Monitoring",
     description:
       "Sistem monitoring, reporting, dan verification untuk DAS Oyo, DAS Ulin, dan kawasan hutan sosial lain, dijalankan oleh alumni dan mahasantri Bangunjiwa.",
   },
@@ -197,7 +197,7 @@ function kerangkaUnit(nama: string, penerimaan: Lembaga["penerimaan"], tambahan:
     { judul: "Visi & Misi", keterangan: "Arah dan tujuan pendidikan." },
     { judul: "Program Unggulan", keterangan: "Program khas yang ditawarkan." },
     { judul: "Kurikulum", keterangan: "Materi dan jenjang belajar." },
-    { judul: `${penerimaan.singkatan} — ${penerimaan.nama}`, keterangan: "Pendaftaran peserta baru.", sub: SUB_PENERIMAAN },
+    { judul: `${penerimaan.singkatan}: ${penerimaan.nama}`, keterangan: "Pendaftaran peserta baru.", sub: SUB_PENERIMAAN },
     ...tambahan,
     { judul: "Prestasi", keterangan: "Capaian santri dan lembaga." },
   ];
@@ -231,7 +231,7 @@ export const LEMBAGA_BANGUNJIWA: Lembaga[] = [
     id: "mdt",
     singkatan: "MDT",
     nama: "MDT Bangunjiwa",
-    namaLengkap: "Madinta — Madrasah Diniyah Takmiliyah Ngudi Luhur",
+    namaLengkap: "Madinta, Madrasah Diniyah Takmiliyah Ngudi Luhur",
     peran: "Madrasah diniyah takmiliyah",
     untuk: "Usia SD–remaja",
     ringkas: "Pendidikan diniyah bagi santri usia SD hingga remaja.",
@@ -334,7 +334,7 @@ export const BIDANG_PROGRAM: BidangProgram[] = [
     href: "/vokasi",
     items: [
       {
-        judul: "AKPH — Akademi Komunitas Pesantren Hijau",
+        judul: "AKPH (Akademi Komunitas Pesantren Hijau)",
         anak: ["Pesantren Mahasiswa / Sobat Hijau (ESG)", "LPPM ESG"],
       },
     ],

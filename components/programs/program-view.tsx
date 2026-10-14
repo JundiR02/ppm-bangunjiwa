@@ -108,7 +108,7 @@ function ProgramDetail({ slug }: { slug: string }) {
         if (!alive) return;
         if (!program || program.status === "draft") return setState({ status: "missing" });
         setState({ status: "ready", program });
-        document.title = `${program.title} — ${SITE}`;
+        document.title = `${program.title} | ${SITE}`;
       },
       () => alive && setState({ status: "error" })
     );

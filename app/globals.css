@@ -14,6 +14,8 @@
   --color-hijau-ink: #072f1d;
   --color-emas: #c9952b;
   --color-emas-deep: #8a6414;
+  /* Gold for text on the green surfaces: the logo gold itself is only 2.9:1 there. */
+  --color-emas-muda: #f2d38a;
 
   --color-ash: #e7dcc4;
   --color-ash-deep: #c9ba98;

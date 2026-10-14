@@ -6,7 +6,7 @@ const MDT = getLembaga("mdt");
 
 export const metadata: Metadata = {
   title: MDT.nama,
-  description: `${MDT.namaLengkap} — ${MDT.ringkas}`,
+  description: `${MDT.namaLengkap}. ${MDT.ringkas}`,
 };
 
 export default function MdtPage() {

@@ -21,11 +21,11 @@ const notoNaskhArabic = Noto_Naskh_Arabic({
 
 export const metadata: Metadata = {
   title: {
-    default: "Bangunjiwa — Yayasan Pesantren Masyarakat",
-    template: "%s — Bangunjiwa",
+    default: "Bangunjiwa | Yayasan Pesantren Masyarakat",
+    template: "%s | Bangunjiwa",
   },
   description:
-    "Portal digital Yayasan Pesantren Masyarakat Bangunjiwa — pendidikan dirosah islamiyah, pendidikan vokasi, kewirausahaan, dan Dana Abadi Pesantren Hijau.",
+    "Portal digital Yayasan Pesantren Masyarakat Bangunjiwa: pendidikan dirosah islamiyah, pendidikan vokasi, kewirausahaan, dan Dana Abadi Pesantren Hijau.",
 };
 
 export default function RootLayout({

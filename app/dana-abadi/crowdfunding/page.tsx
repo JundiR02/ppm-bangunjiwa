@@ -7,7 +7,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 export const metadata: Metadata = {
   title: "Crowdfunding",
   description:
-    "Kampanye crowdfunding Dana Abadi Pesantren Hijau — dukung pendidikan dan program Yayasan Pesantren Masyarakat Bangunjiwa.",
+    "Kampanye crowdfunding Dana Abadi Pesantren Hijau untuk mendukung pendidikan dan program Yayasan Pesantren Masyarakat Bangunjiwa.",
 };
 
 export default function CrowdfundingPage() {

@@ -8,7 +8,7 @@ const BIDANG = getBidang("dana-abadi");
 
 export const metadata: Metadata = {
   title: BIDANG.nama,
-  description: `${BIDANG.nama} — ${BIDANG.ringkas} Donasi, UPZIS & wakaf, dan kampanye crowdfunding.`,
+  description: `${BIDANG.nama}: ${BIDANG.ringkas} Donasi, UPZIS & wakaf, dan kampanye crowdfunding.`,
 };
 
 export default function DanaAbadiPage() {

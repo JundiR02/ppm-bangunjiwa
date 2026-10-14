@@ -95,9 +95,9 @@ export function ProgramsManager() {
                         <ProgramChips program={p} />
                       </td>
                       <td className={`${cell} text-iron`}>
-                        {p.collected != null ? formatRupiahShort(p.collected) : "—"} / {p.target != null ? formatRupiahShort(p.target) : "—"}
+                        {p.collected != null ? formatRupiahShort(p.collected) : "-"} / {p.target != null ? formatRupiahShort(p.target) : "-"}
                       </td>
-                      <td className={`${cell} text-iron-soft`}>{p.figuresUpdatedAt ? formatDate(p.figuresUpdatedAt) : "—"}</td>
+                      <td className={`${cell} text-iron-soft`}>{p.figuresUpdatedAt ? formatDate(p.figuresUpdatedAt) : "-"}</td>
                       <td className={cell}>
                         <div className="flex justify-end gap-1.5">
                           {p.status !== "draft" && (

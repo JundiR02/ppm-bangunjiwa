@@ -6,7 +6,7 @@ const BIDANG = getBidang("vokasi");
 
 export const metadata: Metadata = {
   title: BIDANG.nama,
-  description: `${BIDANG.nama} — ${BIDANG.ringkas}`,
+  description: `${BIDANG.nama}: ${BIDANG.ringkas}`,
 };
 
 export default function VokasiPage() {

@@ -6,7 +6,7 @@ const PRA_TPQ = getLembaga("pra-tpq");
 
 export const metadata: Metadata = {
   title: PRA_TPQ.nama,
-  description: `${PRA_TPQ.nama} (${PRA_TPQ.namaLengkap}) — ${PRA_TPQ.ringkas}`,
+  description: `${PRA_TPQ.nama} (${PRA_TPQ.namaLengkap}). ${PRA_TPQ.ringkas}`,
 };
 
 export default function PraTpqPage() {

@@ -14,7 +14,7 @@ import { getLembaga, MISI_BANGUNJIWA, PEMINATAN_RISET, PPM_PROGRAM, RISET_PILLAR
 export const metadata: Metadata = {
   title: "PPM Bangunjiwa",
   description:
-    "PPM Bangunjiwa — pesantren mahasiswa yang mencetak SDM riset ekologi untuk ekosistem MRV Nexus, memadukan pendidikan keislaman dengan IT, pemetaan, dan pengabdian masyarakat.",
+    "PPM Bangunjiwa, pesantren mahasiswa yang mencetak SDM riset ekologi untuk ekosistem MRV Nexus, memadukan pendidikan keislaman dengan IT, pemetaan, dan pengabdian masyarakat.",
 };
 
 const PPM = getLembaga("ppm");
