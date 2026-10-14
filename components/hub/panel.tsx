@@ -45,6 +45,6 @@ export function PanelHeader({
 
 export function Eyebrow({ children, className }: { children: React.ReactNode; className?: string }) {
   return (
-    <span className={cn("inline-block text-[14px] font-semibold text-emas-deep", className)}>{children}</span>
+    <span className={cn("inline-block text-[13px] font-semibold text-emas-deep", className)}>{children}</span>
   );
 }

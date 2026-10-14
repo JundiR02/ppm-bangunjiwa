@@ -8,7 +8,7 @@ export function OrgStructure() {
       <div className="mx-auto flex max-w-xl flex-col items-center gap-3 rounded-lg bg-hijau px-6 py-8 text-center text-frost">
         <UnitLogo src={YAYASAN.logo} alt={`Logo ${YAYASAN.nama}`} className="size-16 rounded-full border-0" />
         <h3 className="text-balance font-heading text-2xl leading-snug">{YAYASAN.nama}</h3>
-        <p className="text-[14px] text-frost/75">Pengasuh: {PROFIL_PESANTREN.pengasuh.join(" & ")}</p>
+        <p className="text-[13px] text-frost/75">Pengasuh: {PROFIL_PESANTREN.pengasuh.join(" & ")}</p>
       </div>
 
       {/* Connector lines: a trunk from the yayasan, a rail across, and a drop to each bidang (desktop only). */}
@@ -25,7 +25,7 @@ export function OrgStructure() {
       <ul className="mt-10 grid gap-x-8 gap-y-10 md:grid-cols-2 xl:mt-0 xl:grid-cols-4">
         {BIDANG_PROGRAM.map((bidang) => (
           <li key={bidang.id} className="border-t-2 border-hijau pt-5">
-            <h3 className="font-heading text-2xl leading-snug text-iron-deep">
+            <h3 className="font-heading text-xl leading-snug text-iron-deep">
               <Link href={bidang.href} className="inline-flex min-h-11 items-center hover:text-hijau">
                 {bidang.nama}
               </Link>
@@ -42,9 +42,9 @@ export function OrgStructure() {
                       item.judul
                     )}
                   </span>
-                  {item.keterangan && <span className="block text-[14px] text-iron-soft">{item.keterangan}</span>}
+                  {item.keterangan && <span className="block text-[13px] text-iron-soft">{item.keterangan}</span>}
                   {item.anak && (
-                    <ul className="mt-1 flex flex-col gap-0.5 border-l border-ash pl-3 text-[14px] text-iron-soft">
+                    <ul className="mt-1 flex flex-col gap-0.5 border-l border-ash pl-3 text-[13px] text-iron-soft">
                       {item.anak.map((a) => (
                         <li key={a}>{a}</li>
                       ))}

@@ -17,8 +17,8 @@ export function EmptyState({
       <span className="flex size-10 items-center justify-center rounded-full bg-linen text-iron-soft">
         <Icon className="size-5" strokeWidth={1.75} />
       </span>
-      <p className="text-[16px] font-medium text-iron-deep">{title}</p>
-      {children && <div className="max-w-sm text-[14px] leading-relaxed text-iron-soft">{children}</div>}
+      <p className="text-[14px] font-medium text-iron-deep">{title}</p>
+      {children && <div className="max-w-sm text-[13px] leading-relaxed text-iron-soft">{children}</div>}
     </div>
   );
 }

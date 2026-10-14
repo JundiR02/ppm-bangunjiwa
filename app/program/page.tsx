@@ -23,7 +23,7 @@ export default function ProgramPage() {
         <h1 className="text-balance font-heading text-[2.4rem] leading-[1.1] text-iron-deep sm:text-5xl">
           Empat bidang program Bangunjiwa
         </h1>
-        <p className="mt-4 text-[16px] leading-relaxed text-iron-soft">
+        <p className="mt-4 text-[15px] leading-relaxed text-iron-soft">
           Dari pendidikan keislaman usia PAUD hingga mahasiswa, pendidikan vokasi, unit usaha, sampai pendanaan
           berkelanjutan.
         </p>
@@ -38,14 +38,14 @@ export default function ProgramPage() {
                   {bidang.nama}
                 </Link>
               </h2>
-              <p className="mt-2 text-[16px] leading-relaxed text-iron-soft">{bidang.ringkas}</p>
+              <p className="mt-2 text-[15px] leading-relaxed text-iron-soft">{bidang.ringkas}</p>
               <Link href={bidang.href} className="mt-2 inline-flex min-h-11 items-center gap-2 text-[14px] font-medium text-hijau hover:underline">
                 Buka halaman {bidang.nama}
               </Link>
             </div>
             <ul className="flex flex-col">
               {bidang.items.map((item) => (
-                <li key={item.judul} className="text-[16px] text-iron">
+                <li key={item.judul} className="text-[15px] text-iron">
                   {item.href ? (
                     <Link href={item.href} className="inline-flex min-h-11 items-center hover:text-hijau hover:underline">
                       {item.judul}

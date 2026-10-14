@@ -24,11 +24,11 @@ export function BarStat({
             className={cn("relative w-full rounded-t-[18px] rounded-b-lg", TONE[item.tone])}
             style={{ height: `${(item.percent / max) * 100}%` }}
           >
-            <span className="absolute top-2 left-1/2 -translate-x-1/2 rounded-full bg-frost/90 px-2 py-0.5 text-[14px] font-semibold text-iron tabular-nums">
+            <span className="absolute top-2 left-1/2 -translate-x-1/2 rounded-full bg-frost/90 px-2 py-0.5 text-[10px] font-semibold text-iron tabular-nums">
               {item.percent}%
             </span>
           </div>
-          <span className="line-clamp-2 min-h-[2lh] text-center text-[14px] leading-tight text-iron-soft">
+          <span className="line-clamp-2 min-h-[2lh] text-center text-[11px] leading-tight text-iron-soft">
             {item.label}
           </span>
         </div>

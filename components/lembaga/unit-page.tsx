@@ -39,11 +39,11 @@ export function UnitPage({ lembaga, crumb }: { lembaga: Lembaga; crumb: string }
             {lembaga.peran} · {lembaga.untuk}
           </Eyebrow>
           <h1 className="mt-2 text-balance font-heading text-[2.4rem] leading-[1.1] text-iron-deep sm:text-5xl">{lembaga.nama}</h1>
-          <p className="mt-2 text-[16px] text-iron">{lembaga.namaLengkap}</p>
-          <p className="mt-5 max-w-xl text-lg leading-relaxed text-iron-soft">{lembaga.ringkas}</p>
+          <p className="mt-2 text-[15px] text-iron">{lembaga.namaLengkap}</p>
+          <p className="mt-5 max-w-xl text-[17px] leading-relaxed text-iron-soft">{lembaga.ringkas}</p>
         </div>
         <aside className="border-t border-ash pt-6 lg:mt-24 lg:border-t-0 lg:border-l lg:pt-0 lg:pl-8">
-          <h2 className="font-heading text-2xl text-iron-deep">Kontak</h2>
+          <h2 className="font-heading text-xl text-iron-deep">Kontak</h2>
           <UnitContacts lembaga={lembaga} className="mt-4" />
         </aside>
       </section>

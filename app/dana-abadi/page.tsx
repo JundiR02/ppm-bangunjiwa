@@ -25,7 +25,7 @@ export default function DanaAbadiPage() {
           </div>
           <Link
             href="/donasi"
-            className="inline-flex w-fit items-center rounded-md bg-hijau px-5 py-3 text-[16px] font-medium text-frost transition-colors hover:bg-hijau-deep"
+            className="inline-flex w-fit items-center rounded-md bg-hijau px-5 py-3 text-[15px] font-medium text-frost transition-colors hover:bg-hijau-deep"
           >
             Lihat rekening & QRIS
           </Link>

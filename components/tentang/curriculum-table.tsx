@@ -4,12 +4,12 @@ import { KURIKULUM_ROWS, KURIKULUM_SEMESTERS } from "@/lib/bangunjiwa-data";
 export function CurriculumTable() {
   return (
     <>
-    <p className="mb-2 text-[14px] text-iron-soft md:hidden">Geser tabel ke samping untuk melihat semua semester.</p>
+    <p className="mb-2 text-[13px] text-iron-soft md:hidden">Geser tabel ke samping untuk melihat semua semester.</p>
     {/* Focusable so keyboard users can scroll it with the arrow keys. */}
     <div className="overflow-x-auto" role="region" aria-label="Tabel kurikulum per semester" tabIndex={0}>
       <table className="w-full min-w-[680px] border-separate border-spacing-0 text-[14px]">
         <thead>
-          <tr className="text-[14px] text-iron-soft">
+          <tr className="text-[13px] text-iron-soft">
             <th className="rounded-l-md bg-linen px-4 py-2.5 text-left font-medium">Mata pelajaran</th>
             {KURIKULUM_SEMESTERS.map((sem) => (
               <th key={sem} className="bg-linen px-2 py-2.5 text-center font-medium">

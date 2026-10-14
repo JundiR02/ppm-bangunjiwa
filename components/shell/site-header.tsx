@@ -88,7 +88,7 @@ function MobileNav({ pathname, onNavigate }: { pathname: string; onNavigate: () 
       </ul>
       {groups.map((g) => (
         <div key={g.title}>
-          <p className="text-[14px] font-semibold text-emas-deep">{g.title}</p>
+          <p className="text-[12px] font-semibold text-emas-deep">{g.title}</p>
           <ul className="mt-2 flex flex-col gap-1">
             {g.links.map((link) => (
               <li key={link.href}>
