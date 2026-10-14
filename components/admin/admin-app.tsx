@@ -140,7 +140,7 @@ export function AdminApp() {
           }
         />
         <p className="mt-2 text-[13px] text-iron-soft">
-          Masuk sebagai {user.email} · {isOwner(user) ? "Admin utama" : "Admin"}
+          Masuk sebagai {user.email} ({isOwner(user) ? "admin utama" : "admin"})
         </p>
         <div className="mt-5 flex gap-1 rounded-full border border-ash bg-linen/80 p-1 sm:w-fit" role="tablist">
           {(

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { PageTop } from "@/components/shell/page-top";
 import { UnitLogo } from "@/components/lembaga/unit-logo";
 import { UnitContacts } from "@/components/lembaga/unit-page";
-import { LEMBAGA_BANGUNJIWA } from "@/lib/bangunjiwa-data";
+import { LEMBAGA_BANGUNJIWA, untukDalamKalimat } from "@/lib/bangunjiwa-data";
 
 export const metadata: Metadata = {
   title: "PMB & PSB",
@@ -32,14 +32,14 @@ export default function PsbPage() {
             <div className="flex gap-5">
               <UnitLogo src={l.logo} alt={`Logo ${l.nama}`} fallback={l.singkatan} className="size-16 rounded-full border-0 bg-linen" />
               <div>
-                <p className="text-[13px] font-semibold text-emas-deep">
-                  {l.penerimaan.singkatan} · {l.untuk}
-                </p>
-                <h2 className="mt-1 font-heading text-2xl text-iron-deep">{l.penerimaan.nama}</h2>
-                <p className="mt-1 text-[15px] text-iron">
+                <h2 className="font-heading text-2xl text-iron-deep">
+                  {l.penerimaan.nama} ({l.penerimaan.singkatan})
+                </h2>
+                <p className="text-[15px] text-iron">
                   <Link href={l.href} className="inline-flex min-h-11 items-center hover:text-hijau hover:underline">
                     {l.nama}
                   </Link>
+                  , untuk {untukDalamKalimat(l)}
                 </p>
                 <p className="mt-3 text-[14px] text-iron-soft">Biaya, seleksi, dan pengumuman segera diumumkan.</p>
               </div>

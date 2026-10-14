@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { PageTop } from "@/components/shell/page-top";
-import { Eyebrow } from "@/components/hub/panel";
 import { SectionHeading } from "@/components/hub/section-heading";
 import { CurriculumTable } from "@/components/tentang/curriculum-table";
 import { EcosystemFlow } from "@/components/tentang/ecosystem-flow";
@@ -9,7 +8,14 @@ import { ActivityGallery } from "@/components/tentang/activity-gallery";
 import { ComingSoonGrid } from "@/components/lembaga/coming-soon-grid";
 import { PENDIDIKAN_PARENT, UnitContacts, unitOutline } from "@/components/lembaga/unit-page";
 import { UnitLogo } from "@/components/lembaga/unit-logo";
-import { getLembaga, MISI_BANGUNJIWA, PEMINATAN_RISET, PPM_PROGRAM, RISET_PILLARS } from "@/lib/bangunjiwa-data";
+import {
+  getLembaga,
+  MISI_BANGUNJIWA,
+  PEMINATAN_RISET,
+  PPM_PROGRAM,
+  RISET_PILLARS,
+  untukDalamKalimat,
+} from "@/lib/bangunjiwa-data";
 
 export const metadata: Metadata = {
   title: "PPM Bangunjiwa",
@@ -29,8 +35,10 @@ export default function PpmPage() {
       <section className="grid items-center gap-10 lg:grid-cols-[1.2fr_1fr] lg:gap-14">
         <div>
           <UnitLogo src={PPM.logo} alt={`Logo ${PPM.nama}`} className="size-24 rounded-full border-0 bg-linen" />
-          <Eyebrow className="mt-6">Pesantren Mahasiswa · {PPM.untuk}</Eyebrow>
-          <h1 className="mt-2 font-heading text-[2.4rem] leading-[1.1] text-iron-deep sm:text-5xl">{PPM.nama}</h1>
+          <h1 className="mt-6 font-heading text-[2.4rem] leading-[1.1] text-iron-deep sm:text-5xl">{PPM.nama}</h1>
+          <p className="mt-2 text-[15px] text-iron">
+            {PPM.namaLengkap}, untuk {untukDalamKalimat(PPM)}
+          </p>
           <p className="mt-5 max-w-xl text-[17px] leading-relaxed text-iron-soft">
             Bangunjiwa mendampingi mahasantri menempuh pendidikan keislaman sambil kuliah, sekaligus membina mereka
             menjadi tenaga IT, pemetaan, dan pengelola SDM survei untuk ekosistem MRV Nexus.
@@ -92,7 +100,6 @@ export default function PpmPage() {
 
       <section id="program-unggulan">
         <SectionHeading
-          eyebrow="Program Unggulan"
           title="Tiga program PPM Bangunjiwa"
           description="Selain pesantren bagi mahasiswa dan santri umum, PPM menyelenggarakan diklat bagi guru serta wali santri dan pendamping belajar."
         />
@@ -108,7 +115,6 @@ export default function PpmPage() {
 
       <section id="program-riset">
         <SectionHeading
-          eyebrow="Program Riset Ekologi"
           title="Tiga pilar SDM untuk ekosistem MRV Nexus"
           description="Selain pendidikan keislaman, mahasantri dibina lintas tiga bidang agar siap mengelola MRV Nexus, platform monitoring, reporting, dan verification untuk DAS dan hutan sosial."
         />
@@ -135,7 +141,6 @@ export default function PpmPage() {
 
       <section id="kurikulum">
         <SectionHeading
-          eyebrow="Kurikulum"
           title="Kurikulum Pesantren Riset Ekologi Bangunjiwa"
           description="Disusun bertahap dari semester I hingga V, memadukan Al-Qur'an, ilmu alat, dan fikih dengan peminatan riset ekologi serta pengabdian masyarakat."
         />
@@ -147,8 +152,7 @@ export default function PpmPage() {
 
       <section id="ekosistem">
         <SectionHeading
-          eyebrow="Ekosistem Terintegrasi"
-          title="Bangunjiwa, MRV Nexus, dan donasi publik"
+          title="Bagaimana Bangunjiwa, MRV Nexus, dan donasi publik saling terkait"
           description="Bangunjiwa mencetak SDM, MRV Nexus mengoperasikan data lapangan, dan donasi publik mendanai keberlangsungan keduanya."
         />
         <EcosystemFlow />
@@ -156,7 +160,6 @@ export default function PpmPage() {
 
       <section id="kegiatan">
         <SectionHeading
-          eyebrow="Kegiatan & Fasilitas"
           title="Keseharian mahasantri Bangunjiwa"
           description="Dari kajian malam, tahsin bersama, hingga ruang tinggal untuk belajar dan beristirahat."
         />

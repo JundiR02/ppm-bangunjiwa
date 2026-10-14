@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import { PageTop } from "@/components/shell/page-top";
 import { UnitLogo } from "@/components/lembaga/unit-logo";
 import { PROGRAM_PARENT } from "@/components/lembaga/bidang-page";
@@ -37,7 +36,7 @@ export default function PendidikanPage() {
                 <p className="mt-1 max-w-xl text-[15px] leading-relaxed text-iron-soft">{l.ringkas}</p>
               </div>
               <span className="inline-flex items-center gap-2 text-[14px] font-medium text-hijau">
-                Lihat profil lembaga <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
+                Lihat profil lembaga
               </span>
             </Link>
           </li>

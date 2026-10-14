@@ -53,7 +53,7 @@ export default function ProgramPage() {
                   ) : (
                     item.judul
                   )}
-                  {item.keterangan && <span className="text-iron-soft"> · {item.keterangan}</span>}
+                  {item.keterangan && <span className="ml-1.5 text-iron-soft">({item.keterangan})</span>}
                 </li>
               ))}
             </ul>

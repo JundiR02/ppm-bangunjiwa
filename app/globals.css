@@ -20,20 +20,25 @@
      `ash` stays for decorative rules only. */
   --color-garis: #8c826b;
 
-  --color-ash: #e7dcc4;
-  --color-ash-deep: #c9ba98;
-  --color-linen: #f4eddc;
+  /* Kitab kuning: the yellowed paper of classical texts and its ink. Used only for the kitab page,
+     so the page base stays a cooler bone white and the yellow is the one warm moment. */
+  --color-kertas: #efe2b3;
+  --color-tinta: #1e1a14;
+
+  --color-ash: #e2ded2;
+  --color-ash-deep: #c3bdac;
+  --color-linen: #f1efe7;
   --color-pine: #2f7d52;
   --color-pine-deep: #0f5f3a;
   --color-pine-soft: #e1ecdf;
   --color-iron: #2e3832;
   --color-iron-deep: #18211b;
   --color-iron-soft: #5a645d;
-  --color-frost: #fffcf5;
+  --color-frost: #fbfaf6;
 
   --font-heading: var(--font-source-serif);
   --font-sans: var(--font-inter);
-  --font-arabic: var(--font-noto-naskh);
+  --font-arabic: var(--font-amiri);
 
   --shadow-panel: 0 1px 2px rgb(24 33 27 / 0.06);
 }

@@ -1,5 +1,4 @@
 import { PageTop } from "@/components/shell/page-top";
-import { Eyebrow } from "@/components/hub/panel";
 import { ComingSoonGrid } from "@/components/lembaga/coming-soon-grid";
 import { ContactList } from "@/components/lembaga/contact-list";
 import { UnitLogo } from "@/components/lembaga/unit-logo";
@@ -35,10 +34,7 @@ export function UnitPage({ lembaga, crumb }: { lembaga: Lembaga; crumb: string }
             fallback={lembaga.singkatan}
             className="size-24 rounded-full border-0 bg-linen"
           />
-          <Eyebrow className="mt-6">
-            {lembaga.peran} · {lembaga.untuk}
-          </Eyebrow>
-          <h1 className="mt-2 text-balance font-heading text-[2.4rem] leading-[1.1] text-iron-deep sm:text-5xl">{lembaga.nama}</h1>
+          <h1 className="mt-6 text-balance font-heading text-[2.4rem] leading-[1.1] text-iron-deep sm:text-5xl">{lembaga.nama}</h1>
           <p className="mt-2 text-[15px] text-iron">{lembaga.namaLengkap}</p>
           <p className="mt-5 max-w-xl text-[17px] leading-relaxed text-iron-soft">{lembaga.ringkas}</p>
         </div>
