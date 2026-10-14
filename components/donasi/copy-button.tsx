@@ -19,7 +19,7 @@ export function CopyButton({ value, label, className }: { value: string; label: 
       onClick={copy}
       aria-label={copied ? `${label} disalin` : `Salin ${label}`}
       className={cn(
-        "inline-flex h-11 shrink-0 items-center gap-1.5 rounded-xl border border-garis bg-frost px-3.5 text-[13px] font-medium text-iron shadow-panel transition-colors hover:bg-linen",
+        "inline-flex h-11 shrink-0 items-center gap-1.5 rounded-xl border border-garis bg-frost px-3.5 text-[14px] font-medium text-iron shadow-panel transition-colors hover:bg-linen",
         className
       )}
     >

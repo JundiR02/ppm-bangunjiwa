@@ -18,7 +18,7 @@ export function ComingSoonGrid({
 }) {
   return (
     <section className={cn("mt-14 border-t border-ash pt-8 sm:mt-20", className)}>
-      <h2 className="font-heading text-xl text-iron-deep">{title}</h2>
+      <h2 className="font-heading text-2xl text-iron-deep">{title}</h2>
       <p className="mt-1 text-[14px] text-iron-soft">Informasi berikut akan ditambahkan setelah tersedia.</p>
       <ul className="mt-6 grid gap-x-10 gap-y-4 sm:grid-cols-2 lg:grid-cols-3">
         {items.map((item) => (

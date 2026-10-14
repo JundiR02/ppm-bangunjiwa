@@ -41,7 +41,7 @@ export function DonationInteractive({ programTitle }: { programTitle?: string })
                   setCustomAmount("");
                 }}
                 className={cn(
-                  "rounded-lg border px-4 py-4 text-left font-heading text-xl font-light tracking-tight transition-colors",
+                  "rounded-lg border px-4 py-4 text-left font-heading text-2xl font-light tracking-tight transition-colors",
                   selected ? "border-hijau bg-hijau text-frost shadow-panel" : "border-garis bg-frost text-iron-deep hover:border-hijau"
                 )}
               >
@@ -52,7 +52,7 @@ export function DonationInteractive({ programTitle }: { programTitle?: string })
         </div>
         {/* The input itself has no outline; the whole row carries the focus ring so it stays visible. */}
         <div className="mt-3 flex flex-wrap items-center gap-3 rounded-lg border border-garis bg-frost px-4 py-1.5 focus-within:outline-3 focus-within:outline-offset-2 focus-within:outline-hijau">
-          <label htmlFor="customAmount" className="text-[13px] text-iron-soft">
+          <label htmlFor="customAmount" className="text-[14px] text-iron-soft">
             Atau masukkan jumlah lain
           </label>
           <div className="flex min-w-[160px] flex-1 items-center gap-2">
@@ -64,7 +64,7 @@ export function DonationInteractive({ programTitle }: { programTitle?: string })
               placeholder="0"
               value={customAmount}
               onChange={(e) => handleCustomAmountChange(e.target.value)}
-              className="h-11 w-full min-w-0 bg-transparent font-heading text-xl font-light text-iron-deep outline-none placeholder:text-iron-soft"
+              className="h-11 w-full min-w-0 bg-transparent font-heading text-2xl font-light text-iron-deep outline-none placeholder:text-iron-soft"
             />
           </div>
         </div>
@@ -72,7 +72,7 @@ export function DonationInteractive({ programTitle }: { programTitle?: string })
 
       <Panel className="xl:sticky xl:top-24 xl:col-span-4 xl:col-start-9 xl:row-span-2 xl:row-start-1">
         <PanelHeader title="Ringkasan" icon={ReceiptText} />
-        <div className="mt-5 flex flex-col text-[13px]">
+        <div className="mt-5 flex flex-col text-[14px]">
           <div className="flex justify-between gap-4 border-b border-ash/60 py-2.5 text-iron-soft">
             <span>Untuk</span>
             <span className="text-right text-iron-deep">{programTitle ?? "Program yayasan (umum)"}</span>
@@ -82,7 +82,7 @@ export function DonationInteractive({ programTitle }: { programTitle?: string })
             <span className="text-right text-iron-deep">{penerima}</span>
           </div>
         </div>
-        <p className="mt-5 text-xs text-iron-soft">Nominal yang ditransfer</p>
+        <p className="mt-5 text-[14px] text-iron-soft">Nominal yang ditransfer</p>
         <div className="flex flex-wrap items-center justify-between gap-3">
           <p className="font-heading text-[2.25rem] font-light leading-tight tracking-tight text-iron-deep tabular-nums">
             {formatRupiah(amount)}
@@ -95,7 +95,7 @@ export function DonationInteractive({ programTitle }: { programTitle?: string })
         >
           Lihat cara berdonasi
         </a>
-        <p className="mt-4 text-xs leading-relaxed text-iron-soft">
+        <p className="mt-4 text-[14px] leading-relaxed text-iron-soft">
           Situs ini belum mencatat donasi secara otomatis dan belum mengirim bukti donasi digital. Simpan bukti
           transfer Anda.
         </p>
@@ -103,37 +103,37 @@ export function DonationInteractive({ programTitle }: { programTitle?: string })
 
       <Panel id="cara-berdonasi" className="xl:col-span-8 xl:row-start-2">
         <PanelHeader title="Cara Berdonasi" icon={Wallet} />
-        <p className="mt-1.5 text-[13px] text-iron-soft">
+        <p className="mt-1.5 text-[14px] text-iron-soft">
           Pilih salah satu. Donasi masuk langsung ke rekening {penerima}.
         </p>
         <div className="mt-5 grid gap-3 md:grid-cols-2">
           <div className="flex flex-col rounded-lg border border-ash bg-frost p-5">
             <div className="flex flex-wrap items-center justify-between gap-2">
-              <p className="flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.08em] text-iron-soft">
+              <p className="flex items-center gap-2 text-[14px] font-medium uppercase tracking-[0.08em] text-iron-soft">
                 <Landmark className="size-3.5" /> Transfer bank
               </p>
-              <span className="rounded-full border border-pine/30 bg-pine-soft px-2.5 py-0.5 text-[11px] font-semibold text-pine-deep">
+              <span className="rounded-full border border-pine/30 bg-pine-soft px-2.5 py-0.5 text-[14px] font-semibold text-pine-deep">
                 {bank.layanan}
               </span>
             </div>
-            <p className="mt-4 text-[13px] text-iron-soft">{bank.nama}</p>
+            <p className="mt-4 text-[14px] text-iron-soft">{bank.nama}</p>
             <div className="mt-1 flex flex-wrap items-center justify-between gap-3">
               <p className="font-heading text-[1.75rem] font-light tracking-[0.04em] text-iron-deep tabular-nums">
                 {bank.noRekening}
               </p>
               <CopyButton value={bank.noRekening} label="nomor rekening" />
             </div>
-            <p className="mt-1 text-[13px] text-iron">a.n. {penerima}</p>
+            <p className="mt-1 text-[14px] text-iron">a.n. {penerima}</p>
             {transferNote && (
               <div className="mt-4 rounded-xl bg-linen/80 p-3">
-                <p className="text-[11px] text-iron-soft">Tulis di berita transfer:</p>
+                <p className="text-[14px] text-iron-soft">Tulis di berita transfer:</p>
                 <div className="mt-1 flex items-center justify-between gap-2">
-                  <p className="text-[13px] font-medium text-iron-deep">{transferNote}</p>
+                  <p className="text-[14px] font-medium text-iron-deep">{transferNote}</p>
                   <CopyButton value={transferNote} label="berita transfer" />
                 </div>
               </div>
             )}
-            <ol className="mt-5 flex flex-col gap-2 border-t border-ash/60 pt-4 text-[12.5px] leading-relaxed text-iron-soft">
+            <ol className="mt-5 flex flex-col gap-2 border-t border-ash/60 pt-4 text-[14px] leading-relaxed text-iron-soft">
               <li>1. Transfer sesuai nominal di ringkasan.</li>
               <li>2. Pastikan nama penerima: {penerima}.</li>
               <li>3. Simpan bukti transfer sebagai arsip Anda.</li>
@@ -141,7 +141,7 @@ export function DonationInteractive({ programTitle }: { programTitle?: string })
           </div>
 
           <div className="flex flex-col rounded-lg border border-ash bg-frost p-5">
-            <p className="flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.08em] text-iron-soft">
+            <p className="flex items-center gap-2 text-[14px] font-medium uppercase tracking-[0.08em] text-iron-soft">
               <QrCode className="size-3.5" /> QRIS
             </p>
             <a
@@ -153,15 +153,15 @@ export function DonationInteractive({ programTitle }: { programTitle?: string })
             >
               <Image src={qris.src} alt={`QRIS ${penerima}, NMID ${qris.nmid}`} width={726} height={1024} className="h-auto w-full" />
             </a>
-            <p className="mt-3 text-center text-[11px] text-iron-soft">NMID {qris.nmid}</p>
+            <p className="mt-3 text-center text-[14px] text-iron-soft">NMID {qris.nmid}</p>
             <a
               href={qris.src}
               download="QRIS-Yayasan-PPM-Bangunjiwa.jpg"
-              className="mt-3 inline-flex h-11 items-center justify-center gap-2 rounded-xl bg-hijau px-4 text-[13px] font-medium text-frost shadow-panel transition-colors hover:bg-hijau-deep"
+              className="mt-3 inline-flex h-11 items-center justify-center gap-2 rounded-xl bg-hijau px-4 text-[14px] font-medium text-frost shadow-panel transition-colors hover:bg-hijau-deep"
             >
               <Download className="size-4" /> Unduh QRIS
             </a>
-            <p className="mt-3 text-[12.5px] leading-relaxed text-iron-soft">
+            <p className="mt-3 text-[14px] leading-relaxed text-iron-soft">
               Scan dengan aplikasi bank atau e-wallet, lalu <span className="font-medium text-iron">ketik nominalnya sendiri</span>.
               Berdonasi dari HP? Unduh QRIS, lalu pilih &ldquo;scan dari galeri&rdquo; di aplikasi Anda.
             </p>

@@ -19,13 +19,13 @@ export default function KontakPage() {
       <section className="grid gap-10 lg:grid-cols-[1.3fr_1fr] lg:gap-16">
         <div>
           <h1 className="font-heading text-[2.4rem] leading-[1.1] text-iron-deep sm:text-5xl">Hubungi Bangunjiwa</h1>
-          <p className="mt-4 max-w-xl text-[17px] leading-relaxed text-iron-soft">
+          <p className="mt-4 max-w-xl text-lg leading-relaxed text-iron-soft">
             Setiap lembaga punya kontak sendiri. Pilih sesuai keperluan Anda.
           </p>
         </div>
         <div className="lg:pt-2">
-          <h2 className="font-heading text-xl text-iron-deep">{YAYASAN.nama}</h2>
-          <p className="mt-3 text-[15px] leading-relaxed text-iron">{PROFIL_PESANTREN.alamat}</p>
+          <h2 className="font-heading text-2xl text-iron-deep">{YAYASAN.nama}</h2>
+          <p className="mt-3 text-[16px] leading-relaxed text-iron">{PROFIL_PESANTREN.alamat}</p>
           <div className="mt-2 flex flex-wrap gap-x-6 text-[14px] font-medium">
             <a
               href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(PROFIL_PESANTREN.alamat)}`}
@@ -51,7 +51,7 @@ export default function KontakPage() {
             <div className="flex items-center gap-4">
               <UnitLogo src={l.logo} alt="" fallback={l.singkatan} className="size-14 rounded-full border-0 bg-linen" />
               <div>
-                <h2 className="font-heading text-xl text-iron-deep">
+                <h2 className="font-heading text-2xl text-iron-deep">
                   <Link href={l.href} className="inline-flex min-h-11 items-center hover:text-hijau">
                     {l.nama}
                   </Link>

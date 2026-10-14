@@ -18,13 +18,13 @@ export function BidangItems({ items, className }: { items: BidangProgram["items"
                 item.judul
               )}
             </h2>
-            {item.keterangan && <p className="mt-1 text-[15px] text-iron-soft">{item.keterangan}</p>}
+            {item.keterangan && <p className="mt-1 text-[16px] text-iron-soft">{item.keterangan}</p>}
           </div>
           <div className="flex flex-col gap-3 md:pt-1">
             {item.anak && (
               <ul className="flex flex-col gap-1.5">
                 {item.anak.map((a) => (
-                  <li key={a} className="text-[15px] text-iron">
+                  <li key={a} className="text-[16px] text-iron">
                     {a}
                   </li>
                 ))}

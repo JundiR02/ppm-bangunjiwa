@@ -31,7 +31,7 @@ export default function PpmPage() {
           <UnitLogo src={PPM.logo} alt={`Logo ${PPM.nama}`} className="size-24 rounded-full border-0 bg-linen" />
           <Eyebrow className="mt-6">Pesantren Mahasiswa · {PPM.untuk}</Eyebrow>
           <h1 className="mt-2 font-heading text-[2.4rem] leading-[1.1] text-iron-deep sm:text-5xl">{PPM.nama}</h1>
-          <p className="mt-5 max-w-xl text-[17px] leading-relaxed text-iron-soft">
+          <p className="mt-5 max-w-xl text-lg leading-relaxed text-iron-soft">
             Bangunjiwa mendampingi mahasantri menempuh pendidikan keislaman sambil kuliah, sekaligus membina mereka
             menjadi tenaga IT, pemetaan, dan pengelola SDM survei untuk ekosistem MRV Nexus.
           </p>
@@ -45,7 +45,7 @@ export default function PpmPage() {
             priority
             className="w-full max-w-[496px] rounded-lg object-cover"
           />
-          <figcaption className="mt-2 text-[13px] text-iron-soft">Kajian Al-Qur&apos;an bersama mahasantri</figcaption>
+          <figcaption className="mt-2 text-[14px] text-iron-soft">Kajian Al-Qur&apos;an bersama mahasantri</figcaption>
         </figure>
       </section>
 
@@ -71,7 +71,7 @@ export default function PpmPage() {
           </div>
         </div>
         <figure className="self-start border-l-4 border-hijau pl-6">
-          <figcaption className="text-[13px] font-semibold text-emas-deep">Visi</figcaption>
+          <figcaption className="text-[14px] font-semibold text-emas-deep">Visi</figcaption>
           <blockquote className="mt-2 font-heading text-2xl leading-snug text-iron-deep">
             Menjadi lembaga pendidikan keislaman berbasis riset ekologi dan pengabdian masyarakat, sekaligus sumber SDM
             bagi ekosistem MRV Nexus.
@@ -83,7 +83,7 @@ export default function PpmPage() {
         <h2 className="font-heading text-2xl text-iron-deep">Misi</h2>
         <ol className="mt-6 grid list-decimal gap-x-12 gap-y-4 pl-5 marker:font-heading marker:text-hijau md:grid-cols-2">
           {MISI_BANGUNJIWA.map((misi) => (
-            <li key={misi} className="pl-2 text-[15px] leading-relaxed text-iron">
+            <li key={misi} className="pl-2 text-[16px] leading-relaxed text-iron">
               {misi}
             </li>
           ))}
@@ -99,8 +99,8 @@ export default function PpmPage() {
         <ul className="grid gap-x-8 gap-y-8 md:grid-cols-3">
           {PPM_PROGRAM.map((program) => (
             <li key={program.judul} className="border-t-2 border-hijau pt-5">
-              <h3 className="font-heading text-xl text-iron-deep">{program.judul}</h3>
-              <p className="mt-2 text-[15px] leading-relaxed text-iron-soft">{program.keterangan}</p>
+              <h3 className="font-heading text-2xl text-iron-deep">{program.judul}</h3>
+              <p className="mt-2 text-[16px] leading-relaxed text-iron-soft">{program.keterangan}</p>
             </li>
           ))}
         </ul>
@@ -115,18 +115,18 @@ export default function PpmPage() {
         <ul className="grid gap-x-8 gap-y-8 md:grid-cols-3">
           {RISET_PILLARS.map((pillar) => (
             <li key={pillar.id} className="border-t-2 border-hijau pt-5">
-              <h3 className="font-heading text-xl text-iron-deep">{pillar.title}</h3>
-              <p className="mt-2 text-[15px] leading-relaxed text-iron-soft">{pillar.description}</p>
+              <h3 className="font-heading text-2xl text-iron-deep">{pillar.title}</h3>
+              <p className="mt-2 text-[16px] leading-relaxed text-iron-soft">{pillar.description}</p>
             </li>
           ))}
         </ul>
         <div className="mt-12">
-          <h3 className="font-heading text-xl text-iron-deep">Peminatan riset, semester IV dan V</h3>
+          <h3 className="font-heading text-2xl text-iron-deep">Peminatan riset, semester IV dan V</h3>
           <dl className="mt-4 border-t border-ash">
             {PEMINATAN_RISET.map((item) => (
               <div key={item.tag} className="grid gap-1 border-b border-ash py-3 sm:grid-cols-[160px_1fr]">
-                <dt className="text-[15px] font-medium text-hijau">{item.tag}</dt>
-                <dd className="text-[15px] text-iron">{item.description}</dd>
+                <dt className="text-[16px] font-medium text-hijau">{item.tag}</dt>
+                <dd className="text-[16px] text-iron">{item.description}</dd>
               </div>
             ))}
           </dl>
@@ -140,7 +140,7 @@ export default function PpmPage() {
           description="Disusun bertahap dari semester I hingga V, memadukan Al-Qur'an, ilmu alat, dan fikih dengan peminatan riset ekologi serta pengabdian masyarakat."
         />
         <CurriculumTable />
-        <p className="mt-4 text-[13px] text-iron-soft">
+        <p className="mt-4 text-[14px] text-iron-soft">
           Ditetapkan oleh Direktur Pendidikan PPM Riset Ekologi Bangunjiwa, M. Hamid Lufafi, S.Pd.
         </p>
       </section>
@@ -166,7 +166,7 @@ export default function PpmPage() {
       <ComingSoonGrid items={unitOutline(PPM, PPM_SUDAH_ADA)} title="Informasi PPM yang sedang disiapkan" />
 
       <section id="kontak" className="mt-16 border-t border-ash pt-8">
-        <h2 className="font-heading text-xl text-iron-deep">Kontak PPM</h2>
+        <h2 className="font-heading text-2xl text-iron-deep">Kontak PPM</h2>
         <UnitContacts lembaga={PPM} className="mt-4" />
       </section>
     </>

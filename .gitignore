@@ -48,3 +48,6 @@ PPM Bangunjiwa/**/*scratchpad*preview.html
 
 # firebase cli
 firebase-debug.log
+
+# taste-skill inspector screenshots
+/.taste-skill/

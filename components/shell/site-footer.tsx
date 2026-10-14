@@ -13,7 +13,7 @@ const LAINNYA = [
 function Column({ title, links }: { title: string; links: { label: string; href: string }[] }) {
   return (
     <div>
-      <p className="text-[13px] font-semibold text-emas">{title}</p>
+      <p className="text-[14px] font-semibold text-emas">{title}</p>
       {/* Each link is a full 44px tap row; the row height replaces the old gap between links. */}
       <ul className="mt-1 flex flex-col">
         {links.map((link) => (
@@ -52,7 +52,7 @@ export function SiteFooter() {
         <Column title="Lainnya" links={LAINNYA} />
       </div>
       <div className="border-t border-frost/10">
-        <div className="mx-auto flex w-full max-w-[1200px] flex-col gap-1 px-4 py-3 text-[12.5px] text-frost/55 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+        <div className="mx-auto flex w-full max-w-[1200px] flex-col gap-1 px-4 py-3 text-[14px] text-frost/55 sm:flex-row sm:items-center sm:justify-between sm:px-6">
           <p>© {new Date().getFullYear()} {YAYASAN.nama}</p>
           <Link href="/admin" className="inline-flex min-h-11 min-w-11 w-fit items-center hover:text-frost">
             Admin

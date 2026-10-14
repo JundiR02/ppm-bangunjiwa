@@ -14,7 +14,7 @@ export function UnitLogo({ src, alt, fallback, className }: { src?: string; alt:
       {src ? (
         <Image src={src} alt={alt} width={512} height={512} className="size-full object-contain" />
       ) : (
-        <span aria-label={alt} className="flex flex-col items-center font-heading text-[11px] font-semibold leading-tight text-pine-deep">
+        <span aria-label={alt} className="flex flex-col items-center font-heading text-[14px] font-semibold leading-tight text-pine-deep">
           {fallback?.split("-").map((part) => (
             <span key={part}>{part}</span>
           ))}

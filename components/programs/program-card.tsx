@@ -22,19 +22,19 @@ export function ProgramChips({ program }: { program: Program }) {
   const open = isAcceptingDonations(program);
   return (
     <div className="flex flex-wrap items-center gap-1.5">
-      <span className="rounded-full border border-ash bg-linen px-2.5 py-0.5 text-[11px] font-medium text-iron">
+      <span className="rounded-full border border-ash bg-linen px-2.5 py-0.5 text-[14px] font-medium text-iron">
         {typeLabel(program.type)}
       </span>
       <span
         className={cn(
-          "rounded-full px-2.5 py-0.5 text-[11px] font-medium",
+          "rounded-full px-2.5 py-0.5 text-[14px] font-medium",
           open ? "bg-pine-soft text-pine-deep" : "bg-muted text-iron-soft"
         )}
       >
         {statusLabel(program)}
       </span>
       {open && program.deadline && (
-        <span className="text-[11px] text-iron-soft">sampai {formatDate(program.deadline)}</span>
+        <span className="text-[14px] text-iron-soft">sampai {formatDate(program.deadline)}</span>
       )}
     </div>
   );
@@ -55,9 +55,9 @@ export function ProgramCard({ program, className }: { program: Program; classNam
       </div>
       <div>
         <h3 className="font-heading text-[16px] font-semibold text-iron-deep">{program.title}</h3>
-        {program.summary && <p className="mt-1.5 line-clamp-2 text-[13px] leading-relaxed text-iron-soft">{program.summary}</p>}
+        {program.summary && <p className="mt-1.5 line-clamp-2 text-[14px] leading-relaxed text-iron-soft">{program.summary}</p>}
         {program.location && (
-          <p className="mt-2 flex items-center gap-1 text-xs text-iron-soft">
+          <p className="mt-2 flex items-center gap-1 text-[14px] text-iron-soft">
             <MapPin className="size-3" /> {program.location}
           </p>
         )}
@@ -65,7 +65,7 @@ export function ProgramCard({ program, className }: { program: Program; classNam
       {percent != null && (
         <div className="mt-auto">
           <ProgressBar percent={percent} />
-          <p className="mt-2 flex justify-between text-xs text-iron-soft">
+          <p className="mt-2 flex justify-between text-[14px] text-iron-soft">
             <span>
               <span className="font-semibold text-iron-deep">{formatRupiahShort(program.collected ?? 0)}</span> dari{" "}
               {formatRupiahShort(program.target ?? 0)}

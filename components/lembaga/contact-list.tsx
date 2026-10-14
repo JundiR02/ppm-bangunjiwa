@@ -26,7 +26,7 @@ export function ContactList({ kontak, className }: { kontak: KontakLembaga[]; cl
         );
         const external = k.href?.startsWith("http");
         return (
-          <li key={k.label} className="text-[15px] leading-snug text-iron">
+          <li key={k.label} className="text-[16px] leading-snug text-iron">
             {k.href ? (
               <a
                 href={k.href}

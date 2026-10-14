@@ -14,7 +14,7 @@ export function InfoNote({
     <div
       role="note"
       className={cn(
-        "flex gap-3 rounded-[18px] border border-pine/30 bg-pine-soft/70 p-4 text-[13px] leading-relaxed text-iron",
+        "flex gap-3 rounded-[18px] border border-pine/30 bg-pine-soft/70 p-4 text-[14px] leading-relaxed text-iron",
         className
       )}
     >

@@ -21,7 +21,7 @@ export default function TentangPage() {
       <section className="grid items-center gap-10 lg:grid-cols-[1.4fr_1fr]">
         <div>
           <h1 className="text-balance font-heading text-[2.4rem] leading-[1.1] text-iron-deep sm:text-5xl">{YAYASAN.nama}</h1>
-          <p className="mt-5 max-w-xl text-[17px] leading-relaxed text-iron-soft">{YAYASAN.deskripsi}</p>
+          <p className="mt-5 max-w-xl text-lg leading-relaxed text-iron-soft">{YAYASAN.deskripsi}</p>
         </div>
         <Image
           src={YAYASAN.logo}
@@ -40,8 +40,8 @@ export default function TentangPage() {
               <Link href={l.href} className="group flex items-center gap-3">
                 <UnitLogo src={l.logo} alt="" fallback={l.singkatan} className="size-11 rounded-full border-0" />
                 <span className="leading-tight">
-                  <span className="block text-[15px] font-medium text-iron-deep group-hover:text-hijau">{l.nama}</span>
-                  <span className="block text-[13px] text-iron-soft">{l.untuk}</span>
+                  <span className="block text-[16px] font-medium text-iron-deep group-hover:text-hijau">{l.nama}</span>
+                  <span className="block text-[14px] text-iron-soft">{l.untuk}</span>
                 </span>
               </Link>
             </li>

@@ -7,7 +7,7 @@ export function PageTop({ crumb, parent }: { crumb?: string; parent?: { label: s
   if (!crumb) return <div className="pt-8" />;
   return (
     // Links are 44px tall for touch; the reduced padding keeps the heading where it was.
-    <nav aria-label="Breadcrumb" className="flex flex-wrap items-center pt-5 pb-3 text-[13px] text-iron-soft">
+    <nav aria-label="Breadcrumb" className="flex flex-wrap items-center pt-5 pb-3 text-[14px] text-iron-soft">
       <Link href="/" className={CRUMB_LINK}>
         Beranda
       </Link>

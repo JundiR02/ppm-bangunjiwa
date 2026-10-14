@@ -12,7 +12,7 @@ export function BidangPage({ bidang, children }: { bidang: BidangProgram; childr
 
       <div className="max-w-2xl">
         <h1 className="text-balance font-heading text-[2.4rem] leading-[1.1] text-iron-deep sm:text-5xl">{bidang.nama}</h1>
-        <p className="mt-4 text-[17px] leading-relaxed text-iron-soft">{bidang.ringkas}</p>
+        <p className="mt-4 text-lg leading-relaxed text-iron-soft">{bidang.ringkas}</p>
       </div>
 
       <BidangItems items={bidang.items} className="mt-12" />

@@ -20,7 +20,7 @@ export default function DonasiPage() {
           <h1 className="max-w-2xl text-balance font-heading text-[2.4rem] leading-[1.1] text-iron-deep sm:text-5xl">
             Dukung pendidikan dan program Bangunjiwa
           </h1>
-          <p className="mt-4 max-w-xl text-[17px] leading-relaxed text-iron-soft">
+          <p className="mt-4 max-w-xl text-lg leading-relaxed text-iron-soft">
             Donasi masuk langsung ke rekening Yayasan PPM Bangunjiwa melalui transfer BSI atau QRIS, untuk mendukung
             pendidikan dan program Yayasan Pesantren Masyarakat Bangunjiwa.
           </p>

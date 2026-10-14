@@ -20,7 +20,7 @@ export default function PsbPage() {
         <h1 className="text-balance font-heading text-[2.4rem] leading-[1.1] text-iron-deep sm:text-5xl">
           Penerimaan mahasantri dan santri baru
         </h1>
-        <p className="mt-4 text-[17px] leading-relaxed text-iron-soft">
+        <p className="mt-4 text-lg leading-relaxed text-iron-soft">
           Setiap lembaga membuka pendaftarannya sendiri. Rincian biaya, seleksi, dan pengumuman akan dimuat di halaman
           ini. Sebelum itu, silakan bertanya langsung ke kontak lembaga yang dituju.
         </p>
@@ -32,11 +32,11 @@ export default function PsbPage() {
             <div className="flex gap-5">
               <UnitLogo src={l.logo} alt={`Logo ${l.nama}`} fallback={l.singkatan} className="size-16 rounded-full border-0 bg-linen" />
               <div>
-                <p className="text-[13px] font-semibold text-emas-deep">
+                <p className="text-[14px] font-semibold text-emas-deep">
                   {l.penerimaan.singkatan} · {l.untuk}
                 </p>
                 <h2 className="mt-1 font-heading text-2xl text-iron-deep">{l.penerimaan.nama}</h2>
-                <p className="mt-1 text-[15px] text-iron">
+                <p className="mt-1 text-[16px] text-iron">
                   <Link href={l.href} className="inline-flex min-h-11 items-center hover:text-hijau hover:underline">
                     {l.nama}
                   </Link>

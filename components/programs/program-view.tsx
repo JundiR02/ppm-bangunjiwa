@@ -47,7 +47,7 @@ function ProgramList() {
       <h1 className="max-w-2xl text-balance font-heading text-[2.4rem] leading-[1.1] text-iron-deep sm:text-5xl">
         Kampanye yang dapat Anda dukung
       </h1>
-      <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-iron-soft">
+      <p className="mt-4 max-w-xl text-[16px] leading-relaxed text-iron-soft">
         Kampanye penggalangan dana untuk pendidikan dan program Yayasan Pesantren Masyarakat Bangunjiwa.
       </p>
 
@@ -61,7 +61,7 @@ function ProgramList() {
                 aria-pressed={filter === t.id}
                 onClick={() => setFilter(t.id)}
                 className={cn(
-                  "rounded-full px-3 py-1.5 text-[12px] font-medium transition-colors",
+                  "rounded-full px-3 py-1.5 text-[14px] font-medium transition-colors",
                   filter === t.id ? "bg-hijau text-frost" : "bg-linen text-iron-soft hover:text-iron"
                 )}
               >
@@ -149,7 +149,7 @@ function ProgramDetail({ slug }: { slug: string }) {
 
   return (
     <>
-      <Link href={CROWDFUNDING_PATH} className="inline-flex items-center gap-1.5 text-[13px] text-iron-soft hover:text-iron">
+      <Link href={CROWDFUNDING_PATH} className="inline-flex items-center gap-1.5 text-[14px] text-iron-soft hover:text-iron">
         <ArrowLeft className="size-3.5" /> Semua kampanye
       </Link>
 
@@ -160,9 +160,9 @@ function ProgramDetail({ slug }: { slug: string }) {
             <h1 className="mt-4 max-w-2xl text-balance font-heading text-[2.2rem] font-normal leading-[1.1] tracking-[-0.02em] text-iron-deep sm:text-[2.75rem]">
               {p.title}
             </h1>
-            {p.summary && <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-iron-soft">{p.summary}</p>}
+            {p.summary && <p className="mt-4 max-w-xl text-[16px] leading-relaxed text-iron-soft">{p.summary}</p>}
             {p.location && (
-              <p className="mt-3 flex items-center gap-1.5 text-[13px] text-iron-soft">
+              <p className="mt-3 flex items-center gap-1.5 text-[14px] text-iron-soft">
                 <MapPin className="size-3.5" /> {p.location}
               </p>
             )}
@@ -175,7 +175,7 @@ function ProgramDetail({ slug }: { slug: string }) {
                 {p.donorCount != null && <Kpi icon={Users} label="Donatur">{p.donorCount.toLocaleString("id-ID")}</Kpi>}
               </div>
               {p.figuresUpdatedAt && (
-                <p className="mt-5 flex items-center gap-1.5 text-xs text-iron-soft">
+                <p className="mt-5 flex items-center gap-1.5 text-[14px] text-iron-soft">
                   <CalendarClock className="size-3.5" /> Dicatat admin yayasan, diperbarui {formatDate(p.figuresUpdatedAt)}
                 </p>
               )}
@@ -221,7 +221,7 @@ function ProgramDetail({ slug }: { slug: string }) {
                 &ldquo;{t.quote}&rdquo;
               </blockquote>
               {t.who && (
-                <p className="mt-5 flex items-center gap-2 border-t border-ash/60 pt-4 text-[13px] text-iron-soft">
+                <p className="mt-5 flex items-center gap-2 border-t border-ash/60 pt-4 text-[14px] text-iron-soft">
                   <span className="size-1.5 rounded-full bg-pine" aria-hidden />
                   {t.who}
                 </p>
@@ -272,7 +272,7 @@ function CampaignInfo({ program: p }: { program: Program }) {
           {p.deadline && (
             <p
               className={cn(
-                "rounded-lg px-4 py-3 text-[15px]",
+                "rounded-lg px-4 py-3 text-[16px]",
                 open ? "bg-pine-soft text-pine-deep" : "bg-muted text-iron"
               )}
             >
@@ -296,7 +296,7 @@ function CampaignInfo({ program: p }: { program: Program }) {
                       {pkg.note && <span className="block text-[14px] text-iron-soft">{pkg.note}</span>}
                     </dt>
                     {pkg.price != null && (
-                      <dd className="font-heading text-xl text-hijau tabular-nums">{formatRupiah(pkg.price)}</dd>
+                      <dd className="font-heading text-2xl text-hijau tabular-nums">{formatRupiah(pkg.price)}</dd>
                     )}
                   </div>
                 ))}
@@ -308,7 +308,7 @@ function CampaignInfo({ program: p }: { program: Program }) {
               <h2 className="font-heading text-2xl text-iron-deep">Konfirmasi</h2>
               <ul className="mt-3 flex flex-col gap-2">
                 {p.contacts.map((c) => (
-                  <li key={c.phone} className="text-[15px] text-iron">
+                  <li key={c.phone} className="text-[16px] text-iron">
                     <span className="font-medium text-iron-deep">{c.name}</span>:{" "}
                     <a href={whatsappHref(c.phone)} target="_blank" rel="noopener" className="inline-flex min-h-11 items-center text-hijau hover:underline">
                       {c.phone}
