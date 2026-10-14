@@ -25,15 +25,15 @@ export default function Home() {
           <div className="mt-7 flex flex-wrap gap-3">
             <Link
               href="/pendidikan"
-              className="inline-flex items-center gap-2 rounded-md bg-hijau px-5 py-3 text-[15px] font-medium text-frost transition-colors hover:bg-hijau-deep"
+              className="inline-flex items-center gap-2 rounded-md bg-hijau px-5 py-3 text-[16px] font-medium text-frost transition-colors hover:bg-hijau-deep"
             >
               Lihat lembaga pendidikan <ArrowRight className="size-4" />
             </Link>
             <Link
               href="/psb"
-              className="inline-flex items-center rounded-md border border-garis px-5 py-3 text-[15px] font-medium text-iron-deep transition-colors hover:border-hijau hover:text-hijau"
+              className="inline-flex items-center rounded-md border border-garis px-5 py-3 text-[16px] font-medium text-iron-deep transition-colors hover:border-hijau hover:text-hijau"
             >
-              Pendaftaran santri baru
+              Tanya pendaftaran
             </Link>
           </div>
         </div>
@@ -62,10 +62,10 @@ export default function Home() {
       <section className="mt-16 grid gap-8 sm:mt-24 lg:grid-cols-[1fr_2fr] lg:gap-10">
         <div>
           <h2 className="font-heading text-3xl leading-tight text-iron-deep sm:text-4xl">Program yayasan</h2>
-          <p className="mt-4 max-w-sm text-[15px] leading-relaxed text-iron-soft">
+          <p className="mt-4 max-w-sm text-[16px] leading-relaxed text-iron-soft">
             Empat bidang yang dijalankan yayasan, dari pendidikan sampai pendanaan.
           </p>
-          <Link href="/program" className="mt-4 inline-flex min-h-11 items-center gap-2 text-[15px] font-medium text-hijau hover:underline">
+          <Link href="/program" className="mt-4 inline-flex min-h-11 items-center gap-2 text-[16px] font-medium text-hijau hover:underline">
             Lihat keempat bidang program
           </Link>
         </div>
@@ -74,7 +74,7 @@ export default function Home() {
             <li key={bidang.id} className="border-b border-ash">
               <Link href={bidang.href} className="group grid gap-2 py-6 sm:grid-cols-[1fr_1.2fr] sm:gap-8">
                 <span className="font-heading text-xl text-iron-deep group-hover:text-hijau">{bidang.nama}</span>
-                <span className="text-[14px] leading-relaxed text-iron-soft">
+                <span className="text-[16px] leading-relaxed text-iron-soft">
                   {bidang.items.map((item) => item.judul).join(" · ")}
                 </span>
               </Link>
@@ -98,8 +98,8 @@ export default function Home() {
         <div>
           <h2 className="font-heading text-3xl leading-tight text-iron-deep sm:text-4xl">Berkunjung ke Bangunjiwa</h2>
           <p className="mt-4 text-[16px] leading-relaxed text-iron-soft">{PROFIL_PESANTREN.alamat}</p>
-          <p className="mt-2 text-[15px] text-iron-soft">Pengasuh: {PROFIL_PESANTREN.pengasuh.join(" dan ")}</p>
-          <div className="mt-4 flex flex-wrap gap-x-6 text-[15px] font-medium">
+          <p className="mt-2 text-[16px] text-iron-soft">Pengasuh: {PROFIL_PESANTREN.pengasuh.join(" dan ")}</p>
+          <div className="mt-4 flex flex-wrap gap-x-6 text-[16px] font-medium">
             <Link href="/kontak" className="inline-flex min-h-11 items-center text-hijau hover:underline">
               Kontak setiap lembaga
             </Link>

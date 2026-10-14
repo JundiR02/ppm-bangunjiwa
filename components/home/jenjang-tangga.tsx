@@ -59,7 +59,7 @@ export function JenjangTangga() {
                   <h3 className="font-heading text-2xl leading-snug group-hover:underline group-hover:decoration-emas-muda group-hover:underline-offset-4">
                     {l.nama}
                   </h3>
-                  <p className="mt-2 text-[14.5px] leading-relaxed text-frost/90">{l.ringkas}</p>
+                  <p className="mt-2 text-[16px] leading-relaxed text-frost/90">{l.ringkas}</p>
                 </div>
               </Link>
             </li>
