@@ -1,6 +1,4 @@
-import Link from "next/link";
 import type { LucideIcon } from "lucide-react";
-import { ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export function Panel({
@@ -42,21 +40,6 @@ export function PanelHeader({
       </div>
       {action}
     </div>
-  );
-}
-
-export function CircleLink({ href, label, className }: { href: string; label: string; className?: string }) {
-  return (
-    <Link
-      href={href}
-      aria-label={label}
-      className={cn(
-        "flex size-9 shrink-0 items-center justify-center rounded-full border border-ash text-pine-deep transition-colors hover:border-hijau hover:bg-hijau hover:text-frost",
-        className
-      )}
-    >
-      <ArrowUpRight className="size-4" />
-    </Link>
   );
 }
 

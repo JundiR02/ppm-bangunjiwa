@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageTop } from "@/components/shell/page-top";
-import { Eyebrow } from "@/components/hub/panel";
 import { UnitLogo } from "@/components/lembaga/unit-logo";
 import { UnitContacts } from "@/components/lembaga/unit-page";
 import { LEMBAGA_BANGUNJIWA } from "@/lib/bangunjiwa-data";
@@ -18,8 +17,7 @@ export default function PsbPage() {
       <PageTop crumb="PMB & PSB" />
 
       <div className="max-w-2xl">
-        <Eyebrow>Pendaftaran</Eyebrow>
-        <h1 className="mt-3 text-balance font-heading text-[2.4rem] leading-[1.1] text-iron-deep sm:text-5xl">
+        <h1 className="text-balance font-heading text-[2.4rem] leading-[1.1] text-iron-deep sm:text-5xl">
           Penerimaan mahasantri dan santri baru
         </h1>
         <p className="mt-4 text-[17px] leading-relaxed text-iron-soft">

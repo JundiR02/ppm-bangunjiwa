@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { PageTop } from "@/components/shell/page-top";
-import { Eyebrow } from "@/components/hub/panel";
 import { OrgStructure } from "@/components/lembaga/org-structure";
 import { ComingSoonGrid } from "@/components/lembaga/coming-soon-grid";
 import { UnitLogo } from "@/components/lembaga/unit-logo";
@@ -21,8 +20,7 @@ export default function TentangPage() {
 
       <section className="grid items-center gap-10 lg:grid-cols-[1.4fr_1fr]">
         <div>
-          <Eyebrow>Tentang Yayasan</Eyebrow>
-          <h1 className="mt-3 text-balance font-heading text-[2.4rem] leading-[1.1] text-iron-deep sm:text-5xl">{YAYASAN.nama}</h1>
+          <h1 className="text-balance font-heading text-[2.4rem] leading-[1.1] text-iron-deep sm:text-5xl">{YAYASAN.nama}</h1>
           <p className="mt-5 max-w-xl text-[17px] leading-relaxed text-iron-soft">{YAYASAN.deskripsi}</p>
         </div>
         <Image

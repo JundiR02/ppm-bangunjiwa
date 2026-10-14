@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { PageTop } from "@/components/shell/page-top";
-import { Eyebrow } from "@/components/hub/panel";
 import { DonationInteractive } from "@/components/donasi/donation-interactive";
 import { InfoNote } from "@/components/content/info-note";
 import { RunningCampaignsSection } from "@/components/home/running-campaigns-section";
@@ -18,8 +17,7 @@ export default function DonasiPage() {
 
       <section className="grid gap-8 lg:grid-cols-[1.4fr_1fr] lg:gap-14">
         <div>
-          <Eyebrow>Donasi</Eyebrow>
-          <h1 className="mt-3 max-w-2xl text-balance font-heading text-[2.4rem] leading-[1.1] text-iron-deep sm:text-5xl">
+          <h1 className="max-w-2xl text-balance font-heading text-[2.4rem] leading-[1.1] text-iron-deep sm:text-5xl">
             Dukung pendidikan dan program Bangunjiwa
           </h1>
           <p className="mt-4 max-w-xl text-[17px] leading-relaxed text-iron-soft">

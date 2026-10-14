@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import { EKOSISTEM_NODES } from "@/lib/bangunjiwa-data";
 
 export function EcosystemFlow() {
@@ -11,7 +10,7 @@ export function EcosystemFlow() {
           <p className="mt-2 flex-1 text-[15px] leading-relaxed text-iron-soft">{node.description}</p>
           {node.href && node.linkLabel && (
             <Link href={node.href} className="mt-4 inline-flex w-fit items-center gap-2 text-[14px] font-medium text-hijau hover:underline">
-              {node.linkLabel} <ArrowRight className="size-4" />
+              {node.linkLabel}
             </Link>
           )}
         </li>

@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Suspense } from "react";
-import { ArrowRight } from "lucide-react";
 import { PageTop } from "@/components/shell/page-top";
-import { Eyebrow } from "@/components/hub/panel";
 import { LegacyCampaignRedirect } from "@/components/programs/legacy-campaign-redirect";
 import { BIDANG_PROGRAM } from "@/lib/bangunjiwa-data";
 
@@ -22,8 +20,7 @@ export default function ProgramPage() {
       <PageTop crumb="Program" />
 
       <div className="max-w-2xl pb-2">
-        <Eyebrow>Program Yayasan</Eyebrow>
-        <h1 className="mt-5 text-balance font-heading text-[2.4rem] font-normal leading-[1.08] tracking-[-0.02em] text-iron-deep sm:text-5xl">
+        <h1 className="text-balance font-heading text-[2.4rem] leading-[1.1] text-iron-deep sm:text-5xl">
           Empat bidang program Bangunjiwa
         </h1>
         <p className="mt-4 text-[15px] leading-relaxed text-iron-soft">
@@ -43,7 +40,7 @@ export default function ProgramPage() {
               </h2>
               <p className="mt-2 text-[15px] leading-relaxed text-iron-soft">{bidang.ringkas}</p>
               <Link href={bidang.href} className="mt-4 inline-flex items-center gap-2 text-[14px] font-medium text-hijau hover:underline">
-                Selengkapnya <ArrowRight className="size-4" />
+                Buka halaman {bidang.nama}
               </Link>
             </div>
             <ul className="flex flex-col gap-2 lg:pt-1">

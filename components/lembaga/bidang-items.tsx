@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import type { BidangProgram } from "@/lib/bangunjiwa-data";
 import { cn } from "@/lib/utils";
 
@@ -33,7 +32,7 @@ export function BidangItems({ items, className }: { items: BidangProgram["items"
             )}
             {item.href ? (
               <Link href={item.href} className="inline-flex w-fit items-center gap-2 text-[14px] font-medium text-hijau hover:underline">
-                Selengkapnya <ArrowRight className="size-4" />
+                Buka halaman {item.judul}
               </Link>
             ) : (
               <p className="text-[14px] text-iron-soft">Informasi lengkap segera ditambahkan.</p>

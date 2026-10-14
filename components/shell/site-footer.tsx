@@ -29,7 +29,7 @@ function Column({ title, links }: { title: string; links: { label: string; href:
 
 export function SiteFooter() {
   return (
-    <footer className="mt-24 bg-hijau-ink text-frost">
+    <footer className="mt-24 bg-hijau-ink text-frost [&_a:focus-visible]:outline-emas-muda">
       <div className="mx-auto grid w-full max-w-[1200px] gap-10 px-4 py-14 sm:px-6 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
         <div className="flex flex-col gap-4">
           <div className="flex items-center gap-3">

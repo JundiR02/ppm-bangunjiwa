@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowUpRight, MapPin } from "lucide-react";
+import { MapPin } from "lucide-react";
 import { campaignHref, isAcceptingDonations, progressPercent, typeLabel, type Program } from "@/lib/programs";
 import { formatDate, formatRupiahShort } from "@/lib/format";
 import { cn } from "@/lib/utils";
@@ -52,7 +52,6 @@ export function ProgramCard({ program, className }: { program: Program; classNam
     >
       <div className="flex items-start justify-between gap-3">
         <ProgramChips program={program} />
-        <ArrowUpRight className="size-4 shrink-0 text-iron-soft transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
       </div>
       <div>
         <h3 className="font-heading text-[16px] font-semibold text-iron-deep">{program.title}</h3>

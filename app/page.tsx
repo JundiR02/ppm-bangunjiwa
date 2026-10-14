@@ -66,7 +66,7 @@ export default function Home() {
             Empat bidang yang dijalankan yayasan, dari pendidikan sampai pendanaan.
           </p>
           <Link href="/program" className="mt-6 inline-flex items-center gap-2 text-[15px] font-medium text-hijau hover:underline">
-            Semua program <ArrowRight className="size-4" />
+            Lihat keempat bidang program
           </Link>
         </div>
         <ul className="border-t border-ash">

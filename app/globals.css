@@ -102,6 +102,11 @@
   [id] {
     scroll-margin-top: 5rem;
   }
+  /* Keyboard focus: solid green on cream is 7.5:1. Dark surfaces (footer) override it with pale gold. */
+  :focus-visible {
+    outline: 3px solid var(--color-hijau);
+    outline-offset: 2px;
+  }
 }
 
 @layer utilities {

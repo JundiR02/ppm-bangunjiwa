@@ -7,7 +7,7 @@ import { ArrowLeft, CalendarClock, ChartPie, CircleAlert, FileText, HandCoins, M
 import { usePublishedPrograms } from "@/components/programs/use-programs";
 import { ProgramCard, ProgramChips } from "@/components/programs/program-card";
 import { DonationInteractive } from "@/components/donasi/donation-interactive";
-import { Panel, PanelHeader, Eyebrow } from "@/components/hub/panel";
+import { Panel, PanelHeader } from "@/components/hub/panel";
 import { Kpi } from "@/components/hub/kpi";
 import { Gauge } from "@/components/hub/gauge";
 import { BarStat, type BarTone } from "@/components/hub/bar-stat";
@@ -43,8 +43,7 @@ function ProgramList() {
 
   return (
     <>
-      <Eyebrow>Crowdfunding · Dana Abadi Pesantren Hijau</Eyebrow>
-      <h1 className="mt-5 max-w-2xl text-balance font-heading text-[2.4rem] font-normal leading-[1.08] tracking-[-0.02em] text-iron-deep sm:text-5xl">
+      <h1 className="max-w-2xl text-balance font-heading text-[2.4rem] leading-[1.1] text-iron-deep sm:text-5xl">
         Kampanye yang dapat Anda dukung
       </h1>
       <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-iron-soft">
@@ -77,12 +76,16 @@ function ProgramList() {
             ))}
           </div>
         ) : state.status === "error" ? (
-          <EmptyState icon={CircleAlert} title="Program gagal dimuat">
+          <EmptyState icon={CircleAlert} title="Daftar kampanye gagal dimuat">
             Periksa koneksi internet Anda, lalu muat ulang halaman.
           </EmptyState>
         ) : shown.length === 0 ? (
-          <EmptyState icon={Sprout} title="Belum ada program yang dipublikasikan">
-            Program akan tampil di sini setelah ditambahkan oleh admin yayasan.
+          <EmptyState icon={Sprout} title="Belum ada kampanye yang berjalan">
+            Anda tetap bisa berdonasi langsung ke yayasan lewat{" "}
+            <Link href="/donasi" className="font-medium text-hijau underline underline-offset-4">
+              halaman Donasi
+            </Link>
+            .
           </EmptyState>
         ) : (
           <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
@@ -121,9 +124,9 @@ function ProgramDetail({ slug }: { slug: string }) {
   if (state.status !== "ready") {
     return (
       <Panel>
-        <EmptyState icon={state.status === "error" ? CircleAlert : SearchX} title={state.status === "error" ? "Program gagal dimuat" : "Program tidak ditemukan"}>
-          {state.status === "error" ? "Periksa koneksi internet Anda, lalu muat ulang halaman." : "Program ini mungkin sudah tidak dipublikasikan."}
-          <Link href={CROWDFUNDING_PATH} className="mt-3 block font-medium text-iron underline-offset-4 hover:underline">
+        <EmptyState icon={state.status === "error" ? CircleAlert : SearchX} title={state.status === "error" ? "Kampanye gagal dimuat" : "Kampanye tidak ditemukan"}>
+          {state.status === "error" ? "Periksa koneksi internet Anda, lalu muat ulang halaman." : "Kampanye ini mungkin sudah tidak dipublikasikan."}
+          <Link href={CROWDFUNDING_PATH} className="mt-3 block font-medium text-hijau underline underline-offset-4">
             Lihat semua kampanye
           </Link>
         </EmptyState>
